@@ -37,7 +37,7 @@ C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\bin\Debug\DataL
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\bin\Debug\Newtonsoft.Json.xml
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.csprojAssemblyReference.cache
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.FavoriteTeam.resources
-C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.StartingForm.resources
+C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.SettingsForm.resources
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.Properties.Resources.resources
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.csproj.GenerateResource.cache
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.csproj.CoreCompileInputs.cache

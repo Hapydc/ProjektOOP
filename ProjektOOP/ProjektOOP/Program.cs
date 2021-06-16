@@ -24,10 +24,12 @@ namespace ProjektOOP
             ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
             if (applicationSettingsService.GetAplicationSettings()==null)
             {
-                Application.Run(new StartingForm());
+                Application.Run(new SettingsForm());
             }
             else
             {
+
+                Application.Run(new SettingsForm());
 
             }
             
