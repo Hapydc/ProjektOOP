@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjektOOP
 {
-    public partial class StartingForm : Form
+    public partial class SettingsForm : Form
     {
-        public StartingForm()
+        public SettingsForm()
         {
             InitializeComponent();
-        }
-
-        private void btnMaleChamp_Click(object sender, EventArgs e)
-        {
-            new FavoriteTeam().Show();
         }
     }
 }

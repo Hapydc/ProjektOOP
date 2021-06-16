@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models
 {
-    class AplicationSettings
+    public class ApplicationSettings
     {
+        public Language Language { get; set; }
+        public Championship Championship { get; set; }
     }
+
 }

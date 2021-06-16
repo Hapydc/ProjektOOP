@@ -1,8 +1,11 @@
-﻿using System;
+﻿using DataLayer.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataLayer.Services;
 
 namespace ProjektOOP
 {
@@ -14,9 +17,22 @@ namespace ProjektOOP
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartingForm());
+
+            ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
+            if (applicationSettingsService.GetAplicationSettings()==null)
+            {
+                Application.Run(new StartingForm());
+            }
+            else
+            {
+
+            }
+            
+            
+
         }
     }
 }
