@@ -9,14 +9,18 @@ using DataLayer.Services;
 
 namespace ProjektOOP
 {
+    
+
     static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -33,7 +37,8 @@ namespace ProjektOOP
 
             }
 
-            ITeamService teamService = null;
+
+        ITeamService teamService = null;
 
             //if (true)
             //{

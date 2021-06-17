@@ -9,6 +9,8 @@ namespace DataLayer.Services
     {
         public List<Team> GetTeams(string path)
         {
+
+            
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();

@@ -20,16 +20,27 @@ namespace ProjektOOP
 
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {
-            TeamsAPIService service = new TeamsAPIService();
-            List<Team> teams = service.GetTeams(path);
-            foreach (Team t in teams)
+            if (path.Contains("http"))
             {
-                string team = t.ToString();
-                cbTeams.Items.Add(team);
-            };
+                TeamsAPIService service = new TeamsAPIService();
+                List<Team> teams = service.GetTeams(path);
+                foreach (Team t in teams)
+                {
+                    string team = t.ToString();
+                    cbTeams.Items.Add(team);
+                };
+            }
+            else
+            {
+                TeamsFileService service = new TeamsFileService();
+                List<Team> teams = service.GetTeams(path);
+                foreach (Team t in teams)
+                {
+                    string team = t.ToString();
+                    cbTeams.Items.Add(team);
+                };
+            }
         }
-
-        
 
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {

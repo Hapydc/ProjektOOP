@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Services
 {
+
     public interface ITeamService
     {
-         List<Team> GetTeams(string path);
+
+        List<Team> GetTeams(string path);
     }
 }
