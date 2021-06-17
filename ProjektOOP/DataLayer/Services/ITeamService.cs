@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjektOOP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace DataLayer.Services
 {
     public interface ITeamService
     {
-        void GetTeams();
+         List<Team> GetTeams(string path);
     }
 }

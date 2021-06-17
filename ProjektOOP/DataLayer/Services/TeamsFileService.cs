@@ -1,16 +1,21 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using ProjektOOP;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace DataLayer.Services
 {
     public class TeamsFileService : ITeamService
     {
-        public void GetTeams()
+        public List<Team> GetTeams(string path)
         {
-            throw new NotImplementedException();
+            using (StreamReader r = new StreamReader(path))
+            {
+                string json = r.ReadToEnd();
+                List<Team> teams = JsonConvert.DeserializeObject<List<Team>>(json);                
+                return teams;
+            }
+            
         }
     }
 }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using DataLayer.Models;
+using DataLayer.Services;
 
 namespace ProjektOOP
 {
     public partial class FavoriteTeam : Form
     {
-        private static string path = @"Resources\teams.json";
+        private static string path = "https://worldcup.sfg.io/teams/";
         public FavoriteTeam()
         {
             InitializeComponent();
@@ -18,21 +20,16 @@ namespace ProjektOOP
 
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {
-            LoadTeams(path);
-        }
-
-        private void LoadTeams(string path)
-        {
-
-            using (StreamReader r = new StreamReader(path))
+            TeamsAPIService service = new TeamsAPIService();
+            List<Team> teams = service.GetTeams(path);
+            foreach (Team t in teams)
             {
-                string json = r.ReadToEnd();
-                List<Team> teams = JsonConvert.DeserializeObject<List<Team>>(json);
-            }
-
-
-
+                string team = t.ToString();
+                cbTeams.Items.Add(team);
+            };
         }
+
+        
 
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {

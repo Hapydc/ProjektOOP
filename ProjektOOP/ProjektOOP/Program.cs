@@ -29,11 +29,26 @@ namespace ProjektOOP
             else
             {
 
-                Application.Run(new SettingsForm());
+                Application.Run(new FavoriteTeam());
 
             }
+
+            ITeamService teamService = null;
+
+            //if (true)
+            //{
+            //    teamService = new TeamsAPIService();
+            //}
+            //else
+            //{
+            //    teamService = new TeamsFileService();
+            //}
+
+            //var teams = teamService.GetTeams();
+
             
-            
+
+
 
         }
     }

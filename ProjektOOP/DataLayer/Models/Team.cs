@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjektOOP
 {
-    class Team
+   public class Team
     {
         public int Id { get; set; }
         public string Country { get; set; }
