@@ -44,3 +44,5 @@ C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\Proje
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.csproj.CopyComplete
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.exe
 C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.pdb
+C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\bin\Debug\Resources\matches.json
+C:\Users\stjep\Documents\GitHub\ProjektOOP\ProjektOOP\ProjektOOP\obj\Debug\ProjektOOP.PlayerControl.resources

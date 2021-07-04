@@ -38,7 +38,7 @@ namespace ProjektOOP
             }
 
 
-        ITeamService teamService = null;
+            IService teamService = null;
 
             //if (true)
             //{
