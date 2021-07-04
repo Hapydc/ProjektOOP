@@ -32,12 +32,22 @@ namespace DataLayer.Services
         }
 
         public List<Player> GetPlayers(string fifaCode)
-        {
-            var matchResult = MatchResults.Where(x => x.HomeTeamCountry == fifaCode).FirstOrDefault();
+        {   
+            var matchResult = MatchResults
+                .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode ).OrderBy(x=>x.Datetime)
+                .FirstOrDefault();    
             List<Player> players = new List<Player>();
-            players.AddRange(matchResult.HomeTeamStatistics.StartingEleven);
-            players.AddRange(matchResult.HomeTeamStatistics.Substitutes);
-
+            if (matchResult.HomeTeamCountry==fifaCode)
+            {
+                players.AddRange(matchResult.HomeTeamStatistics.StartingEleven);
+                players.AddRange(matchResult.HomeTeamStatistics.Substitutes);
+            }
+            else
+            {
+                players.AddRange(matchResult.AwayTeamStatistics.StartingEleven);
+                players.AddRange(matchResult.AwayTeamStatistics.Substitutes);
+            }
+            
             return players;
         }
     }   
