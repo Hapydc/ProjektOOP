@@ -72,6 +72,12 @@ namespace ProjektOOP
         {
             ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
             ApplicationSettings applicationSettings =applicationSettingsService.GetAplicationSettings();
+            if (applicationSettings == null)
+            {
+                return;
+            }
+            else
+            {        
             if (applicationSettings.Championship==Championship.Male)
             {
                 rbMaleChampionship.Checked=true;
@@ -88,7 +94,7 @@ namespace ProjektOOP
             {
                 rbEnglish.Checked = true;
             }
-
+            }
         }
     }
 }
