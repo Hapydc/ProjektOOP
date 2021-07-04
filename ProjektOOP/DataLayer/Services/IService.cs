@@ -11,7 +11,7 @@ namespace DataLayer.Services
 
         //List<MatchResult> GetResults(string path);
 
-        List<MatchResult> GetMatchResults(string path);
+        List<MatchResult> GetMatchResults();
 
         //Postavi omiljene igrace
 

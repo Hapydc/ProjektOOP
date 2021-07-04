@@ -19,7 +19,7 @@ namespace DataLayer.Services
                 return teams;
             }
         }
-         public  List<MatchResult> GetMatchResults(string path)
+         public  List<MatchResult> GetMatchResults()
         {
             return null;
         }

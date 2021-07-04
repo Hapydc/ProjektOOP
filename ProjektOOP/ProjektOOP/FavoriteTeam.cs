@@ -21,8 +21,7 @@ namespace ProjektOOP
 
         public FavoriteTeam()
         {
-            InitializeComponent();
-            results = service.GetMatchResults(matchesPath);
+            InitializeComponent();         
         }
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {  
@@ -37,7 +36,7 @@ namespace ProjektOOP
             flowLayoutPanel1.Controls.Clear();
             var selectedTeam = (cbTeams.SelectedItem as Team).Country;
             lbCountryCode.Text = selectedTeam;       
-            players =service.GetPlayers(results, selectedTeam);           
+            players =service.GetPlayers(selectedTeam);           
             foreach (Player p  in players)
             {            
                 PlayerControl player = new PlayerControl(p);

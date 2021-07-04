@@ -80,7 +80,7 @@ namespace ProjektOOP
             {        
                 if (applicationSettings.Championship==Championship.Male)
                 {
-                rbMaleChampionship.Checked=true;
+                    rbMaleChampionship.Checked=true;
                 }
                 else
                 {
