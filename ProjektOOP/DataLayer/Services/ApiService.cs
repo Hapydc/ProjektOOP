@@ -23,14 +23,5 @@ namespace DataLayer.Services
         {
             return null;
         }
-        public List<Player> GetPlayers(List<MatchResult> results, string fifaCode)
-        {
-            return null;
-        }
-
-
-
-
-
     }
 }

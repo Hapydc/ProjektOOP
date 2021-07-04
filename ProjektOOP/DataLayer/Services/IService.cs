@@ -15,7 +15,6 @@ namespace DataLayer.Services
 
         //Postavi omiljene igrace
 
-        List<Player> GetPlayers(List<MatchResult>results, string fifaCode);
         //List<Player> SetFavoritePlayers(string countryName);
 
         //Dohvati omiljene igrace
