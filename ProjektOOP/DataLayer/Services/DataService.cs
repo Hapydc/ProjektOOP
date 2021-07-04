@@ -1,5 +1,6 @@
 ﻿using DataLayer.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DataLayer.Services
 {
@@ -7,7 +8,8 @@ namespace DataLayer.Services
     {
         public bool UsesApiService { get; set; }
         private IService Service;
-     
+        private List<MatchResult> MatchResults { get; set; }
+
         public DataService()
         {
             // TODO: čitaj iz datoteke
@@ -19,10 +21,10 @@ namespace DataLayer.Services
             else
             {
                 Service = new ApiService();
-
             }
-        }
 
+            MatchResults = Service.GetMatchResults();
+        }
 
         public List<Team> GetTeams(string path)
         {
@@ -30,27 +32,13 @@ namespace DataLayer.Services
         }
 
         public List<Player> GetPlayers(string fifaCode)
-        {           
-            List<MatchResult> results = Service.GetMatchResults();         
-            MatchResult match = new MatchResult();
+        {
+            var matchResult = MatchResults.Where(x => x.HomeTeamCountry == fifaCode).FirstOrDefault();
             List<Player> players = new List<Player>();
-            for (int i = 0; i < results.Count; i++)
-            {
-                if (results[i].HomeTeamCountry == fifaCode)
-                {
-                    match = results[i];
-                    match.HomeTeamStatistics.StartingEleven.ForEach(p => players.Add(p));
-                    match.HomeTeamStatistics.Substitutes.ForEach(p => players.Add(p));
-                    if (players.Count == 23)
-                    {
-                        break;
-                    }
-                }
-            }
+            players.AddRange(matchResult.HomeTeamStatistics.StartingEleven);
+            players.AddRange(matchResult.HomeTeamStatistics.Substitutes);
+
             return players;
         }
-
-
-    }
-   
+    }   
 }
