@@ -78,22 +78,22 @@ namespace ProjektOOP
             }
             else
             {        
-            if (applicationSettings.Championship==Championship.Male)
-            {
+                if (applicationSettings.Championship==Championship.Male)
+                {
                 rbMaleChampionship.Checked=true;
-            }
-            else
-            {
-                rbFemaleChampionship.Checked = true;
-            }
-            if (applicationSettings.Language==Language.Croatian)
-            {
-                rbCroatian.Checked = true;
-            }
-            else
-            {
-                rbEnglish.Checked = true;
-            }
+                }
+                else
+                {
+                    rbFemaleChampionship.Checked = true;
+                }
+                if (applicationSettings.Language==Language.Croatian)
+                {
+                    rbCroatian.Checked = true;
+                }
+                else
+                {
+                    rbEnglish.Checked = true;
+                }
             }
         }
     }
