@@ -41,12 +41,9 @@ namespace ProjektOOP
             foreach (Player p  in players)
             {            
                 PlayerControl player = new PlayerControl(p);
-                flowLayoutPanel1.Controls.Add(player);
-                
+                flowLayoutPanel1.Controls.Add(player);              
             }
-            InitDnD();
-            
-            
+            InitDnD();            
         }
 
         private void InitDnD()
@@ -80,7 +77,10 @@ namespace ProjektOOP
         {          
             e.Effect = DragDropEffects.Move;
         }
-        
+        private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
         private void cbTeams_SelectedIndexChanged(object sender, EventArgs e)
         {
 

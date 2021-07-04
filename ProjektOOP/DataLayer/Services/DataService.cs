@@ -12,43 +12,24 @@ namespace DataLayer.Services
         {
             // TODO: čitaj iz datoteke
             UsesApiService = false;
+            if (!UsesApiService)
+            {
+               Service = new FileService();
+            }
+            else
+            {
+                Service = new ApiService();
+            }
         }
 
-        private void ResolveServiceType()
-        {
-
-        }
 
         public List<Team> GetTeams(string path)
         {
-            if (UsesApiService)
-            {
-                ApiService service = new ApiService();
-                List<Team> teams = service.GetTeams(path);
-                return teams;
-
-            }
-            else
-            {
-                FileService service = new FileService();
-                List<Team> teams = service.GetTeams(path);
-                return teams;
-            }
+            return Service.GetTeams(path);
         }
         public List<MatchResult> GetMatchResults(string path)
         {
-            if (UsesApiService)
-            {
-                ApiService service = new ApiService();
-                List<MatchResult> results = service.GetMatchResults(path);
-                return results;
-            }
-            else
-            {
-                FileService service = new FileService();
-                List<MatchResult> results = service.GetMatchResults(path);
-                return results;
-            }
+            return Service.GetMatchResults(path);
         }
 
         public List<Player> GetPlayers(List<MatchResult> results, string fifaCode)
