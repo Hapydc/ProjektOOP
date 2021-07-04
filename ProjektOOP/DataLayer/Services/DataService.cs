@@ -3,11 +3,25 @@ using System.Collections.Generic;
 
 namespace DataLayer.Services
 {
-    public class DataService : IService
+    public class DataService
     {
+        public bool UsesApiService { get; set; }
+        private IService Service;
+
+        public DataService()
+        {
+            // TODO: čitaj iz datoteke
+            UsesApiService = false;
+        }
+
+        private void ResolveServiceType()
+        {
+
+        }
+
         public List<Team> GetTeams(string path)
         {
-            if (path.Contains("http"))
+            if (UsesApiService)
             {
                 ApiService service = new ApiService();
                 List<Team> teams = service.GetTeams(path);
@@ -23,7 +37,7 @@ namespace DataLayer.Services
         }
         public List<MatchResult> GetMatchResults(string path)
         {
-            if (path.Contains("http"))
+            if (UsesApiService)
             {
                 ApiService service = new ApiService();
                 List<MatchResult> results = service.GetMatchResults(path);
@@ -36,6 +50,7 @@ namespace DataLayer.Services
                 return results;
             }
         }
+
         public List<Player> GetPlayers(List<MatchResult> results, string fifaCode)
         {
             MatchResult match = new MatchResult();
