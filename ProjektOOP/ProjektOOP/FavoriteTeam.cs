@@ -43,14 +43,26 @@ namespace ProjektOOP
         }
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {
+            List<Player> favoritePlayers = DataService.ReadFavoritePlayers();
+            
             flowLayoutPanel1.Controls.Clear();
             var selectedTeam = (cbTeams.SelectedItem as Team).Country;
             lbCountryCode.Text = selectedTeam;       
             players =service.GetPlayers(selectedTeam);           
             foreach (Player p  in players)
-            {            
-                PlayerControl player = new PlayerControl(p);
-                flowLayoutPanel1.Controls.Add(player);              
+            {
+               
+                if (favoritePlayers.Find(x => x.Name == p.Name)!=null)
+                {
+                    PlayerControl player = new PlayerControl(p);
+                    flowLayoutPanel2.Controls.Add(player);
+                }
+                else
+                {
+                    PlayerControl player = new PlayerControl(p);
+                    flowLayoutPanel1.Controls.Add(player);
+                }
+                           
             }
             InitDnD();            
         }
@@ -106,7 +118,11 @@ namespace ProjektOOP
             {
                 if (item is PlayerControl)
                 {
-                    favoritePlayerList.Add((item as PlayerControl).player);
+                    PlayerControl playerControl = item as PlayerControl;
+                    
+                    Player player = new Player();
+                    player = playerControl.SetPlayerValues(playerControl);
+                    favoritePlayerList.Add(player);
                 }
             }
             string country = cbTeams.SelectedItem.ToString();

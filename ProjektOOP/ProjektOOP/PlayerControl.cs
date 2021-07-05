@@ -32,6 +32,18 @@ namespace ProjektOOP
         {
             pBplayerPicture.Image = Image.FromFile(path);
         }
+        public Player SetPlayerValues(PlayerControl playerControl)
+        {
+            Player player = new Player();
+            player.Name = playerControl.lblName.Text;
+            long l1;
+            l1 = long.Parse(playerControl.lblNumber.Text);
+            player.ShirtNumber = l1;
+            player.Position = playerControl.lblPosition.Text;
+            player.Captain = Convert.ToBoolean(lblCaptain.Text);
+            return player;
+
+        }
 
         public void FavoriteStar(bool star)
         {
