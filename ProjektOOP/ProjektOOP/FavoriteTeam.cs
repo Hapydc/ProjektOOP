@@ -16,8 +16,8 @@ namespace ProjektOOP
         private static string teamPath = @"Resources\teams.json";
         //private static string teamPath = "https://worldcup.sfg.io/teams/";
 
-        //pathovi za dohvacanje podataka o utakmicama i igracima
-        private static string matchesPath = @"Resources\matches.json";
+
+
 
         public FavoriteTeam()
         {
@@ -57,32 +57,45 @@ namespace ProjektOOP
         }
 
         private void flowLayoutPanel2_DragDrop(object sender, DragEventArgs e)
-        {     
+        {   
+
             PlayerControl playerControl = (PlayerControl)e.Data.GetData(typeof(PlayerControl));
+            flowLayoutPanel2.Controls.Add(playerControl);
+            playerControl.FavoriteStar(true);
+            
         }
 
         private void flowLayoutPanel2_DragEnter(object sender, DragEventArgs e)
         {
-            
             e.Effect = DragDropEffects.Move;
         }
 
         private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
         {
            PlayerControl playerControl = (PlayerControl)e.Data.GetData(typeof(PlayerControl));
+            flowLayoutPanel1.Controls.Add(playerControl);
+            playerControl.FavoriteStar(false);
         }
 
         private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
         {          
             e.Effect = DragDropEffects.Move;
         }
-        private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
-        {
 
+        private void OnClosed(object sender, FormClosingEventArgs e)
+        {
+            
+            List<Player> favoritePlayerList = new List<Player>();
+            foreach (var item in flowLayoutPanel2.Controls)
+            {
+                if (item is PlayerControl)
+                {
+                    favoritePlayerList.Add((item as PlayerControl).player);
+                }
+            }
+            DataService.WriteFavoritePlayers(favoritePlayerList);
         }
-        private void cbTeams_SelectedIndexChanged(object sender, EventArgs e)
-        {
+       
 
-        }   
     }
 }

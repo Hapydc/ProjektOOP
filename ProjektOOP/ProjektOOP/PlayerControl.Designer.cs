@@ -37,7 +37,9 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblCaptain = new System.Windows.Forms.Label();
             this.pBplayerPicture = new System.Windows.Forms.PictureBox();
+            this.pbFavoritePlayer = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBplayerPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFavoritePlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -120,10 +122,21 @@
             this.pBplayerPicture.TabIndex = 9;
             this.pBplayerPicture.TabStop = false;
             // 
+            // pbFavoritePlayer
+            // 
+            this.pbFavoritePlayer.BackColor = System.Drawing.SystemColors.Control;
+            this.pbFavoritePlayer.Location = new System.Drawing.Point(255, 17);
+            this.pbFavoritePlayer.Name = "pbFavoritePlayer";
+            this.pbFavoritePlayer.Size = new System.Drawing.Size(113, 93);
+            this.pbFavoritePlayer.TabIndex = 10;
+            this.pbFavoritePlayer.TabStop = false;
+            // 
             // PlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.pbFavoritePlayer);
             this.Controls.Add(this.pBplayerPicture);
             this.Controls.Add(this.lblCaptain);
             this.Controls.Add(this.lblPosition);
@@ -137,6 +150,7 @@
             this.Size = new System.Drawing.Size(396, 323);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlayerControl_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pBplayerPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFavoritePlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +167,6 @@
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.Label lblCaptain;
         private System.Windows.Forms.PictureBox pBplayerPicture;
+        private System.Windows.Forms.PictureBox pbFavoritePlayer;
     }
 }

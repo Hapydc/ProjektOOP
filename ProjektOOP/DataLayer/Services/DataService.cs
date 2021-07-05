@@ -1,5 +1,7 @@
 ﻿using DataLayer.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace DataLayer.Services
@@ -9,6 +11,7 @@ namespace DataLayer.Services
         public bool UsesApiService { get; set; }
         private IService Service;
         private List<MatchResult> MatchResults { get; set; }
+        private static string favoritePlayersDocument = @"Resources\FavoritePlayers.txt";
 
         public DataService()
         {
@@ -49,6 +52,20 @@ namespace DataLayer.Services
             }
             
             return players;
+        }
+        public static void WriteFavoritePlayers(List<Player> players)
+        {
+            string json = JsonConvert.SerializeObject(players);
+            System.IO.File.WriteAllText(favoritePlayersDocument, json);
+        }
+        public static List<Player> ReadFavoritePlayers()
+        {
+           using(StreamReader r=new StreamReader(favoritePlayersDocument))
+            {
+                string json = r.ReadToEnd();
+                List<Player> players = JsonConvert.DeserializeObject<List<Player>>(json);
+                return players;
+            }
         }
     }   
 }
