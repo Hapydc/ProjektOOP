@@ -11,7 +11,8 @@ namespace DataLayer.Services
         public bool UsesApiService { get; set; }
         private IService Service;
         private List<MatchResult> MatchResults { get; set; }
-        private static string favoritePlayersDocument = @"Resources\FavoritePlayers.txt";
+        private static string favoritePlayersFile = @"Resources\FavoritePlayers.txt";
+        private static string favoriteTeamFile = @"Resources\FavoriteTeam.txt";
 
         public DataService()
         {
@@ -53,14 +54,32 @@ namespace DataLayer.Services
             
             return players;
         }
+
+        public static void WriteFavoriteTeam(string fifaCode)
+        {
+            File.WriteAllText(favoriteTeamFile,fifaCode);
+        }
+        public static string GetFavoriteTeam()
+        {
+            if (File.Exists(favoriteTeamFile))
+            {
+                string fifaCode = File.ReadAllText(favoriteTeamFile);
+                return fifaCode;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static void WriteFavoritePlayers(List<Player> players)
         {
             string json = JsonConvert.SerializeObject(players);
-            System.IO.File.WriteAllText(favoritePlayersDocument, json);
+            System.IO.File.WriteAllText(favoritePlayersFile, json);
         }
         public static List<Player> ReadFavoritePlayers()
         {
-           using(StreamReader r=new StreamReader(favoritePlayersDocument))
+           using(StreamReader r=new StreamReader(favoritePlayersFile))
             {
                 string json = r.ReadToEnd();
                 List<Player> players = JsonConvert.DeserializeObject<List<Player>>(json);

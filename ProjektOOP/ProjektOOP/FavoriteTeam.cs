@@ -21,15 +21,25 @@ namespace ProjektOOP
 
         public FavoriteTeam()
         {
-            InitializeComponent();         
+            InitializeComponent();
+            
         }
         private void FavoriteTeam_Load(object sender, EventArgs e)
-        {  
+        {
+            string country = DataService.GetFavoriteTeam();
             List<Team> teams = service.GetTeams(teamPath);
             foreach (Team t in teams)
             {
+
                 cbTeams.Items.Add(t);
+                if (t.ToString()==country)
+                {
+                    cbTeams.SelectedItem = t;
+                }
             }
+            
+            
+            
         }
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {
@@ -82,9 +92,15 @@ namespace ProjektOOP
             e.Effect = DragDropEffects.Move;
         }
 
-        private void OnClosed(object sender, FormClosingEventArgs e)
+        private void OnClosed(object sender, FormClosedEventArgs e)
         {
+
             
+        
+        }
+
+        private void btnSaveFavoriteTeam_Click(object sender, EventArgs e)
+        {
             List<Player> favoritePlayerList = new List<Player>();
             foreach (var item in flowLayoutPanel2.Controls)
             {
@@ -93,9 +109,9 @@ namespace ProjektOOP
                     favoritePlayerList.Add((item as PlayerControl).player);
                 }
             }
+            string country = cbTeams.SelectedItem.ToString();
+            DataService.WriteFavoriteTeam(country);
             DataService.WriteFavoritePlayers(favoritePlayerList);
         }
-       
-
     }
 }
