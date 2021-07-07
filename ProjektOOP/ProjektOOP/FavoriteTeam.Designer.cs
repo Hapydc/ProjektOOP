@@ -36,7 +36,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSaveFavoriteTeam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -90,9 +89,11 @@
             // 
             this.flowLayoutPanel1.AllowDrop = true;
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(37, 175);
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(37, 215);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(396, 380);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(515, 500);
             this.flowLayoutPanel1.TabIndex = 5;
             this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
             this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
@@ -101,36 +102,30 @@
             // 
             this.flowLayoutPanel2.AllowDrop = true;
             this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(546, 175);
+            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(649, 215);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(431, 380);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(515, 500);
             this.flowLayoutPanel2.TabIndex = 6;
             this.flowLayoutPanel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel2_DragDrop);
             this.flowLayoutPanel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel2_DragEnter);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(543, 155);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(646, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 17);
+            this.label3.Size = new System.Drawing.Size(163, 39);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Omiljeni igraci";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label3.Text = "Omiljeni igrači";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSaveFavoriteTeam
             // 
-            this.btnSaveFavoriteTeam.Location = new System.Drawing.Point(999, 489);
+            this.btnSaveFavoriteTeam.Location = new System.Drawing.Point(1203, 805);
             this.btnSaveFavoriteTeam.Name = "btnSaveFavoriteTeam";
-            this.btnSaveFavoriteTeam.Size = new System.Drawing.Size(97, 63);
+            this.btnSaveFavoriteTeam.Size = new System.Drawing.Size(267, 136);
             this.btnSaveFavoriteTeam.TabIndex = 8;
             this.btnSaveFavoriteTeam.Text = "Spremite vaš tim";
             this.btnSaveFavoriteTeam.UseVisualStyleBackColor = true;
@@ -140,9 +135,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 564);
+            this.ClientSize = new System.Drawing.Size(1482, 953);
             this.Controls.Add(this.btnSaveFavoriteTeam);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -169,7 +163,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSaveFavoriteTeam;
     }
 }

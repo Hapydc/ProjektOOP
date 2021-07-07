@@ -42,7 +42,6 @@ namespace ProjektOOP
             player.Position = playerControl.lblPosition.Text;
             player.Captain = Convert.ToBoolean(lblCaptain.Text);
             return player;
-
         }
 
         public void FavoriteStar(bool star)

@@ -1,5 +1,6 @@
 ﻿using DataLayer.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,11 +14,13 @@ namespace DataLayer.Services
         private List<MatchResult> MatchResults { get; set; }
         private static string favoritePlayersFile = @"Resources\FavoritePlayers.txt";
         private static string favoriteTeamFile = @"Resources\FavoriteTeam.txt";
+        private string dataSourceFile = @"ProgramGeneratedFiles\DataSource.txt";
+        public string dataSource;
 
         public DataService()
         {
             // TODO: čitaj iz datoteke
-            UsesApiService = false;
+            UsesApiService =ReadDataSource(); 
             if (!UsesApiService)
             {
                Service = new FileService();
@@ -28,6 +31,22 @@ namespace DataLayer.Services
             }
 
             MatchResults = Service.GetMatchResults();
+        }
+
+        private bool ReadDataSource()
+        {
+           StreamReader r = new StreamReader(dataSourceFile);
+            dataSource = r.ReadToEnd();
+            
+            if (dataSource == "File")
+            {
+                return false; 
+            }
+            else
+            {
+                return true; 
+            }
+
         }
 
         public List<Team> GetTeams(string path)
@@ -50,8 +69,7 @@ namespace DataLayer.Services
             {
                 players.AddRange(matchResult.AwayTeamStatistics.StartingEleven);
                 players.AddRange(matchResult.AwayTeamStatistics.Substitutes);
-            }
-            
+            }            
             return players;
         }
 
@@ -79,12 +97,21 @@ namespace DataLayer.Services
         }
         public static List<Player> ReadFavoritePlayers()
         {
-           using(StreamReader r=new StreamReader(favoritePlayersFile))
+            List<Player> players = new List<Player>();
+            if (File.Exists(favoritePlayersFile))
             {
-                string json = r.ReadToEnd();
-                List<Player> players = JsonConvert.DeserializeObject<List<Player>>(json);
-                return players;
+                using (StreamReader r = new StreamReader(favoritePlayersFile))
+                {
+                    string json = r.ReadToEnd();
+                    players = JsonConvert.DeserializeObject<List<Player>>(json);                  
+                }
             }
+          
+            else
+            {
+               players= null;
+            }
+            return players;
         }
     }   
 }

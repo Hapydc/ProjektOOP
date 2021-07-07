@@ -59,7 +59,10 @@ namespace ProjektOOP
                 applicationSettings.Championship = Championship.Female;
             }
              ApplicationSettingsService service = new ApplicationSettingsService();
-            service.SaveAplicationSettings(applicationSettings);
+              service.SaveAplicationSettings(applicationSettings);
+
+            FavoriteTeam favoriteTeam = new FavoriteTeam() ;
+            favoriteTeam.ShowDialog();
 
         }
 

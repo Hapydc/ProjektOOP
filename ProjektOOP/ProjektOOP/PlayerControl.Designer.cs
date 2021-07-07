@@ -116,7 +116,7 @@
             // 
             // pBplayerPicture
             // 
-            this.pBplayerPicture.Location = new System.Drawing.Point(227, 148);
+            this.pBplayerPicture.Location = new System.Drawing.Point(305, 144);
             this.pBplayerPicture.Name = "pBplayerPicture";
             this.pBplayerPicture.Size = new System.Drawing.Size(166, 175);
             this.pBplayerPicture.TabIndex = 9;
@@ -125,9 +125,9 @@
             // pbFavoritePlayer
             // 
             this.pbFavoritePlayer.BackColor = System.Drawing.SystemColors.Control;
-            this.pbFavoritePlayer.Location = new System.Drawing.Point(255, 17);
+            this.pbFavoritePlayer.Location = new System.Drawing.Point(305, 17);
             this.pbFavoritePlayer.Name = "pbFavoritePlayer";
-            this.pbFavoritePlayer.Size = new System.Drawing.Size(113, 93);
+            this.pbFavoritePlayer.Size = new System.Drawing.Size(73, 70);
             this.pbFavoritePlayer.TabIndex = 10;
             this.pbFavoritePlayer.TabStop = false;
             // 
@@ -147,7 +147,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PlayerControl";
-            this.Size = new System.Drawing.Size(396, 323);
+            this.Size = new System.Drawing.Size(485, 322);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlayerControl_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pBplayerPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFavoritePlayer)).EndInit();

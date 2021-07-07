@@ -13,7 +13,7 @@ namespace ProjektOOP
         private List<Player> players = new List<Player>();
         private DataService service = new DataService();
         //pathovi za testno dohvacanje podataka timova
-        private static string teamPath = @"Resources\teams.json";
+        private string teamPath = @"Resources\teams.json";
         //private static string teamPath = "https://worldcup.sfg.io/teams/";
 
 
@@ -22,50 +22,71 @@ namespace ProjektOOP
         public FavoriteTeam()
         {
             InitializeComponent();
+            this.VerticalScroll.Visible = true;
             
         }
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {
             string country = DataService.GetFavoriteTeam();
+                     
             List<Team> teams = service.GetTeams(teamPath);
             foreach (Team t in teams)
             {
-
                 cbTeams.Items.Add(t);
                 if (t.ToString()==country)
                 {
                     cbTeams.SelectedItem = t;
                 }
             }
-            
-            
-            
+            if (country != null)
+            {
+                LoadPlayers();
+            }
         }
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {
-            List<Player> favoritePlayers = DataService.ReadFavoritePlayers();
-            
-            flowLayoutPanel1.Controls.Clear();
-            var selectedTeam = (cbTeams.SelectedItem as Team).Country;
-            lbCountryCode.Text = selectedTeam;       
-            players =service.GetPlayers(selectedTeam);           
-            foreach (Player p  in players)
-            {
-               
-                if (favoritePlayers.Find(x => x.Name == p.Name)!=null)
+            LoadPlayers();
+        }
+        private void LoadPlayers()
+        {
+                flowLayoutPanel2.Controls.Clear();
+                List<Player> favoritePlayers = DataService.ReadFavoritePlayers();
+                flowLayoutPanel1.Controls.Clear();
+                var selectedTeam = (cbTeams.SelectedItem as Team).Country;
+                lbCountryCode.Text = selectedTeam;
+                players = service.GetPlayers(selectedTeam);
+                if (favoritePlayers == null)
                 {
-                    PlayerControl player = new PlayerControl(p);
-                    flowLayoutPanel2.Controls.Add(player);
-                }
+                    foreach (Player p   in players)
+                    {
+                        PlayerControl player = new PlayerControl(p);
+                        flowLayoutPanel1.Controls.Add(player);
+                    }
+
+            }
                 else
                 {
-                    PlayerControl player = new PlayerControl(p);
-                    flowLayoutPanel1.Controls.Add(player);
+                    foreach (Player p in players)
+                    {
+
+                        if (favoritePlayers.Find(x => x.Name == p.Name) != null)
+                        {
+                            PlayerControl player = new PlayerControl(p);
+                            flowLayoutPanel2.Controls.Add(player);
+                            player.FavoriteStar(true);
+                        }
+                        else
+                        {
+                            PlayerControl player = new PlayerControl(p);
+                            flowLayoutPanel1.Controls.Add(player);
+                        }
+
                 }
-                           
             }
-            InitDnD();            
-        }
+   
+                InitDnD();
+            }
+        
 
         private void InitDnD()
         {
@@ -80,11 +101,9 @@ namespace ProjektOOP
 
         private void flowLayoutPanel2_DragDrop(object sender, DragEventArgs e)
         {   
-
             PlayerControl playerControl = (PlayerControl)e.Data.GetData(typeof(PlayerControl));
             flowLayoutPanel2.Controls.Add(playerControl);
-            playerControl.FavoriteStar(true);
-            
+            playerControl.FavoriteStar(true);  
         }
 
         private void flowLayoutPanel2_DragEnter(object sender, DragEventArgs e)

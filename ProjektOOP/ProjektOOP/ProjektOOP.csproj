@@ -115,10 +115,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ProgramGeneratedFiles\DataSource.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Pictures\FavoriteStar.png" />
     <Content Include="Resources\Pictures\MyStar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
