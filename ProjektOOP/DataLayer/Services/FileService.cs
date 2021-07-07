@@ -9,12 +9,15 @@ namespace DataLayer.Services
     {
         ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
 
-        const string maleMatchResultPath = @"Resources\Malematches.json";
-        private string maleTeamPath = @"Resources\Maleteams.json";
+        const string maleMatchResultPath = @"Resources\MaleMatches.json";
+        private string maleTeamPath = @"Resources\MaleTeams.json";
+        private string femaleTeamPath= @"Resources\FemaleTeams.json";
+        private string femaleMatchResultPath= @"Resources\FemaleMatches.json";
+        private string path;
+        private  ApplicationSettings applicationSettings = new ApplicationSettings();
+         
         public List<Team> GetTeams()
         {
-            string path;
-            ApplicationSettings applicationSettings = new ApplicationSettings();
             applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings.Championship == Championship.Male)
             {
@@ -22,7 +25,7 @@ namespace DataLayer.Services
             }
             else
             {
-                path = null;
+                path = femaleTeamPath;
             }
             using (StreamReader r = new StreamReader(path))
             {
@@ -34,7 +37,16 @@ namespace DataLayer.Services
         }
         public List<MatchResult> GetMatchResults()
         {
-            using (StreamReader r=new StreamReader(maleMatchResultPath))
+            applicationSettings = applicationSettingsService.GetAplicationSettings();
+            if (applicationSettings.Championship == Championship.Male)
+            {
+                path = maleMatchResultPath;
+            }
+            else
+            {
+                path = femaleMatchResultPath;
+            }
+            using (StreamReader r=new StreamReader(path))
             {
                 string json = r.ReadToEnd();
                 List<MatchResult> results = JsonConvert.DeserializeObject<List<MatchResult>>(json);

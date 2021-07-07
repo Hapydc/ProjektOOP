@@ -146,5 +146,11 @@ namespace ProjektOOP
             DataService.WriteFavoriteTeam(country);
             DataService.WriteFavoritePlayers(favoritePlayerList);
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {           
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.ShowDialog();
+        }
     }
 }

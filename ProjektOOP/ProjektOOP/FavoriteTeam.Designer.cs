@@ -37,6 +37,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSaveFavoriteTeam = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbTeams
@@ -131,11 +132,22 @@
             this.btnSaveFavoriteTeam.UseVisualStyleBackColor = true;
             this.btnSaveFavoriteTeam.Click += new System.EventHandler(this.btnSaveFavoriteTeam_Click);
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(868, 41);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(161, 89);
+            this.btnSettings.TabIndex = 9;
+            this.btnSettings.Text = "Postavke";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // FavoriteTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnSaveFavoriteTeam);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -164,5 +176,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSaveFavoriteTeam;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
