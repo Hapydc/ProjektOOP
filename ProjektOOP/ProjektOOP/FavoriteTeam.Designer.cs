@@ -36,7 +36,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnSaveFavoriteTeam = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -122,16 +121,6 @@
             this.label3.Text = "Omiljeni igrači";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnSaveFavoriteTeam
-            // 
-            this.btnSaveFavoriteTeam.Location = new System.Drawing.Point(1203, 805);
-            this.btnSaveFavoriteTeam.Name = "btnSaveFavoriteTeam";
-            this.btnSaveFavoriteTeam.Size = new System.Drawing.Size(267, 136);
-            this.btnSaveFavoriteTeam.TabIndex = 8;
-            this.btnSaveFavoriteTeam.Text = "Spremite vaš tim";
-            this.btnSaveFavoriteTeam.UseVisualStyleBackColor = true;
-            this.btnSaveFavoriteTeam.Click += new System.EventHandler(this.btnSaveFavoriteTeam_Click);
-            // 
             // btnSettings
             // 
             this.btnSettings.Location = new System.Drawing.Point(868, 41);
@@ -148,7 +137,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 953);
             this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.btnSaveFavoriteTeam);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -175,7 +163,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSaveFavoriteTeam;
         private System.Windows.Forms.Button btnSettings;
     }
 }

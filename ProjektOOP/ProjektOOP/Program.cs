@@ -36,8 +36,6 @@ namespace ProjektOOP
             }
 
 
-            IService teamService = null;
-
             //if (true)
             //{
             //    teamService = new TeamsAPIService();

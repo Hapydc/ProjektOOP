@@ -62,7 +62,9 @@ namespace ProjektOOP
               service.SaveAplicationSettings(applicationSettings);
 
             FavoriteTeam favoriteTeam = new FavoriteTeam() ;
-            favoriteTeam.ShowDialog();
+            this.Hide();
+            favoriteTeam.Closed += (s, args) => this.Close();
+            favoriteTeam.Show();
 
         }
 

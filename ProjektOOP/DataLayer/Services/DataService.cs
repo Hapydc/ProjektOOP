@@ -12,20 +12,20 @@ namespace DataLayer.Services
         public bool UsesApiService { get; set; }
         private IService Service;
         private List<MatchResult> MatchResults { get; set; }
-        private static string favoritePlayersFile = @"Resources\FavoritePlayers.txt";
+        private static string favoriteMalePlayersFile = @"Resources\FavoriteMalePlayers.txt";
+        private static string favoriteFemalePlayersFile = @"Resources\FavoriteFemalePlayers.txt";
         private static string favoriteTeamFile = @"Resources\FavoriteTeam.txt";
         private string dataSourceFile = @"ProgramGeneratedFiles\DataSource.txt";
-     
         public string dataSource;
-        private Championship championship;
+        private ApplicationSettings applicationSettings = new ApplicationSettings();
         ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
         public DataService()
         {
             // TODO: čitaj iz datoteke
-            UsesApiService =ReadDataSource(); 
+            UsesApiService = ReadDataSource();
             if (!UsesApiService)
             {
-               Service = new FileService();
+                Service = new FileService();
             }
             else
             {
@@ -37,32 +37,32 @@ namespace DataLayer.Services
 
         private bool ReadDataSource()
         {
-           StreamReader r = new StreamReader(dataSourceFile);
+            StreamReader r = new StreamReader(dataSourceFile);
             dataSource = r.ReadToEnd();
-            
+
             if (dataSource == "File")
             {
-                return false; 
+                return false;
             }
             else
             {
-                return true; 
+                return true;
             }
 
         }
 
         public List<Team> GetTeams()
-        {           
+        {
             return Service.GetTeams();
         }
 
         public List<Player> GetPlayers(string fifaCode)
-        {   
+        {
             var matchResult = MatchResults
-                .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode ).OrderBy(x=>x.Datetime)
-                .FirstOrDefault();    
+                .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).OrderBy(x => x.Datetime)
+                .FirstOrDefault();
             List<Player> players = new List<Player>();
-            if (matchResult.HomeTeamCountry==fifaCode)
+            if (matchResult.HomeTeamCountry == fifaCode)
             {
                 players.AddRange(matchResult.HomeTeamStatistics.StartingEleven);
                 players.AddRange(matchResult.HomeTeamStatistics.Substitutes);
@@ -71,13 +71,13 @@ namespace DataLayer.Services
             {
                 players.AddRange(matchResult.AwayTeamStatistics.StartingEleven);
                 players.AddRange(matchResult.AwayTeamStatistics.Substitutes);
-            }            
+            }
             return players;
         }
 
         public static void WriteFavoriteTeam(string fifaCode)
         {
-            File.WriteAllText(favoriteTeamFile,fifaCode);
+            File.WriteAllText(favoriteTeamFile, fifaCode);
         }
         public static string GetFavoriteTeam()
         {
@@ -92,28 +92,59 @@ namespace DataLayer.Services
             }
         }
 
-        public static void WriteFavoritePlayers(List<Player> players)
+        public void WriteFavoritePlayers(List<Player> players)
         {
-            string json = JsonConvert.SerializeObject(players);
-            System.IO.File.WriteAllText(favoritePlayersFile, json);
-        }
-        public static List<Player> ReadFavoritePlayers()
-        {
-            List<Player> players = new List<Player>();
-            if (File.Exists(favoritePlayersFile))
+            applicationSettings = applicationSettingsService.GetAplicationSettings();
+            if (applicationSettings.Championship == Championship.Male)
             {
-                using (StreamReader r = new StreamReader(favoritePlayersFile))
-                {
-                    string json = r.ReadToEnd();
-                    players = JsonConvert.DeserializeObject<List<Player>>(json);                  
-                }
+                string json = JsonConvert.SerializeObject(players);
+                System.IO.File.WriteAllText(favoriteMalePlayersFile, json);
             }
-          
             else
             {
-               players= null;
+                string json = JsonConvert.SerializeObject(players);
+                System.IO.File.WriteAllText(favoriteFemalePlayersFile, json);
             }
+
+        }
+        public List<Player> ReadFavoritePlayers()
+        {
+            List<Player> players = new List<Player>();
+            applicationSettings = applicationSettingsService.GetAplicationSettings();
+            if (applicationSettings.Championship == Championship.Male)
+            {
+                if (File.Exists(favoriteMalePlayersFile))
+                {
+                    using (StreamReader r = new StreamReader(favoriteMalePlayersFile))
+                    {
+                        string json = r.ReadToEnd();
+                        players = JsonConvert.DeserializeObject<List<Player>>(json);
+                    }
+                }
+                else
+                {
+                    players = null;
+                }
+            }
+            else
+            {
+                if (File.Exists(favoriteFemalePlayersFile))
+                {
+                    using (StreamReader r = new StreamReader(favoriteFemalePlayersFile))
+                    {
+                        string json = r.ReadToEnd();
+                        players = JsonConvert.DeserializeObject<List<Player>>(json);
+                    }
+                }
+                else
+                {
+                    players = null;
+                }
+            }
+
+
+
             return players;
         }
-    }   
+    }
 }
