@@ -31,7 +31,7 @@ namespace ProjektOOP
 
         private void rbCroatian_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void rbEnglish_CheckedChanged(object sender, EventArgs e)
@@ -58,14 +58,9 @@ namespace ProjektOOP
             {
                 applicationSettings.Championship = Championship.Female;
             }
-             ApplicationSettingsService service = new ApplicationSettingsService();
-              service.SaveAplicationSettings(applicationSettings);
-
-            FavoriteTeam favoriteTeam = new FavoriteTeam() ;
-            this.Hide();
-            favoriteTeam.Closed += (s, args) => this.Close();
-            favoriteTeam.Show();
-
+            ApplicationSettingsService service = new ApplicationSettingsService();
+            service.SaveAplicationSettings(applicationSettings);
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -76,22 +71,22 @@ namespace ProjektOOP
         private void SettingsForm_Load(object sender, EventArgs e)
         {
             ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
-            ApplicationSettings applicationSettings =applicationSettingsService.GetAplicationSettings();
+            ApplicationSettings applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings == null)
             {
                 return;
             }
             else
-            {        
-                if (applicationSettings.Championship==Championship.Male)
+            {
+                if (applicationSettings.Championship == Championship.Male)
                 {
-                    rbMaleChampionship.Checked=true;
+                    rbMaleChampionship.Checked = true;
                 }
                 else
                 {
                     rbFemaleChampionship.Checked = true;
                 }
-                if (applicationSettings.Language==Language.Croatian)
+                if (applicationSettings.Language == Language.Croatian)
                 {
                     rbCroatian.Checked = true;
                 }

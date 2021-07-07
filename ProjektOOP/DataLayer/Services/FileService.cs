@@ -11,10 +11,10 @@ namespace DataLayer.Services
 
         const string maleMatchResultPath = @"Resources\MaleMatches.json";
         private string maleTeamPath = @"Resources\MaleTeams.json";
-        private string femaleTeamPath= @"Resources\FemaleTeams.json";
-        private string femaleMatchResultPath= @"Resources\FemaleMatches.json";
+        private string femaleTeamPath = @"Resources\FemaleTeams.json";
+        private string femaleMatchResultPath = @"Resources\FemaleMatches.json";
         private string path;
-        private  ApplicationSettings applicationSettings = new ApplicationSettings();
+        private ApplicationSettings applicationSettings = new ApplicationSettings();
 
 
         public Championship GetChampionship()
@@ -32,7 +32,7 @@ namespace DataLayer.Services
 
         public List<Team> GetTeams()
         {
-           
+
             if (GetChampionship() == Championship.Male)
             {
                 path = maleTeamPath;
@@ -51,7 +51,7 @@ namespace DataLayer.Services
         }
         public List<MatchResult> GetMatchResults()
         {
-            
+
             if (GetChampionship() == Championship.Male)
             {
                 path = maleMatchResultPath;
@@ -60,7 +60,7 @@ namespace DataLayer.Services
             {
                 path = femaleMatchResultPath;
             }
-            using (StreamReader r=new StreamReader(path))
+            using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
                 List<MatchResult> results = JsonConvert.DeserializeObject<List<MatchResult>>(json);

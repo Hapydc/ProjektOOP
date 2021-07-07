@@ -32,7 +32,7 @@ namespace DataLayer.Services
                 Service = new ApiService();
             }
 
-            MatchResults = Service.GetMatchResults();
+            
         }
 
         private bool ReadDataSource()
@@ -58,6 +58,7 @@ namespace DataLayer.Services
 
         public List<Player> GetPlayers(string fifaCode)
         {
+            MatchResults = Service.GetMatchResults();
             var matchResult = MatchResults
                 .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).OrderBy(x => x.Datetime)
                 .FirstOrDefault();
@@ -98,11 +99,11 @@ namespace DataLayer.Services
             applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings.Championship == Championship.Male)
             {
-                
+
                 System.IO.File.WriteAllText(favoriteMalePlayersFile, json);
             }
             else
-            {               
+            {
                 System.IO.File.WriteAllText(favoriteFemalePlayersFile, json);
             }
 

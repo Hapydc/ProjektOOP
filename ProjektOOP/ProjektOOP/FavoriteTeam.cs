@@ -22,6 +22,11 @@ namespace ProjektOOP
         }
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {
+            LoadTeamsInForm();
+        }
+        public void LoadTeamsInForm()
+        {
+            cbTeams.Items.Clear();
             string country = DataService.GetFavoriteTeam();
 
             List<Team> teams = service.GetTeams();
@@ -33,10 +38,7 @@ namespace ProjektOOP
                     cbTeams.SelectedItem = t;
                 }
             }
-            if (country != null)
-            {
-                LoadPlayers();
-            }
+
         }
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {
@@ -119,31 +121,36 @@ namespace ProjektOOP
         {
             e.Effect = DragDropEffects.Move;
         }
+        public void OnSettingsFormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            LoadTeamsInForm();
+
+        }
 
         public void OnClosed(object sender, FormClosedEventArgs e)
         {
-                List<Player> favoritePlayerList = new List<Player>();
-                foreach (var item in flowLayoutPanel2.Controls)
+            List<Player> favoritePlayerList = new List<Player>();
+            foreach (var item in flowLayoutPanel2.Controls)
+            {
+                if (item is PlayerControl)
                 {
-                    if (item is PlayerControl)
-                    {
-                        PlayerControl playerControl = item as PlayerControl;
+                    PlayerControl playerControl = item as PlayerControl;
 
-                        Player player = new Player();
-                        player = playerControl.SetPlayerValues(playerControl);
-                        favoritePlayerList.Add(player);
-                    }
+                    Player player = new Player();
+                    player = playerControl.SetPlayerValues(playerControl);
+                    favoritePlayerList.Add(player);
                 }
-                string country = cbTeams.SelectedItem.ToString();
-                DataService.WriteFavoriteTeam(country);
-                service.WriteFavoritePlayers(favoritePlayerList);
+            }
+            string country = cbTeams.SelectedItem.ToString();
+            DataService.WriteFavoriteTeam(country);
+            service.WriteFavoritePlayers(favoritePlayerList);
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            
-            this.Hide();
+
             SettingsForm settingsForm = new SettingsForm();
-            settingsForm.Closed += (s, args) => this.Close();
+            settingsForm.FormClosed += OnSettingsFormClosed;
             settingsForm.Show();
 
         }
