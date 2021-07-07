@@ -94,55 +94,44 @@ namespace DataLayer.Services
 
         public void WriteFavoritePlayers(List<Player> players)
         {
+            string json = JsonConvert.SerializeObject(players);
             applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings.Championship == Championship.Male)
             {
-                string json = JsonConvert.SerializeObject(players);
+                
                 System.IO.File.WriteAllText(favoriteMalePlayersFile, json);
             }
             else
-            {
-                string json = JsonConvert.SerializeObject(players);
+            {               
                 System.IO.File.WriteAllText(favoriteFemalePlayersFile, json);
             }
 
         }
         public List<Player> ReadFavoritePlayers()
         {
+            string path;
             List<Player> players = new List<Player>();
             applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings.Championship == Championship.Male)
             {
-                if (File.Exists(favoriteMalePlayersFile))
+                path = favoriteMalePlayersFile;
+            }
+            else
+            {
+                path = favoriteFemalePlayersFile;
+            }
+            if (File.Exists(path))
+            {
+                using (StreamReader r = new StreamReader(path))
                 {
-                    using (StreamReader r = new StreamReader(favoriteMalePlayersFile))
-                    {
-                        string json = r.ReadToEnd();
-                        players = JsonConvert.DeserializeObject<List<Player>>(json);
-                    }
-                }
-                else
-                {
-                    players = null;
+                    string json = r.ReadToEnd();
+                    players = JsonConvert.DeserializeObject<List<Player>>(json);
                 }
             }
             else
             {
-                if (File.Exists(favoriteFemalePlayersFile))
-                {
-                    using (StreamReader r = new StreamReader(favoriteFemalePlayersFile))
-                    {
-                        string json = r.ReadToEnd();
-                        players = JsonConvert.DeserializeObject<List<Player>>(json);
-                    }
-                }
-                else
-                {
-                    players = null;
-                }
+                players = null;
             }
-
-
 
             return players;
         }
