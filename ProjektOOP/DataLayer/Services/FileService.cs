@@ -15,11 +15,25 @@ namespace DataLayer.Services
         private string femaleMatchResultPath= @"Resources\FemaleMatches.json";
         private string path;
         private  ApplicationSettings applicationSettings = new ApplicationSettings();
-         
-        public List<Team> GetTeams()
+
+
+        public Championship GetChampionship()
         {
             applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings.Championship == Championship.Male)
+            {
+                return Championship.Male;
+            }
+            else
+            {
+                return Championship.Female;
+            }
+        }
+
+        public List<Team> GetTeams()
+        {
+           
+            if (GetChampionship() == Championship.Male)
             {
                 path = maleTeamPath;
             }
@@ -37,8 +51,8 @@ namespace DataLayer.Services
         }
         public List<MatchResult> GetMatchResults()
         {
-            applicationSettings = applicationSettingsService.GetAplicationSettings();
-            if (applicationSettings.Championship == Championship.Male)
+            
+            if (GetChampionship() == Championship.Male)
             {
                 path = maleMatchResultPath;
             }
