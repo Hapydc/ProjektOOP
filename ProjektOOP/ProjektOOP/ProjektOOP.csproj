@@ -98,10 +98,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\matches.json">
+    <None Include="Resources\MaleMatches.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\teams.json">
+    <None Include="Resources\MaleTeams.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

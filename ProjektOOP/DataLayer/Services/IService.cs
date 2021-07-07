@@ -7,7 +7,7 @@ namespace DataLayer.Services
     public interface IService
     {
 
-        List<Team> GetTeams(string path);
+        List<Team> GetTeams();
 
         //List<MatchResult> GetResults(string path);
 

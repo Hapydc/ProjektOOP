@@ -15,8 +15,10 @@ namespace DataLayer.Services
         private static string favoritePlayersFile = @"Resources\FavoritePlayers.txt";
         private static string favoriteTeamFile = @"Resources\FavoriteTeam.txt";
         private string dataSourceFile = @"ProgramGeneratedFiles\DataSource.txt";
+     
         public string dataSource;
-
+        private Championship championship;
+        ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
         public DataService()
         {
             // TODO: čitaj iz datoteke
@@ -49,9 +51,9 @@ namespace DataLayer.Services
 
         }
 
-        public List<Team> GetTeams(string path)
-        {
-            return Service.GetTeams(path);
+        public List<Team> GetTeams()
+        {           
+            return Service.GetTeams();
         }
 
         public List<Player> GetPlayers(string fifaCode)

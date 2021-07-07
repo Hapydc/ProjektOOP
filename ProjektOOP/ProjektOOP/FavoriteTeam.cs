@@ -13,7 +13,7 @@ namespace ProjektOOP
         private List<Player> players = new List<Player>();
         private DataService service = new DataService();
         //pathovi za testno dohvacanje podataka timova
-        private string teamPath = @"Resources\teams.json";
+
         //private static string teamPath = "https://worldcup.sfg.io/teams/";
 
 
@@ -29,7 +29,7 @@ namespace ProjektOOP
         {
             string country = DataService.GetFavoriteTeam();
                      
-            List<Team> teams = service.GetTeams(teamPath);
+            List<Team> teams = service.GetTeams();
             foreach (Team t in teams)
             {
                 cbTeams.Items.Add(t);
@@ -62,7 +62,6 @@ namespace ProjektOOP
                         PlayerControl player = new PlayerControl(p);
                         flowLayoutPanel1.Controls.Add(player);
                     }
-
             }
                 else
                 {
@@ -80,7 +79,6 @@ namespace ProjektOOP
                             PlayerControl player = new PlayerControl(p);
                             flowLayoutPanel1.Controls.Add(player);
                         }
-
                 }
             }
    
