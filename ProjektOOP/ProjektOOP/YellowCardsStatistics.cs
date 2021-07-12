@@ -16,7 +16,6 @@ namespace ProjektOOP
     {
         private DataService service = new DataService();
         List<PlayerStatistics> statisticList = new List<PlayerStatistics>();
-        List<MatchResult> results = DataService.MatchResults;
         public string fifaCode = DataService.fifacode;
         public YellowCardsStatistics()
         {
@@ -32,6 +31,7 @@ namespace ProjektOOP
 
         private void ShowPlayersStatistics(List<Player> players, string fifaCode)
         {
+
             flpYellowCards.Controls.Clear();
             GetEvents(players, fifaCode);
             List<PlayerStatistics> sortedStatisticsList = statisticList.OrderBy(o => o.yellowCards).Reverse().ToList();
@@ -49,6 +49,8 @@ namespace ProjektOOP
 
         private void GetEvents(List<Player> players, string fifaCode)
         {
+            List<MatchResult> matchResults = service.GetAllMatchResults();
+            var results = matchResults.Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode);
 
             foreach (var p in players)
             {

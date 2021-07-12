@@ -14,9 +14,10 @@ namespace ProjektOOP
 {
     public partial class GoalsStatistics : Form
     {
-        private DataService service = new DataService();
+        public DataService service = new DataService();
         List<PlayerStatistics> statisticList = new List<PlayerStatistics>();
-        List<MatchResult> results = DataService.MatchResults;
+
+        
         public string fifaCode = DataService.fifacode;
 
         public GoalsStatistics()
@@ -52,7 +53,8 @@ namespace ProjektOOP
 
         private void GetEvents(List<Player> players, string fifaCode)
         {
-
+            List<MatchResult> matchResults = service.GetAllMatchResults();
+            var results = matchResults.Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode);
             foreach (var p in players)
             {
                 statisticList.Add(new PlayerStatistics { player = p });
