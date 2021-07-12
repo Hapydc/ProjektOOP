@@ -55,6 +55,18 @@
     <Compile Include="FavoriteTeam.Designer.cs">
       <DependentUpon>FavoriteTeam.cs</DependentUpon>
     </Compile>
+    <Compile Include="GamesInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GamesInfoForm.Designer.cs">
+      <DependentUpon>GamesInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoalsStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoalsStatistics.Designer.cs">
+      <DependentUpon>GoalsStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,8 +86,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="YellowCardsStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YellowCardsStatistics.Designer.cs">
+      <DependentUpon>YellowCardsStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YellowCardStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YellowCardStatistics.Designer.cs">
+      <DependentUpon>YellowCardStatistics.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FavoriteTeam.resx">
       <DependentUpon>FavoriteTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GamesInfoForm.resx">
+      <DependentUpon>GamesInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoalsStatistics.resx">
+      <DependentUpon>GoalsStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerControl.resx">
       <DependentUpon>PlayerControl.cs</DependentUpon>
@@ -87,6 +117,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YellowCardsStatistics.resx">
+      <DependentUpon>YellowCardsStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

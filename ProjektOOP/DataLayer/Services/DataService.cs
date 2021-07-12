@@ -11,14 +11,18 @@ namespace DataLayer.Services
     {
         public bool UsesApiService { get; set; }
         private IService Service;
-        private List<MatchResult> MatchResults { get; set; }
-        private static string favoriteMalePlayersFile = @"Resources\FavoriteMalePlayers.txt";
-        private static string favoriteFemalePlayersFile = @"Resources\FavoriteFemalePlayers.txt";
-        private static string favoriteTeamFile = @"Resources\FavoriteTeam.txt";
+        public static List<MatchResult> MatchResults { get; set; }
+        private static string favoriteMalePlayersFile = @"ProgramGeneratedFiles\FavoriteMalePlayers.txt";
+        private static string favoriteFemalePlayersFile = @"ProgramGeneratedFiles\FavoriteFemalePlayers.txt";
+        private static string favoriteFemaleTeamFile = @"ProgramGeneratedFiles\FavoriteFemaleTeam.txt";
+        private static string favoriteMaleTeamFile = @"ProgramGeneratedFiles\FavoriteMaleTeam.txt";
         private string dataSourceFile = @"ProgramGeneratedFiles\DataSource.txt";
         public string dataSource;
-        private ApplicationSettings applicationSettings = new ApplicationSettings();
-        ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
+        public string selectedTeam;
+        public static string fifacode;
+
+
+
         public DataService()
         {
             // TODO: čitaj iz datoteke
@@ -32,7 +36,7 @@ namespace DataLayer.Services
                 Service = new ApiService();
             }
 
-            
+
         }
 
         private bool ReadDataSource()
@@ -56,6 +60,11 @@ namespace DataLayer.Services
             return Service.GetTeams();
         }
 
+        public List<MatchResult> GetAllMatchResults()
+        {
+            return Service.GetMatchResults();
+        }
+
         public List<Player> GetPlayers(string fifaCode)
         {
             MatchResults = Service.GetMatchResults();
@@ -76,34 +85,64 @@ namespace DataLayer.Services
             return players;
         }
 
-        public static void WriteFavoriteTeam(string fifaCode)
+        public void WriteFavoriteTeam(string fifaCode)
         {
-            File.WriteAllText(favoriteTeamFile, fifaCode);
-        }
-        public static string GetFavoriteTeam()
-        {
-            if (File.Exists(favoriteTeamFile))
+            if (GetChampionship() == Championship.Male)
             {
-                string fifaCode = File.ReadAllText(favoriteTeamFile);
-                return fifaCode;
+                File.WriteAllText(favoriteMaleTeamFile, fifaCode);
             }
             else
             {
-                return null;
+                File.WriteAllText(favoriteFemaleTeamFile, fifaCode);
             }
+
+
+        }
+        public string GetFavoriteTeam()
+        {
+            string fifaCode;
+            Championship championship = GetChampionship();
+            if (GetChampionship() == Championship.Male)
+            {
+                if (File.Exists(favoriteMaleTeamFile))
+                {
+                    fifaCode = File.ReadAllText(favoriteMaleTeamFile);
+
+                }
+                else
+                {
+                    fifaCode = null;
+                }
+            }
+            else
+            {
+                if (File.Exists(favoriteFemaleTeamFile))
+                {
+                    fifaCode = File.ReadAllText(favoriteFemaleTeamFile);
+                }
+                else
+                {
+                    fifaCode = null;
+                }
+            }
+
+            return fifaCode;
         }
 
         public void WriteFavoritePlayers(List<Player> players)
         {
-            string json = JsonConvert.SerializeObject(players);
-            applicationSettings = applicationSettingsService.GetAplicationSettings();
-            if (applicationSettings.Championship == Championship.Male)
+            if (GetChampionship() == Championship.Male)
             {
+                string json = JsonConvert.SerializeObject(players);
+                if (GetChampionship() == Championship.Male)
+                {
 
-                System.IO.File.WriteAllText(favoriteMalePlayersFile, json);
+                    System.IO.File.WriteAllText(favoriteMalePlayersFile, json);
+                }
             }
             else
             {
+                string json = JsonConvert.SerializeObject(players);
                 System.IO.File.WriteAllText(favoriteFemalePlayersFile, json);
             }
 
@@ -112,8 +151,7 @@ namespace DataLayer.Services
         {
             string path;
             List<Player> players = new List<Player>();
-            applicationSettings = applicationSettingsService.GetAplicationSettings();
-            if (applicationSettings.Championship == Championship.Male)
+            if (GetChampionship() == Championship.Male)
             {
                 path = favoriteMalePlayersFile;
             }
@@ -135,6 +173,44 @@ namespace DataLayer.Services
             }
 
             return players;
+        }
+
+        public List<GamesInfo> GetGamesInfo()
+        {
+            string fifaCode = GetSelectedTeam();
+            List<MatchResult> matchResults = Service.GetMatchResults();
+            List<GamesInfo> gamesInfos = new List<GamesInfo>();
+            List<MatchResult> matchResult = MatchResults
+             .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).ToList();
+            for (int i = 0; i < matchResult.Count; i++)
+            {
+                    gamesInfos.Add(new Models.GamesInfo
+                    {
+                        Location = matchResult[i].Location,
+                        Visitors = matchResult[i].Attendance,
+                        HomeTeam = matchResult[i].HomeTeamCountry,
+                        AwayTeam = matchResult[i].AwayTeamCountry,
+                    }
+                        );
+                
+
+            }
+            return gamesInfos;
+        }
+        public Championship GetChampionship()
+        {
+            ApplicationSettings applicationSettings = new ApplicationSettings();
+            ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
+            applicationSettings = applicationSettingsService.GetAplicationSettings();
+            return applicationSettings.Championship;
+        }
+        public void SetSelectedTeam(string var)
+        {
+            fifacode = var;
+        }
+        public string GetSelectedTeam()
+        {
+            return fifacode;
         }
     }
 }

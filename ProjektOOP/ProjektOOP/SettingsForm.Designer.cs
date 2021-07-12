@@ -51,7 +51,7 @@
             this.rbMaleChampionship.TabIndex = 0;
             this.rbMaleChampionship.Text = "Muško prvenstvo";
             this.rbMaleChampionship.UseVisualStyleBackColor = true;
-            this.rbMaleChampionship.CheckedChanged += new System.EventHandler(this.rbMaleChampionship_CheckedChanged);
+
             // 
             // rbFemaleChampionship
             // 
@@ -62,7 +62,7 @@
             this.rbFemaleChampionship.TabIndex = 1;
             this.rbFemaleChampionship.Text = "Žensko prvenstvo";
             this.rbFemaleChampionship.UseVisualStyleBackColor = true;
-            this.rbFemaleChampionship.CheckedChanged += new System.EventHandler(this.rbFemaleChampionship_CheckedChanged);
+
             // 
             // rbCroatian
             // 
@@ -73,7 +73,7 @@
             this.rbCroatian.TabIndex = 2;
             this.rbCroatian.Text = "Hrvatski";
             this.rbCroatian.UseVisualStyleBackColor = true;
-            this.rbCroatian.CheckedChanged += new System.EventHandler(this.rbCroatian_CheckedChanged);
+
             // 
             // rbEnglish
             // 
@@ -84,7 +84,7 @@
             this.rbEnglish.TabIndex = 3;
             this.rbEnglish.Text = "Engleski";
             this.rbEnglish.UseVisualStyleBackColor = true;
-            this.rbEnglish.CheckedChanged += new System.EventHandler(this.rbEnglish_CheckedChanged);
+
             // 
             // label1
             // 

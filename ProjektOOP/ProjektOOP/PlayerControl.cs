@@ -61,5 +61,11 @@ namespace ProjektOOP
         {
             DoDragDrop(sender, DragDropEffects.Move);
         }
+
+        public void SetGoalsOrCardsValue(string value)
+        {
+            lblGoals.Text = value;
+            lblGoals.Visible = true;
+        }
     }
 }

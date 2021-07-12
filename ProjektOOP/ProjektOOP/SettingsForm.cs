@@ -12,36 +12,18 @@ using System.Windows.Forms;
 
 namespace ProjektOOP
 {
+   
     public partial class SettingsForm : Form
     {
+        public ApplicationSettingsService service = new ApplicationSettingsService();
+        public ApplicationSettings applicationSettings = new ApplicationSettings();
         public SettingsForm()
         {
             InitializeComponent();
         }
-
-        private void rbMaleChampionship_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbFemaleChampionship_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbCroatian_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbEnglish_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            ApplicationSettings applicationSettings = new ApplicationSettings();
+        {         
             if (rbCroatian.Checked)
             {
                 applicationSettings.Language = Language.Croatian;
@@ -58,11 +40,13 @@ namespace ProjektOOP
             {
                 applicationSettings.Championship = Championship.Female;
             }
-            ApplicationSettingsService service = new ApplicationSettingsService();
             service.SaveAplicationSettings(applicationSettings);
-            this.Close();
+            this.Close();          
         }
+        private void OnClose(object sender, FormClosedEventArgs e)
+        {
 
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
 

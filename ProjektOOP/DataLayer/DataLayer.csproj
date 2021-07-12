@@ -46,9 +46,10 @@
   <ItemGroup>
     <Compile Include="Models\ApplicationSettings.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\GamesInfo.cs" />
     <Compile Include="Models\MatchResult.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerPicture.cs" />
+    <Compile Include="Models\PlayerStatistics.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationSettingsService.cs" />

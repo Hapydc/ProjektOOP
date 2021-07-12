@@ -71,6 +71,7 @@ namespace DataLayer.Services
                 championship,
                 language
             };
+
             File.WriteAllLines(ApplicationSettingsFile, lines);
             return true;
         }

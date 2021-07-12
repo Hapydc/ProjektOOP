@@ -38,6 +38,7 @@
             this.lblCaptain = new System.Windows.Forms.Label();
             this.pBplayerPicture = new System.Windows.Forms.PictureBox();
             this.pbFavoritePlayer = new System.Windows.Forms.PictureBox();
+            this.lblGoals = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBplayerPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFavoritePlayer)).BeginInit();
             this.SuspendLayout();
@@ -131,11 +132,22 @@
             this.pbFavoritePlayer.TabIndex = 10;
             this.pbFavoritePlayer.TabStop = false;
             // 
+            // lblGoals
+            // 
+            this.lblGoals.AutoSize = true;
+            this.lblGoals.Location = new System.Drawing.Point(15, 196);
+            this.lblGoals.Name = "lblGoals";
+            this.lblGoals.Size = new System.Drawing.Size(46, 17);
+            this.lblGoals.TabIndex = 11;
+            this.lblGoals.Text = "label5";
+            this.lblGoals.Visible = false;
+            // 
             // PlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.lblGoals);
             this.Controls.Add(this.pbFavoritePlayer);
             this.Controls.Add(this.pBplayerPicture);
             this.Controls.Add(this.lblCaptain);
@@ -168,5 +180,6 @@
         private System.Windows.Forms.Label lblCaptain;
         private System.Windows.Forms.PictureBox pBplayerPicture;
         private System.Windows.Forms.PictureBox pbFavoritePlayer;
+        private System.Windows.Forms.Label lblGoals;
     }
 }

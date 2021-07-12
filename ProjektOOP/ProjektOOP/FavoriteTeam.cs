@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using DataLayer.Models;
 using DataLayer.Services;
@@ -21,14 +22,14 @@ namespace ProjektOOP
             this.FormClosed += OnClosed;
         }
         private void FavoriteTeam_Load(object sender, EventArgs e)
-        {
+        {         
             LoadTeamsInForm();
         }
         public void LoadTeamsInForm()
         {
             cbTeams.Items.Clear();
-            string country = DataService.GetFavoriteTeam();
-
+            lbCountryCode.Text = null;
+            string country = service.GetFavoriteTeam();
             List<Team> teams = service.GetTeams();
             foreach (Team t in teams)
             {
@@ -38,12 +39,15 @@ namespace ProjektOOP
                     cbTeams.SelectedItem = t;
                 }
             }
+            lbCountryCode.Text = country;
+            LoadPlayers();
 
         }
         private void btnFavoriteTeam_Click(object sender, EventArgs e)
         {
             LoadPlayers();
         }
+
         private void LoadPlayers()
         {
             flowLayoutPanel2.Controls.Clear();
@@ -143,7 +147,7 @@ namespace ProjektOOP
                 }
             }
             string country = cbTeams.SelectedItem.ToString();
-            DataService.WriteFavoriteTeam(country);
+            service.WriteFavoriteTeam(country);
             service.WriteFavoritePlayers(favoritePlayerList);
         }
         private void btnSettings_Click(object sender, EventArgs e)
@@ -152,6 +156,54 @@ namespace ProjektOOP
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.FormClosed += OnSettingsFormClosed;
             settingsForm.Show();
+
+        }
+
+        private void btnGoals_Click(object sender, EventArgs e)
+        {
+            string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
+            if (selectedTeam == null)
+            {
+                MessageBox.Show("Odaberite tim za koji zelite statistiku golova");
+            }
+            else
+            {
+                service.SetSelectedTeam(selectedTeam);
+                GoalsStatistics goalsStatisticsForm = new GoalsStatistics();
+                goalsStatisticsForm.Show();
+            }
+
+                  
+        }
+
+        private void btnYellowCardsForm_Click(object sender, EventArgs e)
+        {
+            string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
+            if (selectedTeam == null)
+            {
+                MessageBox.Show("Odaberite tim za koji zelite statistiku zutih kartona");
+            }
+            else
+            {
+                service.SetSelectedTeam(selectedTeam);
+                YellowCardsStatistics yellowCardsStatistics = new YellowCardsStatistics();
+                yellowCardsStatistics.Show();
+            }
+        }
+
+        private void btnGamesInfo_Click(object sender, EventArgs e)
+        {
+            string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
+            if (selectedTeam == null)
+            {
+                MessageBox.Show("Odaberite tim za koji zelite statistiku zutih kartona");
+            }
+            else
+            {
+                service.SetSelectedTeam(selectedTeam);
+                GamesInfoForm gamesInfoForm = new GamesInfoForm();
+                gamesInfoForm.Show();
+            }
 
         }
     }

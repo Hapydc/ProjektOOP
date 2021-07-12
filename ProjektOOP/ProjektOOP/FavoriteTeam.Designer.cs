@@ -37,6 +37,9 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.btnGoals = new System.Windows.Forms.Button();
+            this.btnYellowCardsForm = new System.Windows.Forms.Button();
+            this.btnGamesInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbTeams
@@ -114,9 +117,9 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(646, 173);
+            this.label3.Location = new System.Drawing.Point(644, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 39);
+            this.label3.Size = new System.Drawing.Size(162, 39);
             this.label3.TabIndex = 0;
             this.label3.Text = "Omiljeni igrači";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,11 +134,44 @@
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // btnGoals
+            // 
+            this.btnGoals.Location = new System.Drawing.Point(1118, 41);
+            this.btnGoals.Name = "btnGoals";
+            this.btnGoals.Size = new System.Drawing.Size(162, 89);
+            this.btnGoals.TabIndex = 10;
+            this.btnGoals.Text = "Lista golova";
+            this.btnGoals.UseVisualStyleBackColor = true;
+            this.btnGoals.Click += new System.EventHandler(this.btnGoals_Click);
+            // 
+            // btnYellowCardsForm
+            // 
+            this.btnYellowCardsForm.Location = new System.Drawing.Point(1286, 41);
+            this.btnYellowCardsForm.Name = "btnYellowCardsForm";
+            this.btnYellowCardsForm.Size = new System.Drawing.Size(152, 89);
+            this.btnYellowCardsForm.TabIndex = 11;
+            this.btnYellowCardsForm.Text = "Lista zutih kartona";
+            this.btnYellowCardsForm.UseVisualStyleBackColor = true;
+            this.btnYellowCardsForm.Click += new System.EventHandler(this.btnYellowCardsForm_Click);
+            // 
+            // btnGamesInfo
+            // 
+            this.btnGamesInfo.Location = new System.Drawing.Point(1286, 151);
+            this.btnGamesInfo.Name = "btnGamesInfo";
+            this.btnGamesInfo.Size = new System.Drawing.Size(152, 89);
+            this.btnGamesInfo.TabIndex = 12;
+            this.btnGamesInfo.Text = "Podatci o utakmicama";
+            this.btnGamesInfo.UseVisualStyleBackColor = true;
+            this.btnGamesInfo.Click += new System.EventHandler(this.btnGamesInfo_Click);
+            // 
             // FavoriteTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.Controls.Add(this.btnGamesInfo);
+            this.Controls.Add(this.btnYellowCardsForm);
+            this.Controls.Add(this.btnGoals);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.flowLayoutPanel2);
@@ -164,5 +200,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnGoals;
+        private System.Windows.Forms.Button btnYellowCardsForm;
+        private System.Windows.Forms.Button btnGamesInfo;
     }
 }
