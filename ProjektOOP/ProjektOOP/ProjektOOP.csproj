@@ -110,6 +110,8 @@
     <EmbeddedResource Include="PlayerControl.resx">
       <DependentUpon>PlayerControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resource.en.resx" />
+    <EmbeddedResource Include="Resource.hr-HR.resx" />
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>

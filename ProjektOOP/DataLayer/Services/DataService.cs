@@ -128,6 +128,13 @@ namespace DataLayer.Services
 
             return fifaCode;
         }
+        public Language GetLanguage()
+        {
+            
+            ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
+            ApplicationSettings applicationSettings = applicationSettingsService.GetAplicationSettings();
+            return applicationSettings.Language;
+        }
 
         public void WriteFavoritePlayers(List<Player> players)
         {

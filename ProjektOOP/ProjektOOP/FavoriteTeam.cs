@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
+using System.Resources;
+using System.Threading;
 using System.Windows.Forms;
 using DataLayer.Models;
 using DataLayer.Services;
@@ -13,6 +16,7 @@ namespace ProjektOOP
         private List<MatchResult> results = new List<MatchResult>();
         private List<Player> players = new List<Player>();
         private DataService service = new DataService();
+        private Language language;
 
 
         public FavoriteTeam()
@@ -20,9 +24,46 @@ namespace ProjektOOP
             InitializeComponent();
             this.VerticalScroll.Visible = true;
             this.FormClosed += OnClosed;
+            SetCulture();
+         
         }
+        private void SetCulture()
+        {
+            language = service.GetLanguage();
+            if (language == Language.Croatian)
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
+                LoadFormLanguage();
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                LoadFormLanguage();
+            }
+        }
+
+        private void LoadFormLanguage()
+        {
+           
+            var m_resourceManger = new ResourceManager("ProjektOOP.Resource",
+                Assembly.GetExecutingAssembly());
+
+            btnSettings.Text = m_resourceManger.GetString("settings");
+            btnFavoriteTeam.Text = m_resourceManger.GetString("save");
+            btnGamesInfo.Text = m_resourceManger.GetString("gameInformation");
+            btnGoals.Text = m_resourceManger.GetString("goalList");
+            btnYellowCardsForm.Text = m_resourceManger.GetString("yellowCardList");
+            label1.Text= m_resourceManger.GetString("pickTeam");
+            label2.Text = m_resourceManger.GetString("pickedTeam");
+            label3.Text = m_resourceManger.GetString("favoritePlayers");
+
+        }
+
+
         private void FavoriteTeam_Load(object sender, EventArgs e)
-        {         
+        {
+
+            SetCulture();
             LoadTeamsInForm();
         }
         public void LoadTeamsInForm()
@@ -127,7 +168,7 @@ namespace ProjektOOP
         }
         public void OnSettingsFormClosed(object sender, FormClosedEventArgs e)
         {
-
+            SetCulture();
             LoadTeamsInForm();
 
         }
@@ -204,6 +245,10 @@ namespace ProjektOOP
                 GamesInfoForm gamesInfoForm = new GamesInfoForm();
                 gamesInfoForm.Show();
             }
+
+        }
+        private void TranslateForm()
+        {
 
         }
     }
