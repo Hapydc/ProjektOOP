@@ -235,6 +235,7 @@ namespace ProjektOOP
         private void btnGamesInfo_Click(object sender, EventArgs e)
         {
             string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
+            
             if (selectedTeam == null)
             {
                 MessageBox.Show("Odaberite tim za koji zelite statistiku zutih kartona");
