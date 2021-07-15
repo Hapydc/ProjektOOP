@@ -10,11 +10,16 @@ namespace DataLayer.Services
 {
     public class ApplicationSettingsService
     {
-        private string ApplicationSettingsFile = @"C:\Temp\OOPApplicationSettings.txt";
+        private string ApplicationSettingsFile;
         const string male = "Male";
         const string female = "Female";
         const string english = "English";
         const string croatian = "Croatian";
+
+        public ApplicationSettingsService()
+        {
+            ApplicationSettingsFile = $"{System.IO.Path.GetTempPath()}OOPApplicationSettings.txt";
+        }
 
         public ApplicationSettings GetAplicationSettings()
         {
