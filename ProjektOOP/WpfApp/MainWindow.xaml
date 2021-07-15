@@ -8,17 +8,14 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Button"  HorizontalAlignment="Left" Height="74" Margin="603,56,0,0" VerticalAlignment="Top" Width="155" Click="OnClick"/>
-<<<<<<< Updated upstream
         <RadioButton x:Name="rbMaleChampionship" Content="RadioButton" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbFemaleChampionship" Content="RadioButton" HorizontalAlignment="Left" Margin="130,160,0,0" VerticalAlignment="Top" Height="21"/>
         <RadioButton x:Name="rbEnglish" Content="RadioButton" HorizontalAlignment="Left" Margin="334,163,0,0" VerticalAlignment="Top" Height="18"/>
         <RadioButton x:Name="rbCroatian" Content="RadioButton" HorizontalAlignment="Left" Margin="334,79,0,0" VerticalAlignment="Top" IsChecked="True"/>
-=======
         <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top"/>
         <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="130,160,0,0" VerticalAlignment="Top" Height="21"/>
         <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="334,163,0,0" VerticalAlignment="Top" Height="18"/>
         <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="334,79,0,0" VerticalAlignment="Top"/>
->>>>>>> Stashed changes
         <StackPanel HorizontalAlignment="Left" Height="150" Margin="315,56,0,0" VerticalAlignment="Top" Width="131"/>
         <StackPanel HorizontalAlignment="Left" Height="150" Margin="101,56,0,0" VerticalAlignment="Top" Width="149"/>
 
