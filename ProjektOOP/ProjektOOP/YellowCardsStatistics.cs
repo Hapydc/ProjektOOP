@@ -25,7 +25,13 @@ namespace ProjektOOP
         private async void GetPlayers()
         {
             List<Player> players = new List<Player>();
-            players = await service.GetPlayers(fifaCode);
+            var loadingForm = new LoadingForm();
+            loadingForm.Show();
+            await Task.Run(async () =>
+            {
+                players = await service.GetPlayers(fifaCode);
+            });
+            loadingForm.Close();
             ShowPlayersStatistics(players, fifaCode);
         }
 

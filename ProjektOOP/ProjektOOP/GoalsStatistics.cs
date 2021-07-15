@@ -1,12 +1,8 @@
 ﻿using DataLayer.Models;
 using DataLayer.Services;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +12,6 @@ namespace ProjektOOP
     {
         public DataService service = new DataService();
         List<PlayerStatistics> statisticList = new List<PlayerStatistics>();
-
         
         public string fifaCode = DataService.fifacode;
 
@@ -30,7 +25,13 @@ namespace ProjektOOP
         private async void GetPlayers()
         {
             List<Player> players = new List<Player>();
-            players = await service.GetPlayers(fifaCode);
+            var loadingForm = new LoadingForm();
+            loadingForm.Show();
+            await Task.Run(async () =>
+            {
+                players = await service.GetPlayers(fifaCode);
+            });
+            loadingForm.Close();
             ShowPlayersStatistics(players, fifaCode);
         }
 
