@@ -49,7 +49,7 @@ namespace ProjektOOP
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)

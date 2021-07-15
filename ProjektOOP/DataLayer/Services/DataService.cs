@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DataLayer.Services
@@ -52,6 +53,7 @@ namespace DataLayer.Services
 
         public async Task<List<Team>> GetTeams()
         {
+            Thread.Sleep(2000);
             return await Service.GetTeams();
         }
 
@@ -62,6 +64,7 @@ namespace DataLayer.Services
 
         public async Task<List<Player>> GetPlayers(string fifaCode)
         {
+            Thread.Sleep(2000);
             MatchResults = await Service.GetMatchResults();
             var matchResult = MatchResults
                 .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).OrderBy(x => x.Datetime)

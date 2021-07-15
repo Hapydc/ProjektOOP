@@ -27,17 +27,17 @@ namespace ProjektOOP
             flpGoals.VerticalScroll.Visible = true;
         }
 
-        private void GetPlayers()
+        private async void GetPlayers()
         {
             List<Player> players = new List<Player>();
-            players = service.GetPlayers(fifaCode);
+            players = await service.GetPlayers(fifaCode);
             ShowPlayersStatistics(players, fifaCode);
         }
 
-        private void ShowPlayersStatistics(List<Player> players, string fifaCode)
+        private async void ShowPlayersStatistics(List<Player> players, string fifaCode)
         {
             flpGoals.Controls.Clear();
-            GetEvents(players, fifaCode);
+            await GetEvents(players, fifaCode);
             List<PlayerStatistics> sortedStatisticsList = statisticList.OrderBy(o => o.goals).Reverse().ToList();
             int itteration = 0;
             foreach (var item in sortedStatisticsList)
@@ -48,12 +48,11 @@ namespace ProjektOOP
                 flpGoals.Controls.Add(playerControl);
                 itteration++;
             }
-
         }
 
-        private void GetEvents(List<Player> players, string fifaCode)
+        private async Task GetEvents(List<Player> players, string fifaCode)
         {
-            List<MatchResult> matchResults = service.GetAllMatchResults();
+            List<MatchResult> matchResults = await service.GetAllMatchResults();
             var results = matchResults.Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode);
             foreach (var p in players)
             {

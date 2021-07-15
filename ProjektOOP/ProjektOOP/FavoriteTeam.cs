@@ -4,6 +4,7 @@ using System.Data;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer.Models;
 using DataLayer.Services;
@@ -71,7 +72,16 @@ namespace ProjektOOP
             cbTeams.Items.Clear();
             lbCountryCode.Text = null;
             string country = service.GetFavoriteTeam();
-            List<Team> teams = await service.GetTeams();
+
+            var loadingForm = new LoadingForm();
+            loadingForm.Show();
+            List<Team> teams = new List<Team>();
+            await Task.Run(async () =>
+            {
+                teams = await service.GetTeams();
+            });
+
+            loadingForm.Close();
             foreach (Team t in teams)
             {
                 cbTeams.Items.Add(t);
@@ -81,15 +91,16 @@ namespace ProjektOOP
                 }
             }
             lbCountryCode.Text = country;
-            LoadPlayers();
+            await LoadPlayers();
 
         }
-        private void btnFavoriteTeam_Click(object sender, EventArgs e)
+
+        private async void btnFavoriteTeam_Click(object sender, EventArgs e)
         {
-            LoadPlayers();
+            await LoadPlayers();
         }
 
-        private async void LoadPlayers()
+        private async Task LoadPlayers()
         {
             flowLayoutPanel2.Controls.Clear();
             List<Player> favoritePlayers = service.ReadFavoritePlayers();
@@ -97,8 +108,17 @@ namespace ProjektOOP
             var selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
             if (selectedTeam != null)
             {
+                var loadingForm = new LoadingForm();
+                loadingForm.Show();
+                await Task.Run(async () =>
+                {
+                    players = await service.GetPlayers(selectedTeam);
+                });
+                loadingForm.Close();
+
+
                 lbCountryCode.Text = selectedTeam;
-                players = await service.GetPlayers(selectedTeam);
+                
                 if (favoritePlayers == null)
                 {
                     foreach (Player p in players)
@@ -166,11 +186,11 @@ namespace ProjektOOP
         {
             e.Effect = DragDropEffects.Move;
         }
+
         public void OnSettingsFormClosed(object sender, FormClosedEventArgs e)
         {
             SetCulture();
             LoadTeamsInForm();
-
         }
 
         public void OnClosed(object sender, FormClosedEventArgs e)
