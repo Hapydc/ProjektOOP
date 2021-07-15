@@ -22,18 +22,45 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        ApplicationSettings applicationSettings = new ApplicationSettings();
-        ApplicationSettingsService service = new ApplicationSettingsService();
+        public ApplicationSettings applicationSettings = new ApplicationSettings();
+        public ApplicationSettingsService service = new ApplicationSettingsService();
         public MainWindow()
         {
             InitializeComponent();
+            applicationSettings = service.GetAplicationSettings();
+            if (applicationSettings==null)
+            {
+
+            }
+            else
+            {
+                if (applicationSettings.Championship==Championship.Male)
+                {
+                    rbMaleChampionship.IsChecked = true;
+                }
+                else
+                {
+                    rbFemaleChampionship.IsChecked = true;
+                }
+                if (applicationSettings.Language==DataLayer.Models.Language.Croatian)
+                {
+                    rbCroatian.IsChecked = true;
+
+                }
+                else
+                {
+                    rbEnglish.IsChecked = true;
+                }
+            }
         }
 
         private void OnClick(object sender, RoutedEventArgs e)
         {
+            ApplicationSettings applicationSettings = new ApplicationSettings();
+            ApplicationSettingsService service = new ApplicationSettingsService();
             if (rbMaleChampionship.IsChecked==true)
             {
-                applicationSettings.Championship =Championship.Male;
+                applicationSettings.Championship = Championship.Male;
             }
             else
             {
@@ -52,7 +79,10 @@ namespace WpfApp
             this.Hide();
             teamsWindow.Show();
             this.Close();
+
+            service.SaveAplicationSettings(applicationSettings);
         }
+        
 
 
     }

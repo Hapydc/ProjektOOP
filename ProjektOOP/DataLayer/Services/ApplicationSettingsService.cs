@@ -10,7 +10,7 @@ namespace DataLayer.Services
 {
     public class ApplicationSettingsService
     {
-        private string ApplicationSettingsFile = @"Resources\ApplicationSettings.txt";
+        private string ApplicationSettingsFile = @"ProgramGeneratedFiles\ApplicationSettings.txt";
         const string male = "Male";
         const string female = "Female";
         const string english = "English";

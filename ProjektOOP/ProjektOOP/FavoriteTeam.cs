@@ -207,9 +207,17 @@ namespace ProjektOOP
                     favoritePlayerList.Add(player);
                 }
             }
-            string country = cbTeams.SelectedItem.ToString();
-            service.WriteFavoriteTeam(country);
-            service.WriteFavoritePlayers(favoritePlayerList);
+            if (cbTeams.SelectedItem!=null)
+            {
+                string country = cbTeams.SelectedItem.ToString();
+                service.WriteFavoriteTeam(country);
+                service.WriteFavoritePlayers(favoritePlayerList);
+            }
+            else
+            {
+                MessageBox.Show("Odaberite tim");
+            }
+            
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
