@@ -14,10 +14,10 @@ namespace DataLayer.Services
         public bool UsesApiService { get; set; }
         private IService Service;
         public static List<MatchResult> MatchResults { get; set; }
-        private static string favoriteMalePlayersFile = @"C:\Temp\FavoriteMalePlayers.txt";
-        private static string favoriteFemalePlayersFile = @"C:\Temp\FavoriteFemalePlayers.txt";
-        private static string favoriteFemaleTeamFile = @"C:\Temp\FavoriteFemaleTeam.txt";
-        private static string favoriteMaleTeamFile = @"C:\Temp\FavoriteMaleTeam.txt";
+        private static string favoriteMalePlayersFile = @"Resources\FavoriteMalePlayers.txt";
+        private static string favoriteFemalePlayersFile = @"Resources\FavoriteFemalePlayers.txt";
+        private static string favoriteFemaleTeamFile = @"Resources\FavoriteFemaleTeam.txt";
+        private static string favoriteMaleTeamFile = @"Resources\FavoriteMaleTeam.txt";
         private string dataSourceFile = @"Settings\Settings.txt";
 
         public string dataSource;
@@ -61,6 +61,27 @@ namespace DataLayer.Services
         public async Task<List<MatchResult>> GetAllMatchResults()
         {
             return await Service.GetMatchResults();
+        }
+        public async Task<List<Team>>GetOpponents(string fifaCode)
+        {
+            List<Team> teams = new List<Team>();
+            MatchResults = await Service.GetMatchResults();
+            List<MatchResult> sortedMatchResults =
+                MatchResults.Where(x => x.HomeTeamCountry == fifaCode
+            || x.AwayTeamCountry == fifaCode).ToList();
+            foreach (MatchResult item in sortedMatchResults)
+            {
+                if (item.HomeTeamCountry==fifaCode)
+                {
+                    teams.Add(item.AwayTeam);
+                }
+                else
+                {
+                    teams.Add(item.HomeTeam);
+                }
+            }
+            return teams;
+
         }
 
         public async Task<List<Player>> GetPlayers(string fifaCode)

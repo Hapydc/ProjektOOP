@@ -32,6 +32,7 @@ namespace WpfApp
             LoadTeamsInForm();
 
         }
+        
         public async void LoadTeamsInForm()
         {
             cbFirst.Items.Clear();
@@ -45,8 +46,7 @@ namespace WpfApp
 
             foreach (Team t in teams)
             {
-                cbFirst.Items.Add(t);
-                cbSecond.Items.Add(t);
+                cbFirst.Items.Add(t);                
                 if (t.ToString() == country)
                 {
                     cbFirst.SelectedItem = t;
@@ -54,6 +54,25 @@ namespace WpfApp
             }
 
 
+        }
+
+
+        private async void GetOpponents(object sender, RoutedEventArgs e)
+        {
+            await GetTeamOpponents();
+        }
+        private async Task GetTeamOpponents()
+        {
+            List<Team> opponentTeams = new List<Team>();
+            string selectedTeam = (cbFirst.SelectedItem as Team)?.Country;
+            await Task.Run(async () =>
+            {
+                opponentTeams = await service.GetOpponents(selectedTeam);
+            });
+            foreach (Team t in opponentTeams)
+            {
+                cbSecond.Items.Add(t);
+            }
         }
     }
 }
