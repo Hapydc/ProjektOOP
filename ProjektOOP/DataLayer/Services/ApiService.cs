@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace DataLayer.Services
 {
@@ -16,7 +17,7 @@ namespace DataLayer.Services
         ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
 
 
-        public List<Team> GetTeams()
+        public async Task<List<Team>> GetTeams()
         {
             if (GetChampionship() == Championship.Male)
             {
@@ -29,7 +30,7 @@ namespace DataLayer.Services
             using (WebClient wc = new WebClient())
             {
                 System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
-                var json = wc.DownloadString(path);
+                var json = await wc.DownloadStringTaskAsync(path);
                 List<Team> teams = JsonConvert.DeserializeObject<List<Team>>(json);
                 return teams;
             }
@@ -46,7 +47,7 @@ namespace DataLayer.Services
                 return Championship.Female;
             }
         }
-        public List<MatchResult> GetMatchResults()
+        public async Task<List<MatchResult>> GetMatchResults()
         {
 
             if (GetChampionship() == Championship.Male)
@@ -60,7 +61,7 @@ namespace DataLayer.Services
             using (WebClient wc = new WebClient())
             {
                 System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
-                var json = wc.DownloadString(path);
+                var json = await wc.DownloadStringTaskAsync(path);
                 List<MatchResult> results = JsonConvert.DeserializeObject<List<MatchResult>>(json);
                 return results;
             }

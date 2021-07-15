@@ -26,7 +26,7 @@ namespace ProjektOOP
             
         }
 
-        public void GetInfo()
+        public async void GetInfo()
         {
             DataTable dataTable = new DataTable();
             dataTable.Columns.AddRange(
@@ -40,7 +40,7 @@ namespace ProjektOOP
                 );
             dataGridView1.DataSource = dataTable;
 
-            List<GamesInfo> gamesInfo = service.GetGamesInfo();
+            List<GamesInfo> gamesInfo = await service.GetGamesInfo();
             List<GamesInfo> sortedGamesInfo = gamesInfo.OrderBy(i => i.Visitors).Reverse().ToList();
             foreach (var info in sortedGamesInfo)
             {

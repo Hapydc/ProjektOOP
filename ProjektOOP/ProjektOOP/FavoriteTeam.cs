@@ -62,16 +62,16 @@ namespace ProjektOOP
 
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {
-
             SetCulture();
             LoadTeamsInForm();
         }
-        public void LoadTeamsInForm()
+
+        public async void LoadTeamsInForm()
         {
             cbTeams.Items.Clear();
             lbCountryCode.Text = null;
             string country = service.GetFavoriteTeam();
-            List<Team> teams = service.GetTeams();
+            List<Team> teams = await service.GetTeams();
             foreach (Team t in teams)
             {
                 cbTeams.Items.Add(t);
@@ -89,7 +89,7 @@ namespace ProjektOOP
             LoadPlayers();
         }
 
-        private void LoadPlayers()
+        private async void LoadPlayers()
         {
             flowLayoutPanel2.Controls.Clear();
             List<Player> favoritePlayers = service.ReadFavoritePlayers();
@@ -98,7 +98,7 @@ namespace ProjektOOP
             if (selectedTeam != null)
             {
                 lbCountryCode.Text = selectedTeam;
-                players = service.GetPlayers(selectedTeam);
+                players = await service.GetPlayers(selectedTeam);
                 if (favoritePlayers == null)
                 {
                     foreach (Player p in players)
