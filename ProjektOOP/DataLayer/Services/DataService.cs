@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DataLayer.Services
 {
@@ -21,11 +23,8 @@ namespace DataLayer.Services
         public string selectedTeam;
         public static string fifacode;
 
-
-
         public DataService()
         {
-            // TODO: čitaj iz datoteke
             UsesApiService = ReadDataSource();
             if (!UsesApiService)
             {
@@ -35,8 +34,6 @@ namespace DataLayer.Services
             {
                 Service = new ApiService();
             }
-
-
         }
 
         private bool ReadDataSource()
@@ -52,22 +49,23 @@ namespace DataLayer.Services
             {
                 return true;
             }
-
         }
 
-        public List<Team> GetTeams()
+        public async Task<List<Team>> GetTeams()
         {
-            return Service.GetTeams();
+            Thread.Sleep(2000);
+            return await Service.GetTeams();
         }
 
-        public List<MatchResult> GetAllMatchResults()
+        public async Task<List<MatchResult>> GetAllMatchResults()
         {
-            return Service.GetMatchResults();
+            return await Service.GetMatchResults();
         }
 
-        public List<Player> GetPlayers(string fifaCode)
+        public async Task<List<Player>> GetPlayers(string fifaCode)
         {
-            MatchResults = Service.GetMatchResults();
+            Thread.Sleep(2000);
+            MatchResults = await Service.GetMatchResults();
             var matchResult = MatchResults
                 .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).OrderBy(x => x.Datetime)
                 .FirstOrDefault();
@@ -182,10 +180,10 @@ namespace DataLayer.Services
             return players;
         }
 
-        public List<GamesInfo> GetGamesInfo()
+        public async Task<List<GamesInfo>> GetGamesInfo()
         {
             string fifaCode = GetSelectedTeam();
-            List<MatchResult> matchResults = Service.GetMatchResults();
+            List<MatchResult> matchResults = await Service.GetMatchResults();
             List<GamesInfo> gamesInfos = new List<GamesInfo>();
             List<MatchResult> matchResult = MatchResults
              .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).ToList();

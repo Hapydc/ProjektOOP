@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace DataLayer.Services
 {
@@ -17,7 +18,7 @@ namespace DataLayer.Services
         private ApplicationSettings applicationSettings = new ApplicationSettings();
 
 
-        public Championship GetChampionship()
+        private Championship GetChampionship()
         {
             applicationSettings = applicationSettingsService.GetAplicationSettings();
             if (applicationSettings.Championship == Championship.Male)
@@ -30,7 +31,7 @@ namespace DataLayer.Services
             }
         }
 
-        public List<Team> GetTeams()
+        public async Task<List<Team>> GetTeams()
         {
 
             if (GetChampionship() == Championship.Male)
@@ -43,13 +44,13 @@ namespace DataLayer.Services
             }
             using (StreamReader r = new StreamReader(path))
             {
-                string json = r.ReadToEnd();
+                string json = await r.ReadToEndAsync();
                 List<Team> teams = JsonConvert.DeserializeObject<List<Team>>(json);
                 return teams;
             }
 
         }
-        public List<MatchResult> GetMatchResults()
+        public async Task<List<MatchResult>> GetMatchResults()
         {
 
             if (GetChampionship() == Championship.Male)
@@ -62,7 +63,7 @@ namespace DataLayer.Services
             }
             using (StreamReader r = new StreamReader(path))
             {
-                string json = r.ReadToEnd();
+                string json = await r.ReadToEndAsync();
                 List<MatchResult> results = JsonConvert.DeserializeObject<List<MatchResult>>(json);
                 return results;
             }
