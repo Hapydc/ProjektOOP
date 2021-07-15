@@ -19,14 +19,15 @@ namespace DataLayer.Services
 
         public async Task<List<Team>> GetTeams()
         {
-            if (GetChampionship() == Championship.Male)
-            {
-                path = maleTeamPath;
-            }
-            else
-            {
-                path = femaleTeamPath;
-            }
+            path = maleTeamPath;
+            //if (GetChampionship() == Championship.Male)
+            //{
+            //    path = maleTeamPath;
+            //}
+            //else
+            //{
+            //    path = femaleTeamPath;
+            //}
             using (WebClient wc = new WebClient())
             {
                 System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };

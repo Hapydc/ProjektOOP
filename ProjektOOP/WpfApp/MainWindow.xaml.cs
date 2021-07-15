@@ -80,7 +80,7 @@ namespace WpfApp
             teamsWindow.Show();
             this.Close();
 
-            service.SaveAplicationSettings(applicationSettings);
+            //service.SaveAplicationSettings(applicationSettings);
         }
         
 

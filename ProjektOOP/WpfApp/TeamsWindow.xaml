@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="TeamsWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Loaded="OnLoad">
+        <ComboBox x:Name="cbFirst" HorizontalAlignment="Left" Margin="58,34,0,0" VerticalAlignment="Top" Width="208" Height="42"/>
+        <ComboBox x:Name="cbSecond" HorizontalAlignment="Left" Margin="418,34,0,0" VerticalAlignment="Top" Width="198" Height="42"/>
+
     </Grid>
 </Window>

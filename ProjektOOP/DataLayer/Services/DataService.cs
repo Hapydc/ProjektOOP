@@ -19,13 +19,14 @@ namespace DataLayer.Services
         private static string favoriteFemaleTeamFile = @"ProgramGeneratedFiles\FavoriteFemaleTeam.txt";
         private static string favoriteMaleTeamFile = @"ProgramGeneratedFiles\FavoriteMaleTeam.txt";
         private string dataSourceFile = @"ProgramGeneratedFiles\DataSource.txt";
+
         public string dataSource;
         public string selectedTeam;
         public static string fifacode;
 
         public DataService()
         {
-            UsesApiService = ReadDataSource();
+            UsesApiService = true;
             if (!UsesApiService)
             {
                 Service = new FileService();
