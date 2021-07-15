@@ -63,6 +63,7 @@ namespace WpfApp
         }
         private async Task GetTeamOpponents()
         {
+            cbSecond.Items.Clear();
             List<Team> opponentTeams = new List<Team>();
             string selectedTeam = (cbFirst.SelectedItem as Team)?.Country;
             await Task.Run(async () =>
