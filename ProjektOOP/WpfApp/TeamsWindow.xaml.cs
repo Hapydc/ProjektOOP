@@ -56,11 +56,6 @@ namespace WpfApp
 
         }
 
-
-        private async void GetOpponents(object sender, RoutedEventArgs e)
-        {
-            await GetTeamOpponents();
-        }
         private async Task GetTeamOpponents()
         {
             cbSecond.Items.Clear();
@@ -74,6 +69,11 @@ namespace WpfApp
             {
                 cbSecond.Items.Add(t);
             }
+        }
+
+        private async void ChosenTeam(object sender, SelectionChangedEventArgs e)
+        {
+            await GetTeamOpponents();
         }
     }
 }
