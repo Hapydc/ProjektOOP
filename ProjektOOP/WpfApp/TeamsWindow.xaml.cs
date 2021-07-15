@@ -25,19 +25,26 @@ namespace WpfApp
         public TeamsWindow()
         {
             InitializeComponent();
+
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
             LoadTeamsInForm();
-
         }
-        
+        public void WindowClosed(object sender, EventArgs e)
+        {
+            if (cbFirst.SelectedItem != null)
+            {
+                string country = cbFirst.SelectedItem.ToString();
+                service.WriteFavoriteTeam(country);
+            }
+        }
+
         public async void LoadTeamsInForm()
         {
             cbFirst.Items.Clear();
-
-            string country = "Belgium";
+            string country = service.GetFavoriteTeam();
             List<Team> teams = new List<Team>();
             await Task.Run(async () =>
             {
@@ -46,7 +53,7 @@ namespace WpfApp
 
             foreach (Team t in teams)
             {
-                cbFirst.Items.Add(t);                
+                cbFirst.Items.Add(t);
                 if (t.ToString() == country)
                 {
                     cbFirst.SelectedItem = t;
