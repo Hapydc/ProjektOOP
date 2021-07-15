@@ -14,11 +14,11 @@ namespace DataLayer.Services
         public bool UsesApiService { get; set; }
         private IService Service;
         public static List<MatchResult> MatchResults { get; set; }
-        private static string favoriteMalePlayersFile = @"ProgramGeneratedFiles\FavoriteMalePlayers.txt";
-        private static string favoriteFemalePlayersFile = @"ProgramGeneratedFiles\FavoriteFemalePlayers.txt";
-        private static string favoriteFemaleTeamFile = @"ProgramGeneratedFiles\FavoriteFemaleTeam.txt";
-        private static string favoriteMaleTeamFile = @"ProgramGeneratedFiles\FavoriteMaleTeam.txt";
-        private string dataSourceFile = @"ProgramGeneratedFiles\DataSource.txt";
+        private static string favoriteMalePlayersFile = @"C:\Temp\FavoriteMalePlayers.txt";
+        private static string favoriteFemalePlayersFile = @"C:\Temp\FavoriteFemalePlayers.txt";
+        private static string favoriteFemaleTeamFile = @"C:\Temp\FavoriteFemaleTeam.txt";
+        private static string favoriteMaleTeamFile = @"C:\Temp\FavoriteMaleTeam.txt";
+        private string dataSourceFile = @"Settings\Settings.txt";
 
         public string dataSource;
         public string selectedTeam;
@@ -26,7 +26,7 @@ namespace DataLayer.Services
 
         public DataService()
         {
-            UsesApiService = true;
+            UsesApiService = ReadDataSource(); 
             if (!UsesApiService)
             {
                 Service = new FileService();
