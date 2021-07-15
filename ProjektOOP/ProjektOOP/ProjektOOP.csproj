@@ -98,12 +98,6 @@
     <Compile Include="YellowCardsStatistics.Designer.cs">
       <DependentUpon>YellowCardsStatistics.cs</DependentUpon>
     </Compile>
-    <Compile Include="YellowCardStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YellowCardStatistics.Designer.cs">
-      <DependentUpon>YellowCardStatistics.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FavoriteTeam.resx">
       <DependentUpon>FavoriteTeam.cs</DependentUpon>
     </EmbeddedResource>

@@ -34,19 +34,22 @@
             // flpGoals
             // 
             this.flpGoals.AutoScroll = true;
-            this.flpGoals.Location = new System.Drawing.Point(12, 12);
+            this.flpGoals.Location = new System.Drawing.Point(9, 10);
+            this.flpGoals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flpGoals.Name = "flpGoals";
-            this.flpGoals.Size = new System.Drawing.Size(426, 579);
+            this.flpGoals.Size = new System.Drawing.Size(320, 470);
             this.flpGoals.TabIndex = 0;
             // 
             // GoalsStatistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(450, 603);
+            this.ClientSize = new System.Drawing.Size(338, 490);
             this.Controls.Add(this.flpGoals);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "GoalsStatistics";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GoalsStatistics";
             this.ResumeLayout(false);
 
