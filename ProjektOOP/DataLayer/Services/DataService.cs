@@ -23,6 +23,7 @@ namespace DataLayer.Services
         public string dataSource;
         public string selectedTeam;
         public static string fifacode;
+        public string teamResult;
 
         public DataService()
         {
@@ -81,6 +82,59 @@ namespace DataLayer.Services
             }
             return teams;
 
+        }
+        public async Task <string> GetScore(string firstTeam,string secondTeam)
+        {
+            int homeGoals = 0;
+            int awayGoals = 0;
+            MatchResults =  await Service.GetMatchResults();
+            List<MatchResult> sortedMatchResults =
+                MatchResults.Where(x => x.HomeTeamCountry == firstTeam
+            || x.AwayTeamCountry == firstTeam).ToList();
+            foreach (MatchResult match in sortedMatchResults)
+            {
+                if (match.HomeTeamCountry == firstTeam && match.AwayTeamCountry == secondTeam)
+                {
+                    foreach (var teamEvent in match.HomeTeamEvents)
+                    {
+                        if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
+                        {
+                           homeGoals++;
+
+                        }
+                    }
+                    foreach (var teamEvent in match.AwayTeamEvents)
+                    {
+                        if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
+                        {
+                            awayGoals++;
+
+                        }
+                    }
+                }
+                else if (match.HomeTeamCountry == secondTeam && match.AwayTeamCountry == firstTeam)
+                {
+                    foreach (var teamEvent in match.HomeTeamEvents)
+                    {
+                        if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
+                        {
+                            homeGoals++;
+
+                        }
+                    }
+                    foreach (var teamEvent in match.AwayTeamEvents)
+                    {
+                        if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
+                        {
+                            awayGoals++;
+
+                        }
+                    }
+                }
+                
+            }
+            string result="Rezultat " +homeGoals + " : " +awayGoals;
+            return result;
         }
 
         public async Task<List<Player>> GetPlayers(string fifaCode)

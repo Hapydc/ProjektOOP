@@ -74,6 +74,9 @@ namespace DataLayer.Models
 
         [JsonProperty("last_score_update_at")]
         public DateTimeOffset? LastScoreUpdateAt { get; set; }
+
+        [JsonProperty("team_result")]
+        public TeamResult TeamResult { get; set; }
     }
 
     public partial class TeamResult

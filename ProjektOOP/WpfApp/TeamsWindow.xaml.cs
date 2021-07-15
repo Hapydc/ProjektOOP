@@ -22,6 +22,7 @@ namespace WpfApp
     public partial class TeamsWindow : Window
     {
         public DataService service = new DataService();
+        public string result;
         public TeamsWindow()
         {
             InitializeComponent();
@@ -78,9 +79,23 @@ namespace WpfApp
             }
         }
 
-        private async void ChosenTeam(object sender, SelectionChangedEventArgs e)
+        private async void ChosenFavoriteTeam(object sender, SelectionChangedEventArgs e)
         {
             await GetTeamOpponents();
+
+        }
+
+        private async void OpponentTeamChosen(object sender, SelectionChangedEventArgs e)
+        {
+           
+            string selectedFavoriteTeam = (cbFirst.SelectedItem as Team)?.Country;
+            string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;
+            await Task.Run(async () =>
+            {
+                 result= await service.GetScore(selectedFavoriteTeam, selectedOpponentTeam);
+            });
+            lblResult.Content = result;
+                       
         }
     }
 }
