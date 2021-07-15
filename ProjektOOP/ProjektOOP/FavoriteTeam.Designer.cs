@@ -45,17 +45,19 @@
             // cbTeams
             // 
             this.cbTeams.FormattingEnabled = true;
-            this.cbTeams.Location = new System.Drawing.Point(37, 87);
+            this.cbTeams.Location = new System.Drawing.Point(28, 71);
+            this.cbTeams.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbTeams.MaxDropDownItems = 50;
             this.cbTeams.Name = "cbTeams";
-            this.cbTeams.Size = new System.Drawing.Size(528, 24);
+            this.cbTeams.Size = new System.Drawing.Size(397, 21);
             this.cbTeams.TabIndex = 0;
             // 
             // btnFavoriteTeam
             // 
-            this.btnFavoriteTeam.Location = new System.Drawing.Point(603, 66);
+            this.btnFavoriteTeam.Location = new System.Drawing.Point(452, 54);
+            this.btnFavoriteTeam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFavoriteTeam.Name = "btnFavoriteTeam";
-            this.btnFavoriteTeam.Size = new System.Drawing.Size(123, 64);
+            this.btnFavoriteTeam.Size = new System.Drawing.Size(92, 52);
             this.btnFavoriteTeam.TabIndex = 1;
             this.btnFavoriteTeam.Text = "Odaberi";
             this.btnFavoriteTeam.UseVisualStyleBackColor = true;
@@ -64,27 +66,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 29);
+            this.label1.Location = new System.Drawing.Point(26, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 17);
+            this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Odaberite vaš tim";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 142);
+            this.label2.Location = new System.Drawing.Point(26, 115);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(226, 17);
+            this.label2.Size = new System.Drawing.Size(167, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Odabrana omiljena reprezentacija:";
             // 
             // lbCountryCode
             // 
             this.lbCountryCode.AutoSize = true;
-            this.lbCountryCode.Location = new System.Drawing.Point(280, 142);
+            this.lbCountryCode.Location = new System.Drawing.Point(210, 115);
+            this.lbCountryCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCountryCode.Name = "lbCountryCode";
-            this.lbCountryCode.Size = new System.Drawing.Size(92, 17);
+            this.lbCountryCode.Size = new System.Drawing.Size(70, 13);
             this.lbCountryCode.TabIndex = 4;
             this.lbCountryCode.Text = "Country code";
             // 
@@ -94,9 +99,10 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(37, 215);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(28, 175);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(515, 500);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(387, 407);
             this.flowLayoutPanel1.TabIndex = 5;
             this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
             this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
@@ -107,9 +113,10 @@
             this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(649, 215);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(487, 175);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(515, 500);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(387, 407);
             this.flowLayoutPanel2.TabIndex = 6;
             this.flowLayoutPanel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel2_DragDrop);
             this.flowLayoutPanel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel2_DragEnter);
@@ -117,18 +124,20 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(644, 173);
+            this.label3.Location = new System.Drawing.Point(483, 141);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 39);
+            this.label3.Size = new System.Drawing.Size(122, 32);
             this.label3.TabIndex = 0;
             this.label3.Text = "Omiljeni igrači";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(868, 41);
+            this.btnSettings.Location = new System.Drawing.Point(651, 33);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(161, 89);
+            this.btnSettings.Size = new System.Drawing.Size(121, 72);
             this.btnSettings.TabIndex = 9;
             this.btnSettings.Text = "Postavke";
             this.btnSettings.UseVisualStyleBackColor = true;
@@ -136,9 +145,10 @@
             // 
             // btnGoals
             // 
-            this.btnGoals.Location = new System.Drawing.Point(1118, 41);
+            this.btnGoals.Location = new System.Drawing.Point(838, 33);
+            this.btnGoals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGoals.Name = "btnGoals";
-            this.btnGoals.Size = new System.Drawing.Size(162, 89);
+            this.btnGoals.Size = new System.Drawing.Size(122, 72);
             this.btnGoals.TabIndex = 10;
             this.btnGoals.Text = "Lista golova";
             this.btnGoals.UseVisualStyleBackColor = true;
@@ -146,9 +156,10 @@
             // 
             // btnYellowCardsForm
             // 
-            this.btnYellowCardsForm.Location = new System.Drawing.Point(1286, 41);
+            this.btnYellowCardsForm.Location = new System.Drawing.Point(964, 33);
+            this.btnYellowCardsForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnYellowCardsForm.Name = "btnYellowCardsForm";
-            this.btnYellowCardsForm.Size = new System.Drawing.Size(152, 89);
+            this.btnYellowCardsForm.Size = new System.Drawing.Size(114, 72);
             this.btnYellowCardsForm.TabIndex = 11;
             this.btnYellowCardsForm.Text = "Lista zutih kartona";
             this.btnYellowCardsForm.UseVisualStyleBackColor = true;
@@ -156,9 +167,10 @@
             // 
             // btnGamesInfo
             // 
-            this.btnGamesInfo.Location = new System.Drawing.Point(1286, 151);
+            this.btnGamesInfo.Location = new System.Drawing.Point(964, 123);
+            this.btnGamesInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGamesInfo.Name = "btnGamesInfo";
-            this.btnGamesInfo.Size = new System.Drawing.Size(152, 89);
+            this.btnGamesInfo.Size = new System.Drawing.Size(114, 72);
             this.btnGamesInfo.TabIndex = 12;
             this.btnGamesInfo.Text = "Podatci o utakmicama";
             this.btnGamesInfo.UseVisualStyleBackColor = true;
@@ -166,9 +178,9 @@
             // 
             // FavoriteTeam
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 953);
+            this.ClientSize = new System.Drawing.Size(1112, 774);
             this.Controls.Add(this.btnGamesInfo);
             this.Controls.Add(this.btnYellowCardsForm);
             this.Controls.Add(this.btnGoals);
@@ -181,7 +193,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnFavoriteTeam);
             this.Controls.Add(this.cbTeams);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FavoriteTeam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FavoriteTeam_Load);
             this.ResumeLayout(false);

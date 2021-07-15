@@ -34,18 +34,21 @@
             // flpYellowCards
             // 
             this.flpYellowCards.AutoScroll = true;
-            this.flpYellowCards.Location = new System.Drawing.Point(12, 12);
+            this.flpYellowCards.Location = new System.Drawing.Point(9, 10);
+            this.flpYellowCards.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flpYellowCards.Name = "flpYellowCards";
-            this.flpYellowCards.Size = new System.Drawing.Size(422, 579);
+            this.flpYellowCards.Size = new System.Drawing.Size(316, 470);
             this.flpYellowCards.TabIndex = 0;
             // 
             // YellowCardsStatistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 603);
+            this.ClientSize = new System.Drawing.Size(334, 490);
             this.Controls.Add(this.flpYellowCards);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "YellowCardsStatistics";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YellowCardsStatistics";
             this.ResumeLayout(false);
 

@@ -38,6 +38,7 @@
             this.progressBar1.Size = new System.Drawing.Size(378, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 0;
+            this.progressBar1.UseWaitCursor = true;
             // 
             // LoadingForm
             // 
@@ -47,7 +48,7 @@
             this.Controls.Add(this.progressBar1);
             this.MinimizeBox = false;
             this.Name = "LoadingForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loading";
             this.TopMost = true;
             this.UseWaitCursor = true;

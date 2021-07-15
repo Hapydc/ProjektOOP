@@ -22,7 +22,6 @@ namespace ProjektOOP
         {
             InitializeComponent();
             GetInfo();
-            
         }
 
         public async void GetInfo()
@@ -38,8 +37,16 @@ namespace ProjektOOP
                 }
                 );
             dataGridView1.DataSource = dataTable;
+            List<GamesInfo> gamesInfo = new List<GamesInfo>();
 
-            List<GamesInfo> gamesInfo = await service.GetGamesInfo();
+            var loadingForm = new LoadingForm();
+            loadingForm.Show();
+            await Task.Run(async () =>
+            {
+                gamesInfo = await service.GetGamesInfo();
+            });
+            loadingForm.Close();
+
             List<GamesInfo> sortedGamesInfo = gamesInfo.OrderBy(i => i.Visitors).Reverse().ToList();
             foreach (var info in sortedGamesInfo)
             {
