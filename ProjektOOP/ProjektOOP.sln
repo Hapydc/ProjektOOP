@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjektOOP", "ProjektOOP\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{5434CC41-A158-4580-9116-AA1F931904D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{E51F71C3-31B7-4AD8-8222-55D1AC5962F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5434CC41-A158-4580-9116-AA1F931904D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5434CC41-A158-4580-9116-AA1F931904D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5434CC41-A158-4580-9116-AA1F931904D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51F71C3-31B7-4AD8-8222-55D1AC5962F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51F71C3-31B7-4AD8-8222-55D1AC5962F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51F71C3-31B7-4AD8-8222-55D1AC5962F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51F71C3-31B7-4AD8-8222-55D1AC5962F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
