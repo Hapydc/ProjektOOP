@@ -1,18 +1,11 @@
 ﻿using DataLayer.Models;
 using DataLayer.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjektOOP
 {
-   
+
     public partial class SettingsForm : Form
     {
         public ApplicationSettingsService service = new ApplicationSettingsService();
@@ -20,10 +13,38 @@ namespace ProjektOOP
         public SettingsForm()
         {
             InitializeComponent();
+            TranslateForm();
+        }
+
+        private void TranslateForm()
+        {
+            this.Text = TranslationService.GetTranslationByKey("settings");
+            lblLanguage.Text = TranslationService.GetTranslationByKey("chooseLanguage");
+            lblGender.Text = TranslationService.GetTranslationByKey("chooseGender");
+            rbMaleChampionship.Text = TranslationService.GetTranslationByKey("maleChampionship");
+            rbFemaleChampionship.Text = TranslationService.GetTranslationByKey("femaleChampionship");
+            rbCroatian.Text = TranslationService.GetTranslationByKey("croatianLanguage");
+            rbEnglish.Text = TranslationService.GetTranslationByKey("englishLanguage");
+            btnSubmit.Text = TranslationService.GetTranslationByKey("submit");
+            btnCancel.Text = TranslationService.GetTranslationByKey("cancel");
         }
       
         private void btnSubmit_Click(object sender, EventArgs e)
-        {         
+        {       
+            if (!rbCroatian.Checked && !rbEnglish.Checked)
+            {
+                MessageBox.Show(TranslationService.GetTranslationByKey("languageIsMandatory"));
+
+                return;
+            }
+
+            if (!rbMaleChampionship.Checked && !rbFemaleChampionship.Checked)
+            {
+                MessageBox.Show(TranslationService.GetTranslationByKey("genderIsMandatory"));
+
+                return;
+            }
+
             if (rbCroatian.Checked)
             {
                 applicationSettings.Language = Language.Croatian;
@@ -41,6 +62,7 @@ namespace ProjektOOP
                 applicationSettings.Championship = Championship.Female;
             }
             service.SaveAplicationSettings(applicationSettings);
+            this.DialogResult = DialogResult.OK;
             this.Close();          
         }
         private void OnClose(object sender, FormClosedEventArgs e)
@@ -49,6 +71,7 @@ namespace ProjektOOP
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
