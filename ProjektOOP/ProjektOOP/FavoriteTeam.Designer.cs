@@ -46,7 +46,7 @@
             // 
             this.cbTeams.FormattingEnabled = true;
             this.cbTeams.Location = new System.Drawing.Point(28, 71);
-            this.cbTeams.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTeams.Margin = new System.Windows.Forms.Padding(2);
             this.cbTeams.MaxDropDownItems = 50;
             this.cbTeams.Name = "cbTeams";
             this.cbTeams.Size = new System.Drawing.Size(397, 21);
@@ -55,7 +55,7 @@
             // btnFavoriteTeam
             // 
             this.btnFavoriteTeam.Location = new System.Drawing.Point(452, 54);
-            this.btnFavoriteTeam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFavoriteTeam.Margin = new System.Windows.Forms.Padding(2);
             this.btnFavoriteTeam.Name = "btnFavoriteTeam";
             this.btnFavoriteTeam.Size = new System.Drawing.Size(92, 52);
             this.btnFavoriteTeam.TabIndex = 1;
@@ -100,7 +100,7 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(28, 175);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(387, 407);
             this.flowLayoutPanel1.TabIndex = 5;
@@ -114,7 +114,7 @@
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(487, 175);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(387, 407);
             this.flowLayoutPanel2.TabIndex = 6;
@@ -135,7 +135,7 @@
             // btnSettings
             // 
             this.btnSettings.Location = new System.Drawing.Point(651, 33);
-            this.btnSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(121, 72);
             this.btnSettings.TabIndex = 9;
@@ -146,7 +146,7 @@
             // btnGoals
             // 
             this.btnGoals.Location = new System.Drawing.Point(838, 33);
-            this.btnGoals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGoals.Margin = new System.Windows.Forms.Padding(2);
             this.btnGoals.Name = "btnGoals";
             this.btnGoals.Size = new System.Drawing.Size(122, 72);
             this.btnGoals.TabIndex = 10;
@@ -157,7 +157,7 @@
             // btnYellowCardsForm
             // 
             this.btnYellowCardsForm.Location = new System.Drawing.Point(964, 33);
-            this.btnYellowCardsForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnYellowCardsForm.Margin = new System.Windows.Forms.Padding(2);
             this.btnYellowCardsForm.Name = "btnYellowCardsForm";
             this.btnYellowCardsForm.Size = new System.Drawing.Size(114, 72);
             this.btnYellowCardsForm.TabIndex = 11;
@@ -168,7 +168,7 @@
             // btnGamesInfo
             // 
             this.btnGamesInfo.Location = new System.Drawing.Point(964, 123);
-            this.btnGamesInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGamesInfo.Margin = new System.Windows.Forms.Padding(2);
             this.btnGamesInfo.Name = "btnGamesInfo";
             this.btnGamesInfo.Size = new System.Drawing.Size(114, 72);
             this.btnGamesInfo.TabIndex = 12;
@@ -193,10 +193,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnFavoriteTeam);
             this.Controls.Add(this.cbTeams);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FavoriteTeam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FavoriteTeam_FormClosing);
             this.Load += new System.EventHandler(this.FavoriteTeam_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

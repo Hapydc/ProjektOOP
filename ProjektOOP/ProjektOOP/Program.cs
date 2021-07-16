@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer.Services;
+using System.Threading;
 
 namespace ProjektOOP
 {
@@ -26,31 +27,19 @@ namespace ProjektOOP
             ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
             if (applicationSettingsService.GetAplicationSettings()==null)
             {
-                Application.Run(new SettingsForm());
+                // default jezik je HR
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
+                var settingsForm = new SettingsForm();
+                var result = settingsForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Application.Run(new FavoriteTeam());
+                }
             }
             else
             {
-
                 Application.Run(new FavoriteTeam());
-
             }
-
-
-            //if (true)
-            //{
-            //    teamService = new TeamsAPIService();
-            //}
-            //else
-            //{
-            //    teamService = new TeamsFileService();
-            //}
-
-            //var teams = teamService.GetTeams();
-
-            
-
-
-
         }
     }
 }

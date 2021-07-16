@@ -117,14 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cancel" xml:space="preserve">
+    <value>Odustani</value>
+  </data>
+  <data name="chooseGender" xml:space="preserve">
+    <value>Prvenstvo</value>
+  </data>
+  <data name="chooseLanguage" xml:space="preserve">
+    <value>Jezik</value>
+  </data>
+  <data name="closeConfirmation" xml:space="preserve">
+    <value>Jeste li sigurni da želite izaći iz aplikacije?</value>
+  </data>
+  <data name="confirmation" xml:space="preserve">
+    <value>Potvrda</value>
+  </data>
+  <data name="croatianLanguage" xml:space="preserve">
+    <value>Hrvatski</value>
+  </data>
+  <data name="englishLanguage" xml:space="preserve">
+    <value>Engleski</value>
+  </data>
   <data name="favoritePlayers" xml:space="preserve">
     <value>Omiljeni igrači</value>
+  </data>
+  <data name="femaleChampionship" xml:space="preserve">
+    <value>Žensko</value>
   </data>
   <data name="gameInformation" xml:space="preserve">
     <value>Informacije o utakmicama</value>
   </data>
+  <data name="Gender is mandatory" xml:space="preserve">
+    <value>Spol je obvezan</value>
+  </data>
   <data name="goalList" xml:space="preserve">
     <value>Lista golova</value>
+  </data>
+  <data name="languageIsMandatory" xml:space="preserve">
+    <value>Obvezan je odabir jezika</value>
+  </data>
+  <data name="maleChampionship" xml:space="preserve">
+    <value>Muško</value>
   </data>
   <data name="pickedTeam" xml:space="preserve">
     <value>Odabrana omiljena reprezentacija</value>
@@ -137,6 +170,9 @@
   </data>
   <data name="settings" xml:space="preserve">
     <value>Postavke</value>
+  </data>
+  <data name="submit" xml:space="preserve">
+    <value>Spremi</value>
   </data>
   <data name="yellowCardList" xml:space="preserve">
     <value>Lista žutih kartona</value>
