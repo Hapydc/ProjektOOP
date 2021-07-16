@@ -23,6 +23,9 @@ namespace WpfApp
     {
         public DataService service = new DataService();
         public string result;
+        public TeamInformation favoriteTeamInformation = new TeamInformation();
+        public TeamInformation opponentTeamInformation = new TeamInformation();
+
         public TeamsWindow()
         {
             InitializeComponent();
@@ -60,7 +63,7 @@ namespace WpfApp
                     cbFirst.SelectedItem = t;
                 }
             }
-
+            
 
         }
 
@@ -82,6 +85,7 @@ namespace WpfApp
         private async void ChosenFavoriteTeam(object sender, SelectionChangedEventArgs e)
         {
             await GetTeamOpponents();
+            favoriteTeamInformation = cbFirst.SelectedItem as TeamInformation;
 
         }
 
@@ -96,6 +100,17 @@ namespace WpfApp
             });
             lblResult.Content = result;
                        
+        }
+
+        private void btnFavoriteTeamDetails(object sender, RoutedEventArgs e)
+        {
+            Window teamInfo = new TeamInfo(favoriteTeamInformation);
+            teamInfo.Show();
+        }
+
+        private void btnOpponentTeamDetails(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

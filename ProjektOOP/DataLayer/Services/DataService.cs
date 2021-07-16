@@ -137,6 +137,8 @@ namespace DataLayer.Services
             return result;
         }
 
+        
+
         public async Task<List<Player>> GetPlayers(string fifaCode)
         {
             MatchResults = await Service.GetMatchResults();

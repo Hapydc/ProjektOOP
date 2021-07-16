@@ -12,9 +12,11 @@
             <ColumnDefinition Width="359*"/>
             <ColumnDefinition Width="435*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="cbFirst" HorizontalAlignment="Left" Margin="58,34,0,0" VerticalAlignment="Top" Width="208" Height="42" SelectionChanged="ChosenFavoriteTeam"/>
-        <ComboBox x:Name="cbSecond" HorizontalAlignment="Left" Margin="59.103,34,0,0" VerticalAlignment="Top" Width="198" Height="42" Grid.Column="1" SelectionChanged="OpponentTeamChosen"/>
-        <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="312,34,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cbFirst" HorizontalAlignment="Left" Margin="87,34,0,0" VerticalAlignment="Top" Width="208" Height="42" SelectionChanged="ChosenFavoriteTeam"/>
+        <ComboBox x:Name="cbSecond" HorizontalAlignment="Left" Margin="128.8,34,0,0" VerticalAlignment="Top" Width="179" Height="42" Grid.Column="1" SelectionChanged="OpponentTeamChosen"/>
+        <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="359,34,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="2"/>
+        <Button Content="Detalji" HorizontalAlignment="Left" Height="42" Margin="0,34,0,0" VerticalAlignment="Top" Width="72" Click="btnFavoriteTeamDetails"/>
+        <Button Content="Detalji" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="342.8,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
 
     </Grid>
 </Window>

@@ -51,6 +51,7 @@
     <Compile Include="Models\PlayerPicture.cs" />
     <Compile Include="Models\PlayerStatistics.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationSettingsService.cs" />
     <Compile Include="Services\IService.cs" />
