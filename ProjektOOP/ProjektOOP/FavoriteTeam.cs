@@ -294,7 +294,7 @@ namespace ProjektOOP
             string caption = TranslationService.GetTranslationByKey("confirmation");
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButtons.YesNoCancel,
-                                         MessageBoxIcon.Question);
+                                         MessageBoxIcon.Exclamation);
 
             if (result == DialogResult.Yes)
                 return true;

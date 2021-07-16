@@ -147,7 +147,7 @@
   <data name="gameInformation" xml:space="preserve">
     <value>Informacije o utakmicama</value>
   </data>
-  <data name="Gender is mandatory" xml:space="preserve">
+  <data name="genderIsMandatory" xml:space="preserve">
     <value>Spol je obvezan</value>
   </data>
   <data name="goalList" xml:space="preserve">
