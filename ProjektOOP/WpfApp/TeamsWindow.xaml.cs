@@ -104,6 +104,8 @@ namespace WpfApp
 
             string selectedFavoriteTeam = (cbFirst.SelectedItem as Team)?.Country;
             string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;
+            List<PlayerStatistics> playersStatistics = new List<PlayerStatistics>();
+
             await Task.Run(async () =>
             {
                 result = await service.GetScore(selectedFavoriteTeam, selectedOpponentTeam);

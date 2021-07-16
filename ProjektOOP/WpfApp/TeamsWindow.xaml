@@ -18,7 +18,7 @@
         <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="9.6,34,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
         <Button Content="Detalji" HorizontalAlignment="Left" Height="42" Margin="0,34,0,0" VerticalAlignment="Top" Width="72" Click="btnFavoriteTeamDetails"/>
         <Button Content="Detalji" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="179,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
-        <Grid  x:Name="teamsGrid" Margin="77,121,77.6,87" Grid.ColumnSpan="3" >
+        <Grid  x:Name="teamsGrid" Margin="77,121,77.6,78" Grid.ColumnSpan="3" >
             <Grid.Background>
                 <ImageBrush ImageSource="Resources\Images\FootballField.jpg" Stretch="UniformToFill" AlignmentX="Center" AlignmentY="Center"   ></ImageBrush>
             </Grid.Background>
