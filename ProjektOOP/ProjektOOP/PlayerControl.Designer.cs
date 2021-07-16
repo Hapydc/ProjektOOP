@@ -39,6 +39,7 @@
             this.pBplayerPicture = new System.Windows.Forms.PictureBox();
             this.pbFavoritePlayer = new System.Windows.Forms.PictureBox();
             this.lblGoals = new System.Windows.Forms.Label();
+            this.btnUploadImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pBplayerPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFavoritePlayer)).BeginInit();
             this.SuspendLayout();
@@ -149,11 +150,22 @@
             this.lblGoals.Text = "label5";
             this.lblGoals.Visible = false;
             // 
+            // btnUploadImage
+            // 
+            this.btnUploadImage.Location = new System.Drawing.Point(375, 99);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(95, 40);
+            this.btnUploadImage.TabIndex = 12;
+            this.btnUploadImage.Text = "Postavi sliku";
+            this.btnUploadImage.UseVisualStyleBackColor = true;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
+            // 
             // PlayerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.btnUploadImage);
             this.Controls.Add(this.lblGoals);
             this.Controls.Add(this.pbFavoritePlayer);
             this.Controls.Add(this.pBplayerPicture);
@@ -189,5 +201,6 @@
         private System.Windows.Forms.PictureBox pBplayerPicture;
         private System.Windows.Forms.PictureBox pbFavoritePlayer;
         private System.Windows.Forms.Label lblGoals;
+        private System.Windows.Forms.Button btnUploadImage;
     }
 }

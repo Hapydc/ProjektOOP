@@ -198,6 +198,9 @@
   <data name="save" xml:space="preserve">
     <value>Odaberi</value>
   </data>
+  <data name="setImage" xml:space="preserve">
+    <value>Postavi sliku</value>
+  </data>
   <data name="settings" xml:space="preserve">
     <value>Postavke</value>
   </data>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
@@ -112,19 +113,28 @@ namespace ProjektOOP
                 loadingForm.Close();
                 lbCountryCode.Text = selectedTeam;
                 
-                foreach (Player p in players)
+                foreach (Player player in players)
                 {
-                    PlayerControl player = new PlayerControl(p);
-                    player.SetPicture(@"Resources\player-default.png");
-
-                    if (favoritePlayers.Find(x => x.Name == p.Name) != null)
+                    var imagePath = $"{System.IO.Path.GetTempPath()}{player.Name}.txt";
+                    PlayerControl playerControl = new PlayerControl(player);
+                    if (File.Exists(imagePath))
                     {
-                        flowLayoutPanel2.Controls.Add(player);
-                        player.FavoriteStar(true);
+                        playerControl.SetPicture(File.ReadAllText(imagePath));
                     }
                     else
                     {
-                        flowLayoutPanel1.Controls.Add(player);
+                        playerControl.SetPicture(@"Resources\player-default.png");
+                    }
+                    
+
+                    if (favoritePlayers.Find(x => x.Name == player.Name) != null)
+                    {
+                        flowLayoutPanel2.Controls.Add(playerControl);
+                        playerControl.FavoriteStar(true);
+                    }
+                    else
+                    {
+                        flowLayoutPanel1.Controls.Add(playerControl);
                     }
                 }
             }
@@ -180,11 +190,8 @@ namespace ProjektOOP
             {
                 if (item is PlayerControl)
                 {
-                    PlayerControl playerControl = item as PlayerControl;
-
-                    Player player = new Player();
-                    player = playerControl.SetPlayerValues(playerControl);
-                    favoritePlayerList.Add(player);
+                    PlayerControl playerControl = item as PlayerControl;                 
+                    favoritePlayerList.Add(playerControl.Player);
                 }
             }
             if (cbTeams.SelectedItem != null)

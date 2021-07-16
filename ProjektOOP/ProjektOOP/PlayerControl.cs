@@ -14,7 +14,7 @@ namespace ProjektOOP
 {
     public partial class PlayerControl : UserControl
     {
-        public Player player;
+        public Player Player { get; set; }
         public PlayerControl()
         {
             InitializeComponent();
@@ -28,12 +28,12 @@ namespace ProjektOOP
             lblPositionTag.Text = TranslationService.GetTranslationByKey("lblPositionTag");
             lblCaptTag.Text = TranslationService.GetTranslationByKey("lblCaptTag");
 
-            Player plyr = player;
-            lblName.Text = plyr.Name;
-            lblNumber.Text = plyr.ShirtNumber.ToString();
+            Player = player;
+            lblName.Text = Player.Name;
+            lblNumber.Text = Player.ShirtNumber.ToString();
 
-            lblPosition.Text = plyr.Position;
-            if (plyr.Captain==true)
+            lblPosition.Text = Player.Position;
+            if (Player.Captain==true)
             {
                 lblCaptain.Text = TranslationService.GetTranslationByKey("captainYes");
             }
@@ -42,25 +42,6 @@ namespace ProjektOOP
                 lblCaptain.Text = TranslationService.GetTranslationByKey("captainNo");
             }
         } 
-
-        public Player SetPlayerValues(PlayerControl playerControl)
-        {
-            Player player = new Player();
-            player.Name = playerControl.lblName.Text;
-            long l1;
-            l1 = long.Parse(playerControl.lblNumber.Text);
-            player.ShirtNumber = l1;
-            player.Position = playerControl.lblPosition.Text;
-            if (lblCaptain.Text==TranslationService.GetTranslationByKey("captainYes"))
-            {
-                player.Captain = true;
-            }
-            else
-            {
-                player.Captain = false;
-            }
-            return player;
-        }
 
         public void FavoriteStar(bool star)
         {
@@ -78,7 +59,6 @@ namespace ProjektOOP
 
         public void SetPicture(string path)
         {
-            var exists = File.Exists(path);
             pBplayerPicture.Image = Image.FromFile(path);
         }
 
@@ -94,9 +74,16 @@ namespace ProjektOOP
             lblGoals.Visible = true;
         }
 
-        private void lblCaptain_Click(object sender, EventArgs e)
+        private void btnUploadImage_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files |*.png;*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                pBplayerPicture.Image = new Bitmap(opnfd.FileName);
+                File.WriteAllText($"{System.IO.Path.GetTempPath()}{Player.Name}.txt", opnfd.FileName);
+            }
+            
         }
     }
 }
