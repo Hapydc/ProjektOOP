@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid >
-        <Label x:Name="lblPlayerName" Content="{Binding Player.Name} " HorizontalAlignment="Left" Height="39" Margin="48,51,0,0" VerticalAlignment="Top" Width="121"/>
+        <Label x:Name="lblPlayerName" Content="{Binding Player.Name}" HorizontalAlignment="Left" Height="39" Margin="48,51,0,0" VerticalAlignment="Top" Width="121"/>
         <Label x:Name="lblPlayerShirtNumber" Content="Label" HorizontalAlignment="Left" Height="46" Margin="48,142,0,0" VerticalAlignment="Top" Width="121"/>
         <Label x:Name="lblCaptain" Content="Label" HorizontalAlignment="Left" Height="51" Margin="48,242,0,0" VerticalAlignment="Top" Width="148"/>
         <Label x:Name="lblPosition" Content="Label" HorizontalAlignment="Left" Height="56" Margin="48,337,0,0" VerticalAlignment="Top" Width="195"/>

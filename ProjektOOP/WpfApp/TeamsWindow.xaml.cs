@@ -114,8 +114,24 @@ namespace WpfApp
                 switch (player.Position)
                 {
                     case "Goalie":
+                        Grid.SetRow(playerControl, 1);
+                        Grid.SetColumn(playerControl, 0);
                         teamsGrid.Children.Add(playerControl);
                         break;
+                    case "Defender":
+                        Grid.SetColumn(playerControl, 1);
+                        teamsGrid.Children.Add(playerControl);
+                        break;
+                    case "Midfield":
+                        Grid.SetColumn(playerControl, 2);
+                        teamsGrid.Children.Add(playerControl);
+                        break;
+                    case "Forward":
+                        
+                        Grid.SetColumn(playerControl, 3);
+                        teamsGrid.Children.Add(playerControl);
+                        break;
+
                 }
             }
 
