@@ -103,8 +103,9 @@ namespace WpfApp
             secondGridForward.Children.Clear();
 
             string selectedFavoriteTeam = (cbFirst.SelectedItem as Team)?.Country;
-            string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;
-            List<PlayerStatistics> playersStatistics = new List<PlayerStatistics>();
+            string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;           
+            List<TeamEvent> homeTeamEvents = await service.GetEvents(selectedFavoriteTeam,selectedOpponentTeam );
+            List<TeamEvent> opponentTeamEvents = await service.GetEvents(selectedOpponentTeam, selectedFavoriteTeam);
 
             await Task.Run(async () =>
             {
@@ -129,8 +130,8 @@ namespace WpfApp
             int attacker = 0;
             foreach (Player player in favoriteTeamplayers)
             {
-
-                PlayerControl playerControl = new PlayerControl(player);
+                    
+                PlayerControl playerControl = new PlayerControl(player,homeTeamEvents);
                 switch (player.Position)
                 {
                     case "Goalie":
@@ -173,7 +174,7 @@ namespace WpfApp
             attacker = 0;
             foreach (Player player in opponentTeamPlayers)
             {
-                PlayerControl playerControl = new PlayerControl(player);
+                PlayerControl playerControl = new PlayerControl(player,opponentTeamEvents);
                 switch (player.Position)
                 {
                     case "Goalie":

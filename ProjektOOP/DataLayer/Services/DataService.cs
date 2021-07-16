@@ -26,7 +26,7 @@ namespace DataLayer.Services
 
         public DataService()
         {
-            UsesApiService = ReadDataSource(); 
+            UsesApiService = ReadDataSource();
             if (!UsesApiService)
             {
                 Service = new FileService();
@@ -83,14 +83,32 @@ namespace DataLayer.Services
 
         }
 
-        
-        
+        public async Task<List<TeamEvent>> GetEvents(string firstTeam, string secondTeam)
+        {
+            List<MatchResult> matchResults =  await Service.GetMatchResults();
 
-        public async Task <string> GetScore(string firstTeam,string secondTeam)
+            List<TeamEvent> events = new List<TeamEvent>();
+            foreach (var matchResult in matchResults)
+            {
+                if (matchResult.HomeTeam.Country == firstTeam && matchResult.AwayTeam.Country == secondTeam)
+                {
+                    matchResult.HomeTeamEvents.ForEach(e => events.Add(e));
+                }
+                else if (matchResult.AwayTeam.Country == firstTeam && matchResult.HomeTeam.Country == secondTeam)
+                {
+                    matchResult.AwayTeamEvents.ForEach(e => events.Add(e));
+                }
+            }
+            return events;
+
+        }
+
+
+        public async Task<string> GetScore(string firstTeam, string secondTeam)
         {
             int homeGoals = 0;
             int awayGoals = 0;
-            MatchResults =  await Service.GetMatchResults();
+            MatchResults = await Service.GetMatchResults();
             List<MatchResult> sortedMatchResults =
                 MatchResults.Where(x => x.HomeTeamCountry == firstTeam
             || x.AwayTeamCountry == firstTeam).ToList();
@@ -102,7 +120,7 @@ namespace DataLayer.Services
                     {
                         if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
                         {
-                           homeGoals++;
+                            homeGoals++;
 
                         }
                     }
@@ -121,7 +139,7 @@ namespace DataLayer.Services
                     {
                         if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
                         {
-                           awayGoals++;
+                            awayGoals++;
 
                         }
                     }
@@ -129,32 +147,32 @@ namespace DataLayer.Services
                     {
                         if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
                         {
-                          homeGoals++;
+                            homeGoals++;
 
                         }
                     }
                 }
-                
+
             }
-            string result="Rezultat " +homeGoals + " : " +awayGoals;
+            string result = "Rezultat " + homeGoals + " : " + awayGoals;
             return result;
         }
-        public async Task <TeamInformation> GetTeamInformation(string fifaCode)
+        public async Task<TeamInformation> GetTeamInformation(string fifaCode)
         {
             List<TeamInformation> teamsInformations = await Service.GetTeamsInformation();
             TeamInformation teamInformation = new TeamInformation();
             for (int i = 0; i < teamsInformations.Count; i++)
             {
-                if (teamsInformations[i].Country==fifaCode)
+                if (teamsInformations[i].Country == fifaCode)
                 {
                     teamInformation = teamsInformations[i];
                 }
             }
             return teamInformation;
         }
-        
-        
-        public async Task<List<Player>> GetStartingEleven(string firstTeam,string secondTeam)
+
+
+        public async Task<List<Player>> GetStartingEleven(string firstTeam, string secondTeam)
         {
             MatchResults = await Service.GetMatchResults();
             List<MatchResult> sortedMatchResults =
@@ -242,7 +260,7 @@ namespace DataLayer.Services
         }
         public Language GetLanguage()
         {
-            
+
             ApplicationSettingsService applicationSettingsService = new ApplicationSettingsService();
             ApplicationSettings applicationSettings = applicationSettingsService.GetAplicationSettings();
             return applicationSettings.Language;
@@ -303,15 +321,15 @@ namespace DataLayer.Services
              .Where(x => x.HomeTeamCountry == fifaCode || x.AwayTeamCountry == fifaCode).ToList();
             for (int i = 0; i < matchResult.Count; i++)
             {
-                    gamesInfos.Add(new Models.GamesInfo
-                    {
-                        Location = matchResult[i].Location,
-                        Visitors = matchResult[i].Attendance,
-                        HomeTeam = matchResult[i].HomeTeamCountry,
-                        AwayTeam = matchResult[i].AwayTeamCountry,
-                    }
-                        );
-                
+                gamesInfos.Add(new Models.GamesInfo
+                {
+                    Location = matchResult[i].Location,
+                    Visitors = matchResult[i].Attendance,
+                    HomeTeam = matchResult[i].HomeTeamCountry,
+                    AwayTeam = matchResult[i].AwayTeamCountry,
+                }
+                    );
+
 
             }
             return gamesInfos;
