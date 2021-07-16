@@ -74,13 +74,13 @@ namespace WpfApp
             {
                 applicationSettings.Language = DataLayer.Models.Language.English;
             }
+            service.SaveAplicationSettings(applicationSettings);
 
             TeamsWindow teamsWindow = new TeamsWindow();
             this.Hide();
             teamsWindow.Show();
             this.Close();
 
-            service.SaveAplicationSettings(applicationSettings);
         }
         
 

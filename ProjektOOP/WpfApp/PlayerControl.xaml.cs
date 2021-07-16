@@ -31,7 +31,8 @@ namespace WpfApp
         {
             InitializeComponent();
             Player = player;
-                     
+            this.DataContext = Player;
+
         }
     }
 }

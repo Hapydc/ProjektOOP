@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="TeamsWindow" Height="450" Width="800"
+        Title="TeamsWindow" Height="625.85" Width="800"
         Closed="WindowClosed">
     <Grid Loaded="OnLoad">
         <Grid.ColumnDefinitions>
@@ -18,9 +18,11 @@
         <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="359,34,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="2"/>
         <Button Content="Detalji" HorizontalAlignment="Left" Height="42" Margin="0,34,0,0" VerticalAlignment="Top" Width="72" Click="btnFavoriteTeamDetails"/>
         <Button Content="Detalji" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="179,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
-        <Grid x:Name="teamsGrid" Margin="71,118,95.6,24" Grid.ColumnSpan="3">
+        <Grid x:Name="teamsGrid" Margin="71,118,96,185" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="firstTeamGoalie"></ColumnDefinition>
+                <ColumnDefinition x:Name="firstTeamGoalie">
+                    
+                </ColumnDefinition>
                 <ColumnDefinition x:Name="firstTeamDefence"></ColumnDefinition>
                 <ColumnDefinition x:Name="firstTeamMidlefield"></ColumnDefinition>
                 <ColumnDefinition x:Name="firstTeamAttack"></ColumnDefinition>
