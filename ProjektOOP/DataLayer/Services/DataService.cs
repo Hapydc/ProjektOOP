@@ -19,7 +19,6 @@ namespace DataLayer.Services
         private static string favoriteFemaleTeamFile = @"Resources\FavoriteFemaleTeam.txt";
         private static string favoriteMaleTeamFile = @"Resources\FavoriteMaleTeam.txt";
         private string dataSourceFile = @"Settings\Settings.txt";
-
         public string dataSource;
         public string selectedTeam;
         public static string fifacode;
@@ -122,7 +121,7 @@ namespace DataLayer.Services
                     {
                         if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
                         {
-                            homeGoals++;
+                           awayGoals++;
 
                         }
                     }
@@ -130,7 +129,7 @@ namespace DataLayer.Services
                     {
                         if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
                         {
-                            awayGoals++;
+                          homeGoals++;
 
                         }
                     }
