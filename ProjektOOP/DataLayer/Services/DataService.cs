@@ -121,7 +121,6 @@ namespace DataLayer.Services
                         if ((teamEvent.TypeOfEvent == "goal" || teamEvent.TypeOfEvent == "goal-penalty"))
                         {
                             homeGoals++;
-
                         }
                     }
                     foreach (var teamEvent in match.AwayTeamEvents)

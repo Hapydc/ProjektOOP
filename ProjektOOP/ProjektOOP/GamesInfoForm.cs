@@ -30,10 +30,10 @@ namespace ProjektOOP
             dataTable.Columns.AddRange(
                 new DataColumn[4]
                 {
-                    new DataColumn("Lokacija",typeof(string)),
-                    new DataColumn("Broj posjetitelja",typeof(string)),
-                    new DataColumn("Domaci tim",typeof(string)),
-                    new DataColumn("Gostujuci tim",typeof(string))
+                    new DataColumn(TranslationService.GetTranslationByKey("location"),typeof(string)),
+                    new DataColumn(TranslationService.GetTranslationByKey("visitorsNumber"),typeof(string)),
+                    new DataColumn(TranslationService.GetTranslationByKey("homeTeam"),typeof(string)),
+                    new DataColumn(TranslationService.GetTranslationByKey("awayTeam"),typeof(string))
                 }
                 );
             dataGridView1.DataSource = dataTable;

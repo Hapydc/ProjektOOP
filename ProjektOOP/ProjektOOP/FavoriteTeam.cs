@@ -46,21 +46,15 @@ namespace ProjektOOP
 
         private void LoadFormLanguage()
         {
-           
-            var m_resourceManger = new ResourceManager("ProjektOOP.Resource",
-                Assembly.GetExecutingAssembly());
-
-            btnSettings.Text = m_resourceManger.GetString("settings");
-            btnFavoriteTeam.Text = m_resourceManger.GetString("save");
-            btnGamesInfo.Text = m_resourceManger.GetString("gameInformation");
-            btnGoals.Text = m_resourceManger.GetString("goalList");
-            btnYellowCardsForm.Text = m_resourceManger.GetString("yellowCardList");
-            label1.Text= m_resourceManger.GetString("pickTeam");
-            label2.Text = m_resourceManger.GetString("pickedTeam");
-            label3.Text = m_resourceManger.GetString("favoritePlayers");
-
+            btnSettings.Text = TranslationService.GetTranslationByKey("settings");
+            btnFavoriteTeam.Text = TranslationService.GetTranslationByKey("save");
+            btnGamesInfo.Text = TranslationService.GetTranslationByKey("gameInformation");
+            btnGoals.Text = TranslationService.GetTranslationByKey("goalList");
+            btnYellowCardsForm.Text = TranslationService.GetTranslationByKey("yellowCardList");
+            label1.Text = TranslationService.GetTranslationByKey("pickTeam");
+            label2.Text = TranslationService.GetTranslationByKey("pickedTeam");
+            label3.Text = TranslationService.GetTranslationByKey("favoritePlayers");
         }
-
 
         private void FavoriteTeam_Load(object sender, EventArgs e)
         {
@@ -116,8 +110,6 @@ namespace ProjektOOP
                     players = await service.GetPlayers(selectedTeam);
                 });
                 loadingForm.Close();
-
-
                 lbCountryCode.Text = selectedTeam;
                 
                 if (favoritePlayers == null)
@@ -148,7 +140,6 @@ namespace ProjektOOP
                 }
 
             }
-
             InitDnD();
         }
 
@@ -213,18 +204,13 @@ namespace ProjektOOP
                 string country = cbTeams.SelectedItem.ToString();
                 service.WriteFavoriteTeam(country);
                 service.WriteFavoritePlayers(favoritePlayerList);
-            }
-
-
-            
+            }  
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
-
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.FormClosed += OnSettingsFormClosed;
             settingsForm.Show();
-
         }
 
         private void btnGoals_Click(object sender, EventArgs e)
@@ -232,7 +218,7 @@ namespace ProjektOOP
             string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
             if (selectedTeam == null)
             {
-                MessageBox.Show("Odaberite tim za koji zelite statistiku golova");
+                MessageBox.Show(TranslationService.GetTranslationByKey("pickTeamWarning"));
             }
             else
             {
@@ -249,7 +235,7 @@ namespace ProjektOOP
             string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
             if (selectedTeam == null)
             {
-                MessageBox.Show("Odaberite tim za koji zelite statistiku zutih kartona");
+                MessageBox.Show(TranslationService.GetTranslationByKey("pickTeamWarning"));
             }
             else
             {
@@ -265,7 +251,7 @@ namespace ProjektOOP
             
             if (selectedTeam == null)
             {
-                MessageBox.Show("Odaberite tim za koji zelite statistiku zutih kartona");
+                MessageBox.Show(TranslationService.GetTranslationByKey("pickTeamWarning"));
             }
             else
             {
@@ -275,10 +261,7 @@ namespace ProjektOOP
             }
 
         }
-        private void TranslateForm()
-        {
 
-        }
 
         private void FavoriteTeam_FormClosing(object sender, FormClosingEventArgs e)
         {

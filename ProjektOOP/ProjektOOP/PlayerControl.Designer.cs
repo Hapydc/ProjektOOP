@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblNameTag = new System.Windows.Forms.Label();
+            this.lblShirtNumberTag = new System.Windows.Forms.Label();
+            this.lblPositionTag = new System.Windows.Forms.Label();
+            this.lblCaptTag = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblNumber = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
@@ -43,41 +43,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFavoritePlayer)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblNameTag
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ime";
+            this.lblNameTag.AutoSize = true;
+            this.lblNameTag.Location = new System.Drawing.Point(15, 17);
+            this.lblNameTag.Name = "lblNameTag";
+            this.lblNameTag.Size = new System.Drawing.Size(30, 17);
+            this.lblNameTag.TabIndex = 0;
+            this.lblNameTag.Text = "Ime";
             // 
-            // label2
+            // lblShirtNumberTag
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Broj";
+            this.lblShirtNumberTag.AutoSize = true;
+            this.lblShirtNumberTag.Location = new System.Drawing.Point(15, 57);
+            this.lblShirtNumberTag.Name = "lblShirtNumberTag";
+            this.lblShirtNumberTag.Size = new System.Drawing.Size(33, 17);
+            this.lblShirtNumberTag.TabIndex = 1;
+            this.lblShirtNumberTag.Text = "Broj";
             // 
-            // label3
+            // lblPositionTag
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Pozicija";
+            this.lblPositionTag.AutoSize = true;
+            this.lblPositionTag.Location = new System.Drawing.Point(15, 104);
+            this.lblPositionTag.Name = "lblPositionTag";
+            this.lblPositionTag.Size = new System.Drawing.Size(56, 17);
+            this.lblPositionTag.TabIndex = 2;
+            this.lblPositionTag.Text = "Pozicija";
             // 
-            // label4
+            // lblCaptTag
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 148);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 17);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Kapetan";
+            this.lblCaptTag.AutoSize = true;
+            this.lblCaptTag.Location = new System.Drawing.Point(15, 148);
+            this.lblCaptTag.Name = "lblCaptTag";
+            this.lblCaptTag.Size = new System.Drawing.Size(61, 17);
+            this.lblCaptTag.TabIndex = 3;
+            this.lblCaptTag.Text = "Kapetan";
             // 
             // lblName
             // 
@@ -154,10 +154,10 @@
             this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.lblNumber);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCaptTag);
+            this.Controls.Add(this.lblPositionTag);
+            this.Controls.Add(this.lblShirtNumberTag);
+            this.Controls.Add(this.lblNameTag);
             this.Name = "PlayerControl";
             this.Size = new System.Drawing.Size(485, 322);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PlayerControl_MouseDown);
@@ -170,10 +170,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNameTag;
+        private System.Windows.Forms.Label lblShirtNumberTag;
+        private System.Windows.Forms.Label lblPositionTag;
+        private System.Windows.Forms.Label lblCaptTag;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblNumber;
         private System.Windows.Forms.Label lblPosition;

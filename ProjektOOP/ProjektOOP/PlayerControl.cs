@@ -21,12 +21,25 @@ namespace ProjektOOP
 
        public PlayerControl(Player player)
         {
-            InitializeComponent();      
+            InitializeComponent();
+            lblNameTag.Text = TranslationService.GetTranslationByKey("lblNameTag");
+            lblShirtNumberTag.Text = TranslationService.GetTranslationByKey("lblShirtNumberTag");
+            lblPositionTag.Text = TranslationService.GetTranslationByKey("lblPositionTag");
+            lblCaptTag.Text = TranslationService.GetTranslationByKey("lblCaptTag");
+
             Player plyr = player;
             lblName.Text = plyr.Name;
             lblNumber.Text = plyr.ShirtNumber.ToString();
+
             lblPosition.Text = plyr.Position;
-            lblCaptain.Text = plyr.Captain.ToString();
+            if (plyr.Captain==true)
+            {
+                lblCaptain.Text = TranslationService.GetTranslationByKey("captainYes");
+            }
+            else
+            {
+                lblCaptain.Text = TranslationService.GetTranslationByKey("captainNo");
+            }
         } 
        public void setPicture(string path)
         {
@@ -40,7 +53,14 @@ namespace ProjektOOP
             l1 = long.Parse(playerControl.lblNumber.Text);
             player.ShirtNumber = l1;
             player.Position = playerControl.lblPosition.Text;
-            player.Captain = Convert.ToBoolean(lblCaptain.Text);
+            if (lblCaptain.Text==TranslationService.GetTranslationByKey("captainYes"))
+            {
+                player.Captain = true;
+            }
+            else
+            {
+                player.Captain = false;
+            }
             return player;
         }
 

@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="awayTeam" xml:space="preserve">
+    <value>Away team</value>
+  </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="captainNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="captainYes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="chooseGender" xml:space="preserve">
     <value>Championship</value>
@@ -153,8 +162,26 @@
   <data name="goalList" xml:space="preserve">
     <value>Goals list</value>
   </data>
+  <data name="homeTeam" xml:space="preserve">
+    <value>Home team</value>
+  </data>
   <data name="languageIsMandatory" xml:space="preserve">
     <value>Language is mandatory</value>
+  </data>
+  <data name="lblCaptTag" xml:space="preserve">
+    <value>Captain</value>
+  </data>
+  <data name="lblNameTag" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblPositionTag" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="lblShirtNumberTag" xml:space="preserve">
+    <value>Shirt number</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>Location</value>
   </data>
   <data name="maleChampionship" xml:space="preserve">
     <value>Male</value>
@@ -165,6 +192,9 @@
   <data name="pickTeam" xml:space="preserve">
     <value>Choose your team</value>
   </data>
+  <data name="pickTeamWarning" xml:space="preserve">
+    <value>Pick a team first!</value>
+  </data>
   <data name="save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -173,6 +203,9 @@
   </data>
   <data name="submit" xml:space="preserve">
     <value>Submit</value>
+  </data>
+  <data name="visitorsNumber" xml:space="preserve">
+    <value>Number of visitors</value>
   </data>
   <data name="yellowCardList" xml:space="preserve">
     <value>Yellow card list</value>
