@@ -112,33 +112,21 @@ namespace ProjektOOP
                 loadingForm.Close();
                 lbCountryCode.Text = selectedTeam;
                 
-                if (favoritePlayers == null)
+                foreach (Player p in players)
                 {
-                    foreach (Player p in players)
+                    PlayerControl player = new PlayerControl(p);
+                    player.SetPicture(@"Resources\player-default.png");
+
+                    if (favoritePlayers.Find(x => x.Name == p.Name) != null)
                     {
-                        PlayerControl player = new PlayerControl(p);
+                        flowLayoutPanel2.Controls.Add(player);
+                        player.FavoriteStar(true);
+                    }
+                    else
+                    {
                         flowLayoutPanel1.Controls.Add(player);
                     }
                 }
-                else
-                {
-                    foreach (Player p in players)
-                    {
-
-                        if (favoritePlayers.Find(x => x.Name == p.Name) != null)
-                        {
-                            PlayerControl player = new PlayerControl(p);
-                            flowLayoutPanel2.Controls.Add(player);
-                            player.FavoriteStar(true);
-                        }
-                        else
-                        {
-                            PlayerControl player = new PlayerControl(p);
-                            flowLayoutPanel1.Controls.Add(player);
-                        }
-                    }
-                }
-
             }
             InitDnD();
         }
