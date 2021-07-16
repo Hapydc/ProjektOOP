@@ -93,6 +93,14 @@ namespace WpfApp
 
         private async void OpponentTeamChosen(object sender, SelectionChangedEventArgs e)
         {
+            firstGridDeffender.Children.Clear();
+            firstGridGoalie.Children.Clear();
+            firstGridMidfield.Children.Clear();
+            firstGridForward.Children.Clear();
+            secondGridDeffender.Children.Clear();
+            secondGridGoalie.Children.Clear();
+            secondGridMidfield.Children.Clear();
+            secondGridForward.Children.Clear();
 
             string selectedFavoriteTeam = (cbFirst.SelectedItem as Team)?.Country;
             string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;
@@ -119,6 +127,7 @@ namespace WpfApp
             int attacker = 0;
             foreach (Player player in favoriteTeamplayers)
             {
+
                 PlayerControl playerControl = new PlayerControl(player);
                 switch (player.Position)
                 {

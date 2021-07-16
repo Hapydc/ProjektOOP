@@ -32,7 +32,7 @@ namespace WpfApp
             InitializeComponent();
             Player = player;
             this.DataContext = Player;
-
+            
         }
 
         private void lblPlayerName_MouseDown(object sender, MouseButtonEventArgs e)

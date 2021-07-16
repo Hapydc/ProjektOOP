@@ -13,12 +13,15 @@
             <ColumnDefinition Width="164*"/>
             <ColumnDefinition Width="271*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="cbFirst" HorizontalAlignment="Left" Margin="87,34,0,0" VerticalAlignment="Top" Width="208" Height="42" SelectionChanged="ChosenFavoriteTeam"/>
+        <ComboBox x:Name="cbFirst" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Width="208" Height="42" SelectionChanged="ChosenFavoriteTeam"/>
         <ComboBox x:Name="cbSecond" HorizontalAlignment="Left" Margin="128.8,34,0,0" VerticalAlignment="Top" Width="179" Height="42" Grid.Column="1" SelectionChanged="OpponentTeamChosen" Grid.ColumnSpan="2"/>
-        <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="359,34,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="9.6,34,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
         <Button Content="Detalji" HorizontalAlignment="Left" Height="42" Margin="0,34,0,0" VerticalAlignment="Top" Width="72" Click="btnFavoriteTeamDetails"/>
         <Button Content="Detalji" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="179,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
-        <Grid x:Name="teamsGrid" Margin="71,118,96,185" Grid.ColumnSpan="3">
+        <Grid  x:Name="teamsGrid" Margin="77,121,77.6,87" Grid.ColumnSpan="3" >
+            <Grid.Background>
+                <ImageBrush ImageSource="Resources\Images\FootballField.jpg" Stretch="UniformToFill" AlignmentX="Center" AlignmentY="Center"   ></ImageBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" ></RowDefinition>
             </Grid.RowDefinitions>
@@ -42,7 +45,7 @@
             <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="4" x:Name="secondGridForward"></Grid>
 
 
-        </Grid>    
-        
+        </Grid>
+
     </Grid>
 </Window>
