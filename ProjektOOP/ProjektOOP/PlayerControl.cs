@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer.Models;
+using System.IO;
 
 namespace ProjektOOP
 {
@@ -28,10 +29,7 @@ namespace ProjektOOP
             lblPosition.Text = plyr.Position;
             lblCaptain.Text = plyr.Captain.ToString();
         } 
-       public void setPicture(string path)
-        {
-            pBplayerPicture.Image = Image.FromFile(path);
-        }
+
         public Player SetPlayerValues(PlayerControl playerControl)
         {
             Player player = new Player();
@@ -57,6 +55,14 @@ namespace ProjektOOP
                 pbFavoritePlayer.Image = null;
             }
         }
+
+        public void SetPicture(string path)
+        {
+            var exists = File.Exists(path);
+            pBplayerPicture.Image = Image.FromFile(path);
+        }
+
+
         private void PlayerControl_MouseDown(object sender, MouseEventArgs e)
         {
             DoDragDrop(sender, DragDropEffects.Move);

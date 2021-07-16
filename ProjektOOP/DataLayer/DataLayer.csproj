@@ -81,6 +81,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\player-default.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Settings\Settings.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
