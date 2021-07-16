@@ -25,6 +25,7 @@ namespace WpfApp
         public string result;
         public TeamInformation favoriteTeamInformation = new TeamInformation();
         public TeamInformation opponentTeamInformation = new TeamInformation();
+        public List<Team> teams = new List<Team>();
 
         public TeamsWindow()
         {
@@ -49,7 +50,7 @@ namespace WpfApp
         {
             cbFirst.Items.Clear();
             string country = service.GetFavoriteTeam();
-            List<Team> teams = new List<Team>();
+
             await Task.Run(async () =>
             {
                 teams = await service.GetTeams();
@@ -63,7 +64,7 @@ namespace WpfApp
                     cbFirst.SelectedItem = t;
                 }
             }
-            
+
 
         }
 
@@ -85,32 +86,45 @@ namespace WpfApp
         private async void ChosenFavoriteTeam(object sender, SelectionChangedEventArgs e)
         {
             await GetTeamOpponents();
-            favoriteTeamInformation = cbFirst.SelectedItem as TeamInformation;
+
 
         }
 
         private async void OpponentTeamChosen(object sender, SelectionChangedEventArgs e)
         {
-           
+
             string selectedFavoriteTeam = (cbFirst.SelectedItem as Team)?.Country;
             string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;
             await Task.Run(async () =>
             {
-                 result= await service.GetScore(selectedFavoriteTeam, selectedOpponentTeam);
+                result = await service.GetScore(selectedFavoriteTeam, selectedOpponentTeam);
             });
             lblResult.Content = result;
-                       
+
+
         }
 
-        private void btnFavoriteTeamDetails(object sender, RoutedEventArgs e)
+        private async void btnFavoriteTeamDetails(object sender, RoutedEventArgs e)
         {
-            Window teamInfo = new TeamInfo(favoriteTeamInformation);
+            TeamInformation teamInformation = new TeamInformation();
+            string selectedCountry = (cbFirst.SelectedItem as Team)?.Country;
+            await Task.Run(async () =>
+            {
+                teamInformation = await service.GetTeamInformation(selectedCountry);
+            });
+            Window teamInfo = new TeamInfo(teamInformation);
             teamInfo.Show();
         }
-
-        private void btnOpponentTeamDetails(object sender, RoutedEventArgs e)
+        private async void btnOpponentTeamDetails(object sender, RoutedEventArgs e)
         {
-
+            TeamInformation teamInformation = new TeamInformation();
+            string selectedCountry = (cbSecond.SelectedItem as Team)?.Country;
+            await Task.Run(async () =>
+            {
+                teamInformation = await service.GetTeamInformation(selectedCountry);
+            });
+            Window teamInfo = new TeamInfo(teamInformation);
+            teamInfo.Show();
         }
     }
 }

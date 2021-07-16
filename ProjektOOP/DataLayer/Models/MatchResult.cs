@@ -110,7 +110,7 @@ namespace DataLayer.Models
     }
     public partial class TeamStatistics
     {
-        [JsonProperty("country")]
+        [JsonProperty("country")] 
         public string Country { get; set; }
 
         [JsonProperty("attempts_on_goal")]

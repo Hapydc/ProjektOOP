@@ -14,6 +14,8 @@ namespace DataLayer.Services
         private string maleTeamPath = @"Resources\MaleTeams.json";
         private string femaleTeamPath = @"Resources\FemaleTeams.json";
         private string femaleMatchResultPath = @"Resources\FemaleMatches.json";
+        private string MaleTeamResultPath = @"Resources\MaleResults.json";
+        private string FemaleTeamResultPath = @"Resoursec\FemaleResults.json";
         private string path;
         private ApplicationSettings applicationSettings = new ApplicationSettings();
 
@@ -65,6 +67,24 @@ namespace DataLayer.Services
             {
                 string json = await r.ReadToEndAsync();
                 List<MatchResult> results = JsonConvert.DeserializeObject<List<MatchResult>>(json);
+                return results;
+            }
+        }
+
+        public async Task<List<TeamInformation>> GetTeamsInformation()
+        {
+            if (GetChampionship() == Championship.Male)
+            {
+                path = MaleTeamResultPath;
+            }
+            else
+            {
+                path = FemaleTeamResultPath;
+            }
+            using (StreamReader r = new StreamReader(path))
+            {
+                string json = await r.ReadToEndAsync();
+                List<TeamInformation> results = JsonConvert.DeserializeObject<List<TeamInformation>>(json);
                 return results;
             }
         }

@@ -9,5 +9,7 @@ namespace DataLayer.Services
         Task<List<Team>> GetTeams();
 
         Task<List<MatchResult>> GetMatchResults();
+
+        Task<List<TeamInformation>> GetTeamsInformation();
     }
 }

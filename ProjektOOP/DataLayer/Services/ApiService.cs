@@ -66,5 +66,11 @@ namespace DataLayer.Services
                 return results;
             }
         }
+
+
+        public Task<List<TeamInformation>> GetTeamsInformation()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

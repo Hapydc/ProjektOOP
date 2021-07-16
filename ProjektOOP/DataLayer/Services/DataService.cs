@@ -62,7 +62,7 @@ namespace DataLayer.Services
         {
             return await Service.GetMatchResults();
         }
-        public async Task<List<Team>>GetOpponents(string fifaCode)
+        public async Task<List<Team>> GetOpponents(string fifaCode)
         {
             List<Team> teams = new List<Team>();
             MatchResults = await Service.GetMatchResults();
@@ -71,7 +71,7 @@ namespace DataLayer.Services
             || x.AwayTeamCountry == fifaCode).ToList();
             foreach (MatchResult item in sortedMatchResults)
             {
-                if (item.HomeTeamCountry==fifaCode)
+                if (item.HomeTeamCountry == fifaCode)
                 {
                     teams.Add(item.AwayTeam);
                 }
@@ -83,6 +83,10 @@ namespace DataLayer.Services
             return teams;
 
         }
+
+        
+        
+
         public async Task <string> GetScore(string firstTeam,string secondTeam)
         {
             int homeGoals = 0;
@@ -136,7 +140,20 @@ namespace DataLayer.Services
             string result="Rezultat " +homeGoals + " : " +awayGoals;
             return result;
         }
-
+        public async Task <TeamInformation> GetTeamInformation(string fifaCode)
+        {
+            List<TeamInformation> teamsInformations = await Service.GetTeamsInformation();
+            TeamInformation teamInformation = new TeamInformation();
+            for (int i = 0; i < teamsInformations.Count; i++)
+            {
+                if (teamsInformations[i].Country==fifaCode)
+                {
+                    teamInformation = teamsInformations[i];
+                }
+            }
+            return teamInformation;
+        }
+        
         
 
         public async Task<List<Player>> GetPlayers(string fifaCode)
