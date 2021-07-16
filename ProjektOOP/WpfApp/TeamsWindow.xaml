@@ -23,9 +23,7 @@
                 <RowDefinition Height="Auto" ></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="firstTeamGoalie">
-                    
-                </ColumnDefinition>
+                <ColumnDefinition x:Name="firstTeamGoalie"></ColumnDefinition>
                 <ColumnDefinition x:Name="firstTeamDefence"></ColumnDefinition>
                 <ColumnDefinition x:Name="firstTeamMidlefield"></ColumnDefinition>
                 <ColumnDefinition x:Name="firstTeamAttack"></ColumnDefinition>
@@ -34,8 +32,16 @@
                 <ColumnDefinition x:Name="SecondTeamDefence"></ColumnDefinition>
                 <ColumnDefinition x:Name="SecondTeamGoalie"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.Column="0" x:Name="firstGridGoalie"></Grid>
-            <Grid Grid.Row="0" Grid.Column="1" x:Name="firstGridDeffender"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" x:Name="firstGridGoalie"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" x:Name="firstGridDeffender"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="2" x:Name="firstGridMidfield"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="3" x:Name="firstGridForward"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="7" x:Name="secondGridGoalie"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="6" x:Name="secondGridDeffender"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="5" x:Name="secondGridMidfield"></Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="0" Grid.Column="4" x:Name="secondGridForward"></Grid>
+
+
         </Grid>    
         
     </Grid>

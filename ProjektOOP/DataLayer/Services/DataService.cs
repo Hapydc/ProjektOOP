@@ -155,7 +155,29 @@ namespace DataLayer.Services
         }
         
         
+        public async Task<List<Player>> GetStartingEleven(string firstTeam,string secondTeam)
+        {
+            MatchResults = await Service.GetMatchResults();
+            List<MatchResult> sortedMatchResults =
+                MatchResults.Where(x => x.HomeTeamCountry == firstTeam
+            || x.AwayTeamCountry == firstTeam).ToList();
+            List<Player> players = new List<Player>();
 
+            foreach (MatchResult match in sortedMatchResults)
+            {
+                if (match.HomeTeamCountry == firstTeam && match.AwayTeamCountry == secondTeam)
+                {
+                    players.AddRange(match.HomeTeamStatistics.StartingEleven);
+
+
+                }
+                else if (match.HomeTeamCountry == secondTeam && match.AwayTeamCountry == firstTeam)
+                {
+                    players.AddRange(match.AwayTeamStatistics.StartingEleven);
+                }
+            }
+            return players;
+        }
         public async Task<List<Player>> GetPlayers(string fifaCode)
         {
             MatchResults = await Service.GetMatchResults();

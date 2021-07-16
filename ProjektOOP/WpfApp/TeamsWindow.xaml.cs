@@ -86,7 +86,7 @@ namespace WpfApp
         private async void ChosenFavoriteTeam(object sender, SelectionChangedEventArgs e)
         {
             await GetTeamOpponents();
-            
+
 
         }
 
@@ -101,29 +101,34 @@ namespace WpfApp
                 result = await service.GetScore(selectedFavoriteTeam, selectedOpponentTeam);
             });
             lblResult.Content = result;
-            List<Player> players = new List<Player>();
+            List<Player> favoriteTeamplayers = new List<Player>();
             await Task.Run(async () =>
             {
-                players = await service.GetPlayers(selectedFavoriteTeam);
+                favoriteTeamplayers = await service.GetStartingEleven(selectedFavoriteTeam, selectedOpponentTeam);
             });
+            List<Player> opponentTeamPlayers = new List<Player>();
+            await Task.Run(async () =>
+            {
+                opponentTeamPlayers = await service.GetStartingEleven(selectedOpponentTeam, selectedFavoriteTeam);
+            });
+
 
 
             int midfield = 0;
             int defender = 0;
-            int goalie = 0;
             int attacker = 0;
-            foreach (Player player in players)
+            foreach (Player player in favoriteTeamplayers)
             {
                 PlayerControl playerControl = new PlayerControl(player);
                 switch (player.Position)
                 {
-                    case "Goalie":                        
+                    case "Goalie":
                         RowDefinition gridRow1 = new RowDefinition();
                         gridRow1.Height = GridLength.Auto;
-                        firstGridGoalie.RowDefinitions.Add(gridRow1);                  
-                        Grid.SetRow(playerControl, goalie);
+                        firstGridGoalie.RowDefinitions.Add(gridRow1);
+                        Grid.SetRow(playerControl, 1);
                         firstGridGoalie.Children.Add(playerControl);
-                        goalie++;
+
                         break;
                     case "Defender":
                         RowDefinition deffenderRow = new RowDefinition();
@@ -134,17 +139,65 @@ namespace WpfApp
                         defender++;
                         break;
                     case "Midfield":
+                        RowDefinition midfieldRow = new RowDefinition();
+                        midfieldRow.Height = GridLength.Auto;
+                        firstGridMidfield.RowDefinitions.Add(midfieldRow);
                         Grid.SetRow(playerControl, midfield);
-                        Grid.SetColumn(playerControl, 2);
-                        teamsGrid.Children.Add(playerControl);
+                        firstGridMidfield.Children.Add(playerControl);
                         midfield++;
                         break;
                     case "Forward":
-                        
-                        Grid.SetColumn(playerControl, 3);
-                        teamsGrid.Children.Add(playerControl);
-                        break;
 
+                        RowDefinition forwardRow = new RowDefinition();
+                        forwardRow.Height = GridLength.Auto;
+                        firstGridForward.RowDefinitions.Add(forwardRow);
+                        Grid.SetRow(playerControl, attacker);
+                        firstGridForward.Children.Add(playerControl);
+                        attacker++;
+                        break;
+                }
+            }
+            midfield = 0;
+            defender = 0;
+            attacker = 0;
+            foreach (Player player in opponentTeamPlayers)
+            {
+                PlayerControl playerControl = new PlayerControl(player);
+                switch (player.Position)
+                {
+                    case "Goalie":
+                        RowDefinition gridRow1 = new RowDefinition();
+                        gridRow1.Height = GridLength.Auto;
+                        secondGridGoalie.RowDefinitions.Add(gridRow1);
+                        Grid.SetRow(playerControl, 1);
+                        secondGridGoalie.Children.Add(playerControl);
+
+                        break;
+                    case "Defender":
+                        RowDefinition secondDeffenderRow = new RowDefinition();
+                        secondDeffenderRow.Height = GridLength.Auto;
+                        secondGridDeffender.RowDefinitions.Add(secondDeffenderRow);
+                        Grid.SetRow(playerControl, defender);
+                        secondGridDeffender.Children.Add(playerControl);
+                        defender++;
+                        break;
+                    case "Midfield":
+                        RowDefinition secondMidfieldRow = new RowDefinition();
+                        secondMidfieldRow.Height = GridLength.Auto;
+                        secondGridMidfield.RowDefinitions.Add(secondMidfieldRow);
+                        Grid.SetRow(playerControl, midfield);
+                        secondGridMidfield.Children.Add(playerControl);
+                        midfield++;
+                        break;
+                    case "Forward":
+
+                        RowDefinition secondForwardRow = new RowDefinition();
+                        secondForwardRow.Height = GridLength.Auto;
+                        secondGridForward.RowDefinitions.Add(secondForwardRow);
+                        Grid.SetRow(playerControl, attacker);
+                        secondGridForward.Children.Add(playerControl);
+                        attacker++;
+                        break;
                 }
             }
 
