@@ -15,7 +15,7 @@ namespace DataLayer.Services
         private string femaleTeamPath = @"Resources\FemaleTeams.json";
         private string femaleMatchResultPath = @"Resources\FemaleMatches.json";
         private string MaleTeamResultPath = @"Resources\MaleResults.json";
-        private string FemaleTeamResultPath = @"Resoursec\FemaleResults.json";
+        private string FemaleTeamResultPath = @"Resources\FemaleResults.json";
         private string path;
         private ApplicationSettings applicationSettings = new ApplicationSettings();
 

@@ -86,9 +86,10 @@ namespace WpfApp
         private async void ChosenFavoriteTeam(object sender, SelectionChangedEventArgs e)
         {
             await GetTeamOpponents();
-
+            
 
         }
+
 
         private async void OpponentTeamChosen(object sender, SelectionChangedEventArgs e)
         {
@@ -100,6 +101,23 @@ namespace WpfApp
                 result = await service.GetScore(selectedFavoriteTeam, selectedOpponentTeam);
             });
             lblResult.Content = result;
+            List<Player> players = new List<Player>();
+            await Task.Run(async () =>
+            {
+                players = await service.GetPlayers(selectedFavoriteTeam);
+            });
+            
+
+            foreach (Player player in players)
+            {
+                PlayerControl playerControl = new PlayerControl(player);
+                switch (player.Position)
+                {
+                    case "Goalie":
+                        teamsGrid.Children.Add(playerControl);
+                        break;
+                }
+            }
 
 
         }
@@ -125,6 +143,9 @@ namespace WpfApp
             });
             Window teamInfo = new TeamInfo(teamInformation);
             teamInfo.Show();
+
+
         }
+
     }
 }

@@ -10,13 +10,27 @@
     <Grid Loaded="OnLoad">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="359*"/>
-            <ColumnDefinition Width="435*"/>
+            <ColumnDefinition Width="164*"/>
+            <ColumnDefinition Width="271*"/>
         </Grid.ColumnDefinitions>
         <ComboBox x:Name="cbFirst" HorizontalAlignment="Left" Margin="87,34,0,0" VerticalAlignment="Top" Width="208" Height="42" SelectionChanged="ChosenFavoriteTeam"/>
-        <ComboBox x:Name="cbSecond" HorizontalAlignment="Left" Margin="128.8,34,0,0" VerticalAlignment="Top" Width="179" Height="42" Grid.Column="1" SelectionChanged="OpponentTeamChosen"/>
+        <ComboBox x:Name="cbSecond" HorizontalAlignment="Left" Margin="128.8,34,0,0" VerticalAlignment="Top" Width="179" Height="42" Grid.Column="1" SelectionChanged="OpponentTeamChosen" Grid.ColumnSpan="2"/>
         <Label x:Name="lblResult" Content="Label" HorizontalAlignment="Left" Height="42" Margin="359,34,0,0" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="2"/>
         <Button Content="Detalji" HorizontalAlignment="Left" Height="42" Margin="0,34,0,0" VerticalAlignment="Top" Width="72" Click="btnFavoriteTeamDetails"/>
-        <Button Content="Detalji" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="342.8,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
+        <Button Content="Detalji" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="179,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
+        <Grid x:Name="teamsGrid" Margin="71,118,95.6,24" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="firstTeamGoalie"></ColumnDefinition>
+                <ColumnDefinition x:Name="firstTeamDefence"></ColumnDefinition>
+                <ColumnDefinition x:Name="firstTeamMidlefield"></ColumnDefinition>
+                <ColumnDefinition x:Name="firstTeamAttack"></ColumnDefinition>
+                <ColumnDefinition x:Name="secondTeamAttack"></ColumnDefinition>
+                <ColumnDefinition x:Name="secondTeamMidlefield"></ColumnDefinition>
+                <ColumnDefinition x:Name="SecondTeamDefence"></ColumnDefinition>
+                <ColumnDefinition x:Name="SecondTeamGoalie"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
+        </Grid>    
+        
     </Grid>
 </Window>
