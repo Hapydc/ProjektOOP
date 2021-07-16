@@ -19,6 +19,9 @@
         <Button Content="Detalji" HorizontalAlignment="Left" Height="42" Margin="0,34,0,0" VerticalAlignment="Top" Width="72" Click="btnFavoriteTeamDetails"/>
         <Button Content="Detalji" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="179,34,0,0" VerticalAlignment="Top" Width="82" Click="btnOpponentTeamDetails"/>
         <Grid x:Name="teamsGrid" Margin="71,118,96,185" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="firstTeamGoalie">
                     
@@ -31,7 +34,8 @@
                 <ColumnDefinition x:Name="SecondTeamDefence"></ColumnDefinition>
                 <ColumnDefinition x:Name="SecondTeamGoalie"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
+            <Grid Grid.Row="0" Grid.Column="0" x:Name="firstGridGoalie"></Grid>
+            <Grid Grid.Row="0" Grid.Column="1" x:Name="firstGridDeffender"></Grid>
         </Grid>    
         
     </Grid>

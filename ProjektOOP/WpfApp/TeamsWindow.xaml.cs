@@ -110,21 +110,29 @@ namespace WpfApp
 
             foreach (Player player in players)
             {
+                int midfield = 0;
+                int goalie = 0;
                 PlayerControl playerControl = new PlayerControl(player);
                 switch (player.Position)
                 {
                     case "Goalie":
-                        Grid.SetRow(playerControl, 1);
-                        Grid.SetColumn(playerControl, 0);
-                        teamsGrid.Children.Add(playerControl);
+                        
+                        RowDefinition gridRow1 = new RowDefinition();
+                        gridRow1.Height = new GridLength(45);
+                        firstGridGoalie.RowDefinitions.Add(gridRow1);                  
+                        Grid.SetRow(playerControl, goalie);
+                        firstGridGoalie.Children.Add(playerControl);
+                        goalie++;
                         break;
                     case "Defender":
                         Grid.SetColumn(playerControl, 1);
                         teamsGrid.Children.Add(playerControl);
                         break;
                     case "Midfield":
+                        Grid.SetRow(playerControl, midfield);
                         Grid.SetColumn(playerControl, 2);
                         teamsGrid.Children.Add(playerControl);
+                        midfield++;
                         break;
                     case "Forward":
                         
