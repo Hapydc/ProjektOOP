@@ -28,6 +28,7 @@ namespace ProjektOOP
             SetCulture();
          
         }
+
         private void SetCulture()
         {
             language = service.GetLanguage();
@@ -207,16 +208,14 @@ namespace ProjektOOP
                     favoritePlayerList.Add(player);
                 }
             }
-            if (cbTeams.SelectedItem!=null)
+            if (cbTeams.SelectedItem != null)
             {
                 string country = cbTeams.SelectedItem.ToString();
                 service.WriteFavoriteTeam(country);
                 service.WriteFavoritePlayers(favoritePlayerList);
             }
-            else
-            {
-                MessageBox.Show("Odaberite tim");
-            }
+
+
             
         }
         private void btnSettings_Click(object sender, EventArgs e)
@@ -279,6 +278,28 @@ namespace ProjektOOP
         private void TranslateForm()
         {
 
+        }
+
+        private void FavoriteTeam_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (CloseCancel() == false)
+            {
+                e.Cancel = true;
+            };
+        }
+
+        public static bool CloseCancel()
+        {
+            string message = TranslationService.GetTranslationByKey("closeConfirmation");
+            string caption = TranslationService.GetTranslationByKey("confirmation");
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNoCancel,
+                                         MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+                return true;
+            else
+                return false;
         }
     }
 }

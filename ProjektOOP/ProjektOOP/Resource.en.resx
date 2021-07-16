@@ -126,6 +126,12 @@
   <data name="chooseLanguage" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="closeConfirmation" xml:space="preserve">
+    <value>Are you sure that you want to exit?</value>
+  </data>
+  <data name="confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
   <data name="croatianLanguage" xml:space="preserve">
     <value>Croatian</value>
   </data>
