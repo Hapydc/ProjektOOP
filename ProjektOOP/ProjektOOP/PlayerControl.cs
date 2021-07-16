@@ -93,5 +93,10 @@ namespace ProjektOOP
             lblGoals.Text = value;
             lblGoals.Visible = true;
         }
+
+        private void lblCaptain_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
