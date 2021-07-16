@@ -34,5 +34,10 @@ namespace WpfApp
             this.DataContext = Player;
 
         }
+
+        private void lblPlayerName_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show($"Kliknuli ste na igrača {Player.Name}");
+        }
     }
 }

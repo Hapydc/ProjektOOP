@@ -106,27 +106,32 @@ namespace WpfApp
             {
                 players = await service.GetPlayers(selectedFavoriteTeam);
             });
-            
 
+
+            int midfield = 0;
+            int defender = 0;
+            int goalie = 0;
+            int attacker = 0;
             foreach (Player player in players)
             {
-                int midfield = 0;
-                int goalie = 0;
                 PlayerControl playerControl = new PlayerControl(player);
                 switch (player.Position)
                 {
-                    case "Goalie":
-                        
+                    case "Goalie":                        
                         RowDefinition gridRow1 = new RowDefinition();
-                        gridRow1.Height = new GridLength(45);
+                        gridRow1.Height = GridLength.Auto;
                         firstGridGoalie.RowDefinitions.Add(gridRow1);                  
                         Grid.SetRow(playerControl, goalie);
                         firstGridGoalie.Children.Add(playerControl);
                         goalie++;
                         break;
                     case "Defender":
-                        Grid.SetColumn(playerControl, 1);
-                        teamsGrid.Children.Add(playerControl);
+                        RowDefinition deffenderRow = new RowDefinition();
+                        deffenderRow.Height = GridLength.Auto;
+                        firstGridDeffender.RowDefinitions.Add(deffenderRow);
+                        Grid.SetRow(playerControl, defender);
+                        firstGridDeffender.Children.Add(playerControl);
+                        defender++;
                         break;
                     case "Midfield":
                         Grid.SetRow(playerControl, midfield);
