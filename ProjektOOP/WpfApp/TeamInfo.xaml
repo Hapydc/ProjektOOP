@@ -31,15 +31,15 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
-        <Label Grid.Row="1" Grid.Column="0" Content="FifaCode"></Label>
-        <Label Grid.Row="2" Grid.Column="0" Content="Games"></Label>
-        <Label Grid.Row="3" Grid.Column="0" Content="Wins"></Label>
-        <Label Grid.Row="4" Grid.Column="0" Content="Losses"></Label>
-        <Label Grid.Row="5" Grid.Column="0" Content="Draws"></Label>
-        <Label Grid.Row="6" Grid.Column="0" Content="GoalsScored"></Label>
-        <Label Grid.Row="7" Grid.Column="0" Content="Goals Recieved"></Label>
-        <Label Grid.Row="8" Grid.Column="0" Content="Goal difference" ></Label>
+        <Label x:Name="Name" Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+        <Label x:Name="FifaCode" Grid.Row="1" Grid.Column="0" Content="FifaCode"></Label>
+        <Label x:Name="Games" Grid.Row="2" Grid.Column="0" Content="Games"></Label>
+        <Label x:Name="Wins" Grid.Row="3" Grid.Column="0" Content="Wins"></Label>
+        <Label x:Name="Losses" Grid.Row="4" Grid.Column="0" Content="Losses"></Label>
+        <Label x:Name="Draws" Grid.Row="5" Grid.Column="0" Content="Draws"></Label>
+        <Label x:Name="GoalsScored" Grid.Row="6" Grid.Column="0" Content="GoalsScored"></Label>
+        <Label x:Name="GoalsRecieved" Grid.Row="7" Grid.Column="0" Content="Goals Recieved"></Label>
+        <Label x:Name="GoalDifference" Grid.Row="8" Grid.Column="0" Content="Goal difference" ></Label>
 
         <Label x:Name="lblName" Grid.Row="0" Grid.Column="1" Content=""></Label>
         <Label x:Name="lblFifaCode" Grid.Row="1" Grid.Column="1" Content=""></Label>

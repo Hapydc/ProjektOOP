@@ -66,15 +66,15 @@ namespace WpfApp
             if (language == DataLayer.Models.Language.Croatian)
             {
                 Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
-                LoadFormLanguage();
+                TranslateForm();
             }
             else
             {
                 Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-                LoadFormLanguage();
+               TranslateForm();
             }
         }
-        private void LoadFormLanguage()
+        private void TranslateForm()
         {
             rbCroatian.Content = TranslationService.GetTranslationByKey("croatianLanguage");
             rbEnglish.Content = TranslationService.GetTranslationByKey("englishLanguage");

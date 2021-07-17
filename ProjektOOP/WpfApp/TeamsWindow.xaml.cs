@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,20 +28,35 @@ namespace WpfApp
         public TeamInformation favoriteTeamInformation = new TeamInformation();
         public TeamInformation opponentTeamInformation = new TeamInformation();
         public List<Team> teams = new List<Team>();
+        public Language language;
 
         public TeamsWindow()
         {
             InitializeComponent();
-            TranslateForm();
+            SetCulture();
+        }
 
+        private void SetCulture()
+        {
+            language = service.GetLanguage();
+            if (language == DataLayer.Models.Language.Croatian)
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
+                TranslateForm();
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                TranslateForm();
+            }
         }
 
         private void TranslateForm()
         {
             btnDetailsLeft.Content = TranslationService.GetTranslationByKey("details");
             btnDetailsRight.Content = TranslationService.GetTranslationByKey("details");
-            btnSettings.Content = TranslationService.GetTranslationByKey("settings");   
-            
+            btnSettings.Content = TranslationService.GetTranslationByKey("settings");
+
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
@@ -113,8 +129,8 @@ namespace WpfApp
             secondGridForward.Children.Clear();
 
             string selectedFavoriteTeam = (cbFirst.SelectedItem as Team)?.Country;
-            string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;           
-            List<TeamEvent> homeTeamEvents = await service.GetEvents(selectedFavoriteTeam,selectedOpponentTeam );
+            string selectedOpponentTeam = (cbSecond.SelectedItem as Team)?.Country;
+            List<TeamEvent> homeTeamEvents = await service.GetEvents(selectedFavoriteTeam, selectedOpponentTeam);
             List<TeamEvent> opponentTeamEvents = await service.GetEvents(selectedOpponentTeam, selectedFavoriteTeam);
 
             await Task.Run(async () =>
@@ -140,9 +156,9 @@ namespace WpfApp
             int attacker = 0;
             foreach (Player player in favoriteTeamplayers)
             {
-                    
-                PlayerControl playerControl = new PlayerControl(player,homeTeamEvents);
-                var imagePath = $"{System.IO.Path.GetTempPath()}{player.Name}.txt";              
+
+                PlayerControl playerControl = new PlayerControl(player, homeTeamEvents);
+                var imagePath = $"{System.IO.Path.GetTempPath()}{player.Name}.txt";
                 if (File.Exists(imagePath))
                 {
                     playerControl.SetPicture(File.ReadAllText(imagePath));
@@ -189,7 +205,7 @@ namespace WpfApp
             attacker = 0;
             foreach (Player player in opponentTeamPlayers)
             {
-                PlayerControl playerControl = new PlayerControl(player,opponentTeamEvents);
+                PlayerControl playerControl = new PlayerControl(player, opponentTeamEvents);
                 switch (player.Position)
                 {
                     case "Goalie":

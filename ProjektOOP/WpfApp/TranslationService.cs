@@ -12,7 +12,7 @@ namespace WpfApp
     {
         public static string GetTranslationByKey(string translationKey)
         {
-            var resourceManger = new ResourceManager("Resource",
+            var resourceManger = new ResourceManager("WpfApp.Resource",
                Assembly.GetExecutingAssembly());
 
             return resourceManger.GetString(translationKey);

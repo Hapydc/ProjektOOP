@@ -32,12 +32,12 @@
 
 
         </Grid.ColumnDefinitions>
-        <Label  Grid.Row="0" Grid.Column="0" Content="Name"></Label>
-        <Label  Grid.Row="1" Grid.Column="0" Content="Shirt number"></Label>
-        <Label  Grid.Row="2" Grid.Column="0" Content="Captain"></Label>
-        <Label  Grid.Row="3" Grid.Column="0" Content="Position"></Label>
-        <Label  Grid.Row="4" Grid.Column="0" Content="Goals scored in the game"></Label>
-        <Label  Grid.Row="5" Grid.Column="0" Content="Yellow cards recieved in the game"></Label>
+        <Label x:Name="Name" Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+        <Label x:Name="ShirtNumber"  Grid.Row="1" Grid.Column="0" Content="Shirt number"></Label>
+        <Label x:Name="Captain" Grid.Row="2" Grid.Column="0" Content="Captain"></Label>
+        <Label x:Name="Position" Grid.Row="3" Grid.Column="0" Content="Position"></Label>
+        <Label x:Name="GoalsScored" Grid.Row="4" Grid.Column="0" Content="Goals scored in the game"></Label>
+        <Label x:Name="YellowCards" Grid.Row="5" Grid.Column="0" Content="Yellow cards recieved in the game"></Label>
         
         <Label x:Name="lblName" Grid.Row="0" Grid.Column="1" Content=""></Label>
         <Label x:Name="lblShirtNumber" Grid.Row="1" Grid.Column="1" Content=""></Label>

@@ -147,14 +147,14 @@
   <data name="goalsScored" xml:space="preserve">
     <value>Goals scored</value>
   </data>
+  <data name="matchResult" xml:space="preserve">
+    <value>Match result</value>
+  </data>
   <data name="playerName" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="position" xml:space="preserve">
     <value>Position</value>
-  </data>
-  <data name="rezultatUtakmice" xml:space="preserve">
-    <value>Match result</value>
   </data>
   <data name="settings" xml:space="preserve">
     <value>Settings</value>
