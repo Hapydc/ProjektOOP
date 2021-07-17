@@ -9,9 +9,14 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Services
 {
+    enum StorageType
+    {
+        File,
+        Api
+    }
+
     public class DataService
     {
-        public bool UsesApiService { get; set; }
         private IService Service;
         public static List<MatchResult> MatchResults { get; set; }
         private static string favoriteMalePlayersFile = @"Resources\FavoriteMalePlayers.txt";
@@ -26,8 +31,8 @@ namespace DataLayer.Services
 
         public DataService()
         {
-            UsesApiService = ReadDataSource();
-            if (!UsesApiService)
+            var storageType = ResolveStorageType();
+            if (storageType == StorageType.File)
             {
                 Service = new FileService();
             }
@@ -37,18 +42,18 @@ namespace DataLayer.Services
             }
         }
 
-        private bool ReadDataSource()
+        private StorageType ResolveStorageType()
         {
             StreamReader r = new StreamReader(dataSourceFile);
             dataSource = r.ReadToEnd();
 
             if (dataSource == "File")
             {
-                return false;
+                return StorageType.File;
             }
             else
             {
-                return true;
+                return StorageType.Api;
             }
         }
 
