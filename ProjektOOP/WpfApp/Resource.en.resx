@@ -117,103 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="awayTeam" xml:space="preserve">
-    <value>Away team</value>
+  <data name="actionConfirmation" xml:space="preserve">
+    <value>Are you sure?</value>
   </data>
-  <data name="btnSave" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="captainNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="captainYes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="chooseGender" xml:space="preserve">
-    <value>Championship</value>
-  </data>
-  <data name="chooseLanguage" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="closeConfirmation" xml:space="preserve">
-    <value>Are you sure that you want to exit?</value>
-  </data>
-  <data name="confirmation" xml:space="preserve">
-    <value>Confirmation</value>
-  </data>
-  <data name="croatianLanguage" xml:space="preserve">
-    <value>Croatian</value>
-  </data>
-  <data name="englishLanguage" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="favoritePlayers" xml:space="preserve">
-    <value>Favorite players</value>
-  </data>
-  <data name="femaleChampionship" xml:space="preserve">
-    <value>Female</value>
-  </data>
-  <data name="gameInformation" xml:space="preserve">
-    <value>Games informations</value>
-  </data>
-  <data name="genderIsMandatory" xml:space="preserve">
-    <value>Gender is mandatory</value>
-  </data>
-  <data name="goalList" xml:space="preserve">
-    <value>Goals list</value>
-  </data>
-  <data name="homeTeam" xml:space="preserve">
-    <value>Home team</value>
-  </data>
-  <data name="languageIsMandatory" xml:space="preserve">
-    <value>Language is mandatory</value>
-  </data>
-  <data name="lblCaptTag" xml:space="preserve">
+  <data name="captain" xml:space="preserve">
     <value>Captain</value>
   </data>
-  <data name="lblNameTag" xml:space="preserve">
+  <data name="countryDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="defeats" xml:space="preserve">
+    <value>Defeats</value>
+  </data>
+  <data name="draws" xml:space="preserve">
+    <value>Draws</value>
+  </data>
+  <data name="fifaCode" xml:space="preserve">
+    <value>Fifa code</value>
+  </data>
+  <data name="goalDifference" xml:space="preserve">
+    <value>Goal difference</value>
+  </data>
+  <data name="goals" xml:space="preserve">
+    <value>Goals</value>
+  </data>
+  <data name="goalsRecieved" xml:space="preserve">
+    <value>Goals recieved</value>
+  </data>
+  <data name="goalsScored" xml:space="preserve">
+    <value>Goals scored</value>
+  </data>
+  <data name="playerName" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="lblPositionTag" xml:space="preserve">
+  <data name="position" xml:space="preserve">
     <value>Position</value>
   </data>
-  <data name="lblShirtNumberTag" xml:space="preserve">
-    <value>Shirt number</value>
-  </data>
-  <data name="location" xml:space="preserve">
-    <value>Location</value>
-  </data>
-  <data name="maleChampionship" xml:space="preserve">
-    <value>Male</value>
-  </data>
-  <data name="pickedTeam" xml:space="preserve">
-    <value>Your favorite team</value>
-  </data>
-  <data name="pickTeam" xml:space="preserve">
-    <value>Choose your team</value>
-  </data>
-  <data name="pickTeamWarning" xml:space="preserve">
-    <value>Pick a team first!</value>
-  </data>
-  <data name="save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="setImage" xml:space="preserve">
-    <value>Set image</value>
+  <data name="rezultatUtakmice" xml:space="preserve">
+    <value>Match result</value>
   </data>
   <data name="settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="submit" xml:space="preserve">
-    <value>Submit</value>
+  <data name="shritNumber" xml:space="preserve">
+    <value>Shirt number</value>
   </data>
-  <data name="visitorsNumber" xml:space="preserve">
-    <value>Number of visitors</value>
+  <data name="wins" xml:space="preserve">
+    <value>Wins</value>
   </data>
-  <data name="yellowCardList" xml:space="preserve">
-    <value>Yellow card list</value>
+  <data name="yellowCards" xml:space="preserve">
+    <value>Yellow cards</value>
   </data>
 </root>

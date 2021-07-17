@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,12 +25,16 @@ namespace WpfApp
     {
         public ApplicationSettings applicationSettings = new ApplicationSettings();
         public ApplicationSettingsService service = new ApplicationSettingsService();
+        public Language language;
+        
         public MainWindow()
         {
             InitializeComponent();
+            SetCulture();
             applicationSettings = service.GetAplicationSettings();
             if (applicationSettings==null)
             {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
 
             }
             else
@@ -52,6 +57,30 @@ namespace WpfApp
                     rbEnglish.IsChecked = true;
                 }
             }
+
+        }
+        private void SetCulture()
+        {
+            DataService service = new DataService();
+            language = service.GetLanguage();
+            if (language == DataLayer.Models.Language.Croatian)
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
+                LoadFormLanguage();
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                LoadFormLanguage();
+            }
+        }
+        private void LoadFormLanguage()
+        {
+            rbCroatian.Content = TranslationService.GetTranslationByKey("croatianLanguage");
+            rbEnglish.Content = TranslationService.GetTranslationByKey("englishLanguage");
+            rbFemaleChampionship.Content = TranslationService.GetTranslationByKey("femaleChampionship");
+            rbMaleChampionship.Content = TranslationService.GetTranslationByKey("maleChampionship");
+            btnSave.Content = TranslationService.GetTranslationByKey("btnSave");
         }
 
         private void OnClick(object sender, RoutedEventArgs e)

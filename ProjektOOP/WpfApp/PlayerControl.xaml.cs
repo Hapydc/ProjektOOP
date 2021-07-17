@@ -63,5 +63,11 @@ namespace WpfApp
             playerInformation.Show();
 
         }
+        public void SetPicture( string path)
+        {
+            string packUri = path;
+            iconImage.Source = new ImageSourceConverter().ConvertFromString(packUri) as ImageSource;
+            
+        }
     }
 }

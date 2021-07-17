@@ -150,7 +150,6 @@ namespace ProjektOOP
             flowLayoutPanel1.DragDrop += flowLayoutPanel1_DragDrop;
             flowLayoutPanel2.DragEnter += flowLayoutPanel2_DragEnter;
             flowLayoutPanel2.DragDrop += flowLayoutPanel2_DragDrop;
-
         }
 
         private void flowLayoutPanel2_DragDrop(object sender, DragEventArgs e)
@@ -242,8 +241,7 @@ namespace ProjektOOP
 
         private void btnGamesInfo_Click(object sender, EventArgs e)
         {
-            string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;
-            
+            string selectedTeam = (cbTeams.SelectedItem as Team)?.Country;   
             if (selectedTeam == null)
             {
                 MessageBox.Show(TranslationService.GetTranslationByKey("pickTeamWarning"));

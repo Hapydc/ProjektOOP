@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="PlayerInformation" Height="450" Width="800">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" Duration="0:0:3">
+                    <ColorAnimation To="LightBlue" Duration="0:0:2"/>
+                    <ColorAnimation To="Salmon" Duration="0:0:3"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid HorizontalAlignment="Center">
+        
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>

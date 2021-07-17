@@ -1,8 +1,10 @@
 ﻿using DataLayer.Models;
+using DataLayer.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +22,11 @@ namespace WpfApp
     /// </summary>
     public partial class PlayerInformation : Window
     {
-        public PlayerInformation(Player player,int goals, int yellowCards)
-        {              
+        public Language language;
+        public PlayerInformation(Player player, int goals, int yellowCards)
+        {
             InitializeComponent();
+            SetCulture();
             lblName.Content = $"{player.Name}";
             lblShirtNumber.Content = $"{player.ShirtNumber}";
             lblPosition.Content = $"{player.Position}";
@@ -30,6 +34,31 @@ namespace WpfApp
             lblGoals.Content = $"{goals}";
             lblYellowCards.Content = $"{yellowCards}";
 
+        }
+        private void SetCulture()
+        {
+            DataService service = new DataService();
+            language = service.GetLanguage();
+            if (language == DataLayer.Models.Language.Croatian)
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
+                TranslateForm();
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                TranslateForm();
+            }
+        }
+
+        private void TranslateForm()
+        {
+            Name.Content = TranslationService.GetTranslationByKey("name");
+            ShirtNumber.Content = TranslationService.GetTranslationByKey("shirtNumber");
+            Position.Content = TranslationService.GetTranslationByKey("position");
+            Captain.Content = TranslationService.GetTranslationByKey("captain");
+            GoalsScored.Content = TranslationService.GetTranslationByKey("goalsScored");
+            YellowCards.Content = TranslationService.GetTranslationByKey("yellowCards");
         }
     }
 }

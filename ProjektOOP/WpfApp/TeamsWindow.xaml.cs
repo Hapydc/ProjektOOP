@@ -2,6 +2,7 @@
 using DataLayer.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,16 @@ namespace WpfApp
         public TeamsWindow()
         {
             InitializeComponent();
+            TranslateForm();
 
+        }
+
+        private void TranslateForm()
+        {
+            btnDetailsLeft.Content = TranslationService.GetTranslationByKey("details");
+            btnDetailsRight.Content = TranslationService.GetTranslationByKey("details");
+            btnSettings.Content = TranslationService.GetTranslationByKey("settings");   
+            
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)
@@ -132,6 +142,11 @@ namespace WpfApp
             {
                     
                 PlayerControl playerControl = new PlayerControl(player,homeTeamEvents);
+                var imagePath = $"{System.IO.Path.GetTempPath()}{player.Name}.txt";              
+                if (File.Exists(imagePath))
+                {
+                    playerControl.SetPicture(File.ReadAllText(imagePath));
+                }
                 switch (player.Position)
                 {
                     case "Goalie":
@@ -241,5 +256,11 @@ namespace WpfApp
 
         }
 
+        private void OpenSettingsWindow(object sender, RoutedEventArgs e)
+        {
+            Window settings = new MainWindow();
+            settings.Show();
+            this.Hide();
+        }
     }
 }
