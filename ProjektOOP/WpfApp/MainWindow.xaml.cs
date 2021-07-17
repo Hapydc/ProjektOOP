@@ -30,12 +30,9 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
-            SetCulture();
             applicationSettings = service.GetAplicationSettings();
             if (applicationSettings==null)
             {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
-
             }
             else
             {
@@ -58,29 +55,6 @@ namespace WpfApp
                 }
             }
 
-        }
-        private void SetCulture()
-        {
-            DataService service = new DataService();
-            language = service.GetLanguage();
-            if (language == DataLayer.Models.Language.Croatian)
-            {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
-                TranslateForm();
-            }
-            else
-            {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-               TranslateForm();
-            }
-        }
-        private void TranslateForm()
-        {
-            rbCroatian.Content = TranslationService.GetTranslationByKey("croatianLanguage");
-            rbEnglish.Content = TranslationService.GetTranslationByKey("englishLanguage");
-            rbFemaleChampionship.Content = TranslationService.GetTranslationByKey("femaleChampionship");
-            rbMaleChampionship.Content = TranslationService.GetTranslationByKey("maleChampionship");
-            btnSave.Content = TranslationService.GetTranslationByKey("btnSave");
         }
 
         private void OnClick(object sender, RoutedEventArgs e)

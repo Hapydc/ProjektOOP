@@ -33,30 +33,6 @@ namespace WpfApp
         public TeamsWindow()
         {
             InitializeComponent();
-            SetCulture();
-        }
-
-        private void SetCulture()
-        {
-            language = service.GetLanguage();
-            if (language == DataLayer.Models.Language.Croatian)
-            {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hr-HR");
-                TranslateForm();
-            }
-            else
-            {
-                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-                TranslateForm();
-            }
-        }
-
-        private void TranslateForm()
-        {
-            btnDetailsLeft.Content = TranslationService.GetTranslationByKey("details");
-            btnDetailsRight.Content = TranslationService.GetTranslationByKey("details");
-            btnSettings.Content = TranslationService.GetTranslationByKey("settings");
-
         }
 
         private void OnLoad(object sender, RoutedEventArgs e)

@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:WpfApp"
              Startup="ApplicationStart">
     <Application.Resources>
-         
+        
     </Application.Resources>
 </Application>
